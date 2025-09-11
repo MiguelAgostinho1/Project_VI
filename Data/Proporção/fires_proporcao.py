@@ -39,5 +39,5 @@ for _, row in df.iterrows():
         result[str(year)][region] = numero
 
 # Export to JSON
-with open("incendios_percent.json", "w", encoding="utf-8") as f:
+with open("fires_percent.json", "w", encoding="utf-8") as f:
     json.dump(result, f, ensure_ascii=False, indent=2)
