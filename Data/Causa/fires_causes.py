@@ -10,6 +10,9 @@ df = pd.read_csv(
     encoding="latin1"
 )
 
+# Keep only rows that look like "NUTS: Region"
+df = df[df[0].str.match(r"^[0-9A-Z]+:") == True]
+
 # Clean region names (remove NUTS codes but keep first letter)
 df[0] = df[0].astype(str).str.replace(r"^[0-9A-Z]+: ?", "", regex=True).str.strip()
 
