@@ -43,16 +43,30 @@ for year in all_years:
         # Add sapadores data
         if year in sapadores and region in sapadores[year]:
             merged[year][region]["Sapadores"] = sapadores[year][region]
+
+        # Calculate and add Eficacia_Index
+        if year in causas and region in causas[year] and year in sapadores and region in sapadores[year]:
+            if sapadores[year][region] is not None and causas[year][region].get("Total") > 0:
+                merged[year][region]["Eficacia_Index"] = sapadores[year][region] / causas[year][region].get("Total")
+            else:
+                merged[year][region]["Eficacia_Index"] = 0
+
+        # Calculate and add Prevenção_Index
+        if year in percentagens and region in percentagens[year] and year in sapadores and region in sapadores[year]:
+            if sapadores[year][region] is not None and sapadores[year][region] > 0:
+                merged[year][region]["Prevenção_Index"] = (percentagens[year][region] / sapadores[year][region]) * 10
+            else:
+                merged[year][region]["Prevenção_Index"] = 0
         
         # Add causas data
         if year in causas and region in causas[year]:
             merged[year][region]["Total"] = causas[year][region].get("Total")
             merged[year][region]["Causas"] = causas[year][region].get("Causas", [])
-        
+
         # Add dimensões data
         if year in dimensoes and region in dimensoes[year]:
             merged[year][region]["Dimensões"] = dimensoes[year][region].get("Dimensões", [])
 
 # Save merged result
-with open("fires_merged.json", "w", encoding="utf-8") as f:
+with open("fires_data.json", "w", encoding="utf-8") as f:
     json.dump(merged, f, ensure_ascii=False, indent=2)

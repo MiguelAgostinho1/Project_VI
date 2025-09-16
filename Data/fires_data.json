@@ -3,6 +3,8 @@
     "Alentejo Central": {
       "Percentagem": 0.08,
       "Sapadores": 16.0,
+      "Eficacia_Index": 0.09411764705882353,
+      "Prevenção_Index": 0.05,
       "Total": 170,
       "Causas": [
         {
@@ -68,6 +70,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.06,
       "Sapadores": 34.0,
+      "Eficacia_Index": 0.3090909090909091,
+      "Prevenção_Index": 0.01764705882352941,
       "Total": 110,
       "Causas": [
         {
@@ -133,6 +137,8 @@
     "Algarve": {
       "Percentagem": 0.01,
       "Sapadores": 84.0,
+      "Eficacia_Index": 0.48,
+      "Prevenção_Index": 0.0011904761904761906,
       "Total": 175,
       "Causas": [
         {
@@ -198,6 +204,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.09,
       "Sapadores": 102.0,
+      "Eficacia_Index": 0.6375,
+      "Prevenção_Index": 0.008823529411764706,
       "Total": 160,
       "Causas": [
         {
@@ -263,6 +271,8 @@
     "Alto Minho": {
       "Percentagem": 3.17,
       "Sapadores": 144.0,
+      "Eficacia_Index": 0.23003194888178913,
+      "Prevenção_Index": 0.22013888888888888,
       "Total": 626,
       "Causas": [
         {
@@ -328,6 +338,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 3.82,
       "Sapadores": 189.0,
+      "Eficacia_Index": 0.6406779661016949,
+      "Prevenção_Index": 0.2021164021164021,
       "Total": 295,
       "Causas": [
         {
@@ -393,6 +405,8 @@
     "Ave": {
       "Percentagem": 11.33,
       "Sapadores": 97.0,
+      "Eficacia_Index": 0.26358695652173914,
+      "Prevenção_Index": 1.1680412371134021,
       "Total": 368,
       "Causas": [
         {
@@ -458,6 +472,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.07,
       "Sapadores": 27.0,
+      "Eficacia_Index": 0.16265060240963855,
+      "Prevenção_Index": 0.02592592592592593,
       "Total": 166,
       "Causas": [
         {
@@ -523,6 +539,8 @@
     "Beira Baixa": {
       "Percentagem": 0.09,
       "Sapadores": 124.0,
+      "Eficacia_Index": 0.9465648854961832,
+      "Prevenção_Index": 0.007258064516129032,
       "Total": 131,
       "Causas": [
         {
@@ -588,6 +606,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.37,
       "Sapadores": 240.0,
+      "Eficacia_Index": 1.1059907834101383,
+      "Prevenção_Index": 0.015416666666666667,
       "Total": 217,
       "Causas": [
         {
@@ -653,6 +673,8 @@
     "Cávado": {
       "Percentagem": 1.56,
       "Sapadores": 54.0,
+      "Eficacia_Index": 0.23275862068965517,
+      "Prevenção_Index": 0.2888888888888889,
       "Total": 232,
       "Causas": [
         {
@@ -718,6 +740,8 @@
     "Douro": {
       "Percentagem": 1.5,
       "Sapadores": 94.0,
+      "Eficacia_Index": 0.4034334763948498,
+      "Prevenção_Index": 0.15957446808510636,
       "Total": 233,
       "Causas": [
         {
@@ -783,6 +807,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.19,
       "Sapadores": 34.0,
+      "Eficacia_Index": 0.3469387755102041,
+      "Prevenção_Index": 0.05588235294117647,
       "Total": 98,
       "Causas": [
         {
@@ -848,6 +874,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.04,
       "Sapadores": 38.0,
+      "Eficacia_Index": 0.16593886462882096,
+      "Prevenção_Index": 0.010526315789473684,
       "Total": 229,
       "Causas": [
         {
@@ -913,6 +941,8 @@
     "Médio Tejo": {
       "Percentagem": 0.08,
       "Sapadores": 113.0,
+      "Eficacia_Index": 0.4870689655172414,
+      "Prevenção_Index": 0.007079646017699115,
       "Total": 232,
       "Causas": [
         {
@@ -978,6 +1008,8 @@
     "Oeste": {
       "Percentagem": 0.03,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.23809523809523808,
+      "Prevenção_Index": 0.00857142857142857,
       "Total": 147,
       "Causas": [
         {
@@ -1043,6 +1075,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.97,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 131,
       "Causas": [
         {
@@ -1108,6 +1142,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 8.45,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 38,
       "Causas": [
         {
@@ -1173,6 +1209,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -1238,6 +1276,8 @@
     "Região de Aveiro": {
       "Percentagem": 20.9,
       "Sapadores": 22.0,
+      "Eficacia_Index": 0.09565217391304348,
+      "Prevenção_Index": 9.5,
       "Total": 230,
       "Causas": [
         {
@@ -1303,6 +1343,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.43,
       "Sapadores": 194.0,
+      "Eficacia_Index": 1.1901840490797546,
+      "Prevenção_Index": 0.022164948453608245,
       "Total": 163,
       "Causas": [
         {
@@ -1368,6 +1410,8 @@
     "Região de Leiria": {
       "Percentagem": 0.13,
       "Sapadores": 78.0,
+      "Eficacia_Index": 0.5909090909090909,
+      "Prevenção_Index": 0.016666666666666666,
       "Total": 132,
       "Causas": [
         {
@@ -1433,6 +1477,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.87,
       "Sapadores": 112.0,
+      "Eficacia_Index": 1.1428571428571428,
+      "Prevenção_Index": 0.07767857142857143,
       "Total": 98,
       "Causas": [
         {
@@ -1498,6 +1544,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 17.33,
       "Sapadores": 81.0,
+      "Eficacia_Index": 0.09060402684563758,
+      "Prevenção_Index": 2.139506172839506,
       "Total": 894,
       "Causas": [
         {
@@ -1563,6 +1611,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 17.28,
       "Sapadores": 155.0,
+      "Eficacia_Index": 0.7598039215686274,
+      "Prevenção_Index": 1.1148387096774195,
       "Total": 204,
       "Causas": [
         {
@@ -1628,6 +1678,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 10.23,
       "Sapadores": 63.0,
+      "Eficacia_Index": 0.0773955773955774,
+      "Prevenção_Index": 1.6238095238095238,
       "Total": 814,
       "Causas": [
         {
@@ -1695,6 +1747,8 @@
     "Alentejo Central": {
       "Percentagem": 0.02,
       "Sapadores": 14.0,
+      "Eficacia_Index": 0.09859154929577464,
+      "Prevenção_Index": 0.014285714285714285,
       "Total": 142,
       "Causas": [
         {
@@ -1760,6 +1814,8 @@
     "Alentejo Litoral": {
       "Percentagem": 1.25,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.35714285714285715,
+      "Prevenção_Index": 0.3571428571428571,
       "Total": 98,
       "Causas": [
         {
@@ -1825,6 +1881,8 @@
     "Algarve": {
       "Percentagem": 0.71,
       "Sapadores": 78.0,
+      "Eficacia_Index": 0.28363636363636363,
+      "Prevenção_Index": 0.09102564102564102,
       "Total": 275,
       "Causas": [
         {
@@ -1890,6 +1948,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.01,
       "Sapadores": 103.0,
+      "Eficacia_Index": 0.7103448275862069,
+      "Prevenção_Index": 0.0009708737864077671,
       "Total": 145,
       "Causas": [
         {
@@ -1955,6 +2015,8 @@
     "Alto Minho": {
       "Percentagem": 1.78,
       "Sapadores": 140.0,
+      "Eficacia_Index": 0.22257551669316375,
+      "Prevenção_Index": 0.12714285714285714,
       "Total": 629,
       "Causas": [
         {
@@ -2020,6 +2082,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 0.78,
       "Sapadores": 190.0,
+      "Eficacia_Index": 0.5993690851735016,
+      "Prevenção_Index": 0.04105263157894737,
       "Total": 317,
       "Causas": [
         {
@@ -2085,6 +2149,8 @@
     "Ave": {
       "Percentagem": 2.04,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.202991452991453,
+      "Prevenção_Index": 0.21473684210526314,
       "Total": 468,
       "Causas": [
         {
@@ -2150,6 +2216,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.04,
       "Sapadores": 27.0,
+      "Eficacia_Index": 0.17307692307692307,
+      "Prevenção_Index": 0.014814814814814814,
       "Total": 156,
       "Causas": [
         {
@@ -2215,6 +2283,8 @@
     "Beira Baixa": {
       "Percentagem": 1.52,
       "Sapadores": 116.0,
+      "Eficacia_Index": 0.8111888111888111,
+      "Prevenção_Index": 0.1310344827586207,
       "Total": 143,
       "Causas": [
         {
@@ -2280,6 +2350,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.19,
       "Sapadores": 232.0,
+      "Eficacia_Index": 0.9098039215686274,
+      "Prevenção_Index": 0.008189655172413794,
       "Total": 255,
       "Causas": [
         {
@@ -2345,6 +2417,8 @@
     "Cávado": {
       "Percentagem": 1.71,
       "Sapadores": 56.0,
+      "Eficacia_Index": 0.2222222222222222,
+      "Prevenção_Index": 0.3053571428571428,
       "Total": 252,
       "Causas": [
         {
@@ -2410,6 +2484,8 @@
     "Douro": {
       "Percentagem": 0.28,
       "Sapadores": 96.0,
+      "Eficacia_Index": 0.3609022556390977,
+      "Prevenção_Index": 0.029166666666666667,
       "Total": 266,
       "Causas": [
         {
@@ -2475,6 +2551,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.64,
       "Sapadores": 28.0,
+      "Eficacia_Index": 0.12444444444444444,
+      "Prevenção_Index": 0.22857142857142856,
       "Total": 225,
       "Causas": [
         {
@@ -2540,6 +2618,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.05,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.16194331983805668,
+      "Prevenção_Index": 0.0125,
       "Total": 247,
       "Causas": [
         {
@@ -2605,6 +2685,8 @@
     "Médio Tejo": {
       "Percentagem": 0.54,
       "Sapadores": 112.0,
+      "Eficacia_Index": 0.4666666666666667,
+      "Prevenção_Index": 0.04821428571428572,
       "Total": 240,
       "Causas": [
         {
@@ -2670,6 +2752,8 @@
     "Oeste": {
       "Percentagem": 0.6,
       "Sapadores": 37.0,
+      "Eficacia_Index": 0.10818713450292397,
+      "Prevenção_Index": 0.16216216216216217,
       "Total": 342,
       "Causas": [
         {
@@ -2735,6 +2819,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.1,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 204,
       "Causas": [
         {
@@ -2800,6 +2886,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 8.39,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 39,
       "Causas": [
         {
@@ -2865,6 +2953,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -2930,6 +3020,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.26,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.06896551724137931,
+      "Prevenção_Index": 0.13,
       "Total": 290,
       "Causas": [
         {
@@ -2995,6 +3087,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.09,
       "Sapadores": 194.0,
+      "Eficacia_Index": 0.7003610108303249,
+      "Prevenção_Index": 0.004639175257731959,
       "Total": 277,
       "Causas": [
         {
@@ -3060,6 +3154,8 @@
     "Região de Leiria": {
       "Percentagem": 0.43,
       "Sapadores": 77.0,
+      "Eficacia_Index": 0.4502923976608187,
+      "Prevenção_Index": 0.05584415584415584,
       "Total": 171,
       "Causas": [
         {
@@ -3125,6 +3221,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.46,
       "Sapadores": 103.0,
+      "Eficacia_Index": 0.9903846153846154,
+      "Prevenção_Index": 0.044660194174757285,
       "Total": 104,
       "Causas": [
         {
@@ -3190,6 +3288,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 1.46,
       "Sapadores": 82.0,
+      "Eficacia_Index": 0.09339407744874716,
+      "Prevenção_Index": 0.17804878048780487,
       "Total": 878,
       "Causas": [
         {
@@ -3255,6 +3355,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.66,
       "Sapadores": 164.0,
+      "Eficacia_Index": 0.5061728395061729,
+      "Prevenção_Index": 0.04024390243902439,
       "Total": 324,
       "Causas": [
         {
@@ -3320,6 +3422,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 0.67,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.06063432835820896,
+      "Prevenção_Index": 0.10307692307692308,
       "Total": 1072,
       "Causas": [
         {
@@ -3387,6 +3491,8 @@
     "Alentejo Central": {
       "Percentagem": 0.07,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.08287292817679558,
+      "Prevenção_Index": 0.04666666666666667,
       "Total": 181,
       "Causas": [
         {
@@ -3452,6 +3558,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.06,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.2857142857142857,
+      "Prevenção_Index": 0.02,
       "Total": 105,
       "Causas": [
         {
@@ -3517,6 +3625,8 @@
     "Algarve": {
       "Percentagem": 0.52,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.35545023696682465,
+      "Prevenção_Index": 0.06933333333333334,
       "Total": 211,
       "Causas": [
         {
@@ -3582,6 +3692,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.02,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.6325301204819277,
+      "Prevenção_Index": 0.0019047619047619048,
       "Total": 166,
       "Causas": [
         {
@@ -3647,6 +3759,8 @@
     "Alto Minho": {
       "Percentagem": 3.48,
       "Sapadores": 135.0,
+      "Eficacia_Index": 0.17329910141206675,
+      "Prevenção_Index": 0.2577777777777778,
       "Total": 779,
       "Causas": [
         {
@@ -3712,6 +3826,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 6.08,
       "Sapadores": 185.0,
+      "Eficacia_Index": 0.3027823240589198,
+      "Prevenção_Index": 0.3286486486486487,
       "Total": 611,
       "Causas": [
         {
@@ -3777,6 +3893,8 @@
     "Ave": {
       "Percentagem": 4.78,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.1296043656207367,
+      "Prevenção_Index": 0.5031578947368421,
       "Total": 733,
       "Causas": [
         {
@@ -3842,6 +3960,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.02,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.13157894736842105,
+      "Prevenção_Index": 0.008,
       "Total": 190,
       "Causas": [
         {
@@ -3907,6 +4027,8 @@
     "Beira Baixa": {
       "Percentagem": 0.03,
       "Sapadores": 120.0,
+      "Eficacia_Index": 0.7692307692307693,
+      "Prevenção_Index": 0.0025,
       "Total": 156,
       "Causas": [
         {
@@ -3972,6 +4094,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 7.09,
       "Sapadores": 225.0,
+      "Eficacia_Index": 0.5196304849884527,
+      "Prevenção_Index": 0.31511111111111106,
       "Total": 433,
       "Causas": [
         {
@@ -4037,6 +4161,8 @@
     "Cávado": {
       "Percentagem": 1.62,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.16129032258064516,
+      "Prevenção_Index": 0.29454545454545455,
       "Total": 341,
       "Causas": [
         {
@@ -4102,6 +4228,8 @@
     "Douro": {
       "Percentagem": 5.74,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.21788990825688073,
+      "Prevenção_Index": 0.6042105263157895,
       "Total": 436,
       "Causas": [
         {
@@ -4167,6 +4295,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.79,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.10548523206751055,
+      "Prevenção_Index": 0.31600000000000006,
       "Total": 237,
       "Causas": [
         {
@@ -4232,6 +4362,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.27,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.13333333333333333,
+      "Prevenção_Index": 0.0675,
       "Total": 300,
       "Causas": [
         {
@@ -4297,6 +4429,8 @@
     "Médio Tejo": {
       "Percentagem": 2.78,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.3938356164383562,
+      "Prevenção_Index": 0.24173913043478257,
       "Total": 292,
       "Causas": [
         {
@@ -4362,6 +4496,8 @@
     "Oeste": {
       "Percentagem": 0.32,
       "Sapadores": 45.0,
+      "Eficacia_Index": 0.14802631578947367,
+      "Prevenção_Index": 0.07111111111111111,
       "Total": 304,
       "Causas": [
         {
@@ -4427,6 +4563,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.36,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 237,
       "Causas": [
         {
@@ -4492,6 +4630,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.14,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 49,
       "Causas": [
         {
@@ -4557,6 +4697,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -4622,6 +4764,8 @@
     "Região de Aveiro": {
       "Percentagem": 2.86,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.07751937984496124,
+      "Prevenção_Index": 1.43,
       "Total": 258,
       "Causas": [
         {
@@ -4687,6 +4831,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.27,
       "Sapadores": 190.0,
+      "Eficacia_Index": 0.42316258351893093,
+      "Prevenção_Index": 0.014210526315789476,
       "Total": 449,
       "Causas": [
         {
@@ -4752,6 +4898,8 @@
     "Região de Leiria": {
       "Percentagem": 4.79,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.29045643153526973,
+      "Prevenção_Index": 0.6842857142857144,
       "Total": 241,
       "Causas": [
         {
@@ -4817,6 +4965,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.6,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.3617021276595745,
+      "Prevenção_Index": 0.07058823529411765,
       "Total": 235,
       "Causas": [
         {
@@ -4882,6 +5032,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 4.63,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.05286069651741294,
+      "Prevenção_Index": 0.5447058823529412,
       "Total": 1608,
       "Causas": [
         {
@@ -4947,6 +5099,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.44,
       "Sapadores": 170.0,
+      "Eficacia_Index": 0.4748603351955307,
+      "Prevenção_Index": 0.025882352941176474,
       "Total": 358,
       "Causas": [
         {
@@ -5012,6 +5166,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 1.8,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.03924133420536298,
+      "Prevenção_Index": 0.30000000000000004,
       "Total": 1529,
       "Causas": [
         {
@@ -5079,6 +5235,8 @@
     "Alentejo Central": {
       "Percentagem": 0.07,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.07042253521126761,
+      "Prevenção_Index": 0.04666666666666667,
       "Total": 213,
       "Causas": [
         {
@@ -5144,6 +5302,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.27,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.21897810218978103,
+      "Prevenção_Index": 0.09000000000000001,
       "Total": 137,
       "Causas": [
         {
@@ -5209,6 +5369,8 @@
     "Algarve": {
       "Percentagem": 2.19,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.2508361204013378,
+      "Prevenção_Index": 0.292,
       "Total": 299,
       "Causas": [
         {
@@ -5274,6 +5436,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.11,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.546875,
+      "Prevenção_Index": 0.010476190476190476,
       "Total": 192,
       "Causas": [
         {
@@ -5339,6 +5503,8 @@
     "Alto Minho": {
       "Percentagem": 1.5,
       "Sapadores": 135.0,
+      "Eficacia_Index": 0.23978685612788633,
+      "Prevenção_Index": 0.11111111111111112,
       "Total": 563,
       "Causas": [
         {
@@ -5404,6 +5570,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 1.45,
       "Sapadores": 185.0,
+      "Eficacia_Index": 0.41387024608501116,
+      "Prevenção_Index": 0.07837837837837838,
       "Total": 447,
       "Causas": [
         {
@@ -5469,6 +5637,8 @@
     "Ave": {
       "Percentagem": 2.38,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.19791666666666666,
+      "Prevenção_Index": 0.2505263157894737,
       "Total": 480,
       "Causas": [
         {
@@ -5534,6 +5704,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.02,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.09615384615384616,
+      "Prevenção_Index": 0.008,
       "Total": 260,
       "Causas": [
         {
@@ -5599,6 +5771,8 @@
     "Beira Baixa": {
       "Percentagem": 0.03,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.7913669064748201,
+      "Prevenção_Index": 0.0027272727272727275,
       "Total": 139,
       "Causas": [
         {
@@ -5664,6 +5838,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.32,
       "Sapadores": 220.0,
+      "Eficacia_Index": 0.7801418439716312,
+      "Prevenção_Index": 0.014545454545454547,
       "Total": 282,
       "Causas": [
         {
@@ -5729,6 +5905,8 @@
     "Cávado": {
       "Percentagem": 0.5,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.2682926829268293,
+      "Prevenção_Index": 0.09090909090909091,
       "Total": 205,
       "Causas": [
         {
@@ -5794,6 +5972,8 @@
     "Douro": {
       "Percentagem": 0.62,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.2519893899204244,
+      "Prevenção_Index": 0.06526315789473684,
       "Total": 377,
       "Causas": [
         {
@@ -5859,6 +6039,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.29,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.061274509803921566,
+      "Prevenção_Index": 0.11599999999999999,
       "Total": 408,
       "Causas": [
         {
@@ -5924,6 +6106,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.1,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.1342281879194631,
+      "Prevenção_Index": 0.025,
       "Total": 298,
       "Causas": [
         {
@@ -5989,6 +6173,8 @@
     "Médio Tejo": {
       "Percentagem": 0.05,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.5021834061135371,
+      "Prevenção_Index": 0.004347826086956522,
       "Total": 229,
       "Causas": [
         {
@@ -6054,6 +6240,8 @@
     "Oeste": {
       "Percentagem": 0.09,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.15151515151515152,
+      "Prevenção_Index": 0.018,
       "Total": 330,
       "Causas": [
         {
@@ -6119,6 +6307,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.04,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 401,
       "Causas": [
         {
@@ -6184,6 +6374,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.12,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 44,
       "Causas": [
         {
@@ -6249,6 +6441,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -6314,6 +6508,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.04,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.0823045267489712,
+      "Prevenção_Index": 0.02,
       "Total": 243,
       "Causas": [
         {
@@ -6379,6 +6575,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.0,
       "Sapadores": 190.0,
+      "Eficacia_Index": 1.1377245508982037,
+      "Prevenção_Index": 0.0,
       "Total": 167,
       "Causas": [
         {
@@ -6444,6 +6642,8 @@
     "Região de Leiria": {
       "Percentagem": 0.02,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.4861111111111111,
+      "Prevenção_Index": 0.0028571428571428576,
       "Total": 144,
       "Causas": [
         {
@@ -6509,6 +6709,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.16,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.4807692307692308,
+      "Prevenção_Index": 0.021333333333333336,
       "Total": 156,
       "Causas": [
         {
@@ -6574,6 +6776,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 1.05,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.09413067552602436,
+      "Prevenção_Index": 0.12352941176470589,
       "Total": 903,
       "Causas": [
         {
@@ -6639,6 +6843,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.49,
       "Sapadores": 170.0,
+      "Eficacia_Index": 0.5704697986577181,
+      "Prevenção_Index": 0.028823529411764706,
       "Total": 298,
       "Causas": [
         {
@@ -6704,6 +6910,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 0.65,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.059113300492610835,
+      "Prevenção_Index": 0.10833333333333334,
       "Total": 1015,
       "Causas": [
         {
@@ -6771,6 +6979,8 @@
     "Alentejo Central": {
       "Percentagem": 0.02,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.08982035928143713,
+      "Prevenção_Index": 0.013333333333333332,
       "Total": 167,
       "Causas": [
         {
@@ -6836,6 +7046,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.03,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.2830188679245283,
+      "Prevenção_Index": 0.01,
       "Total": 106,
       "Causas": [
         {
@@ -6901,6 +7113,8 @@
     "Algarve": {
       "Percentagem": 0.77,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.31100478468899523,
+      "Prevenção_Index": 0.11846153846153847,
       "Total": 209,
       "Causas": [
         {
@@ -6966,6 +7180,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.31,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.5555555555555556,
+      "Prevenção_Index": 0.029523809523809525,
       "Total": 189,
       "Causas": [
         {
@@ -7031,6 +7247,8 @@
     "Alto Minho": {
       "Percentagem": 2.35,
       "Sapadores": 130.0,
+      "Eficacia_Index": 0.2145214521452145,
+      "Prevenção_Index": 0.18076923076923077,
       "Total": 606,
       "Causas": [
         {
@@ -7096,6 +7314,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 1.66,
       "Sapadores": 185.0,
+      "Eficacia_Index": 0.4363207547169811,
+      "Prevenção_Index": 0.08972972972972973,
       "Total": 424,
       "Causas": [
         {
@@ -7161,6 +7381,8 @@
     "Ave": {
       "Percentagem": 2.24,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.19668737060041408,
+      "Prevenção_Index": 0.23578947368421055,
       "Total": 483,
       "Causas": [
         {
@@ -7226,6 +7448,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.0,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.1201923076923077,
+      "Prevenção_Index": 0.0,
       "Total": 208,
       "Causas": [
         {
@@ -7291,6 +7515,8 @@
     "Beira Baixa": {
       "Percentagem": 4.84,
       "Sapadores": 120.0,
+      "Eficacia_Index": 0.6185567010309279,
+      "Prevenção_Index": 0.4033333333333333,
       "Total": 194,
       "Causas": [
         {
@@ -7356,6 +7582,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.99,
       "Sapadores": 225.0,
+      "Eficacia_Index": 0.6032171581769437,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 373,
       "Causas": [
         {
@@ -7421,6 +7649,8 @@
     "Cávado": {
       "Percentagem": 1.66,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.14745308310991956,
+      "Prevenção_Index": 0.3018181818181818,
       "Total": 373,
       "Causas": [
         {
@@ -7486,6 +7716,8 @@
     "Douro": {
       "Percentagem": 3.14,
       "Sapadores": 90.0,
+      "Eficacia_Index": 0.26548672566371684,
+      "Prevenção_Index": 0.3488888888888889,
       "Total": 339,
       "Causas": [
         {
@@ -7551,6 +7783,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.32,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.06793478260869565,
+      "Prevenção_Index": 0.128,
       "Total": 368,
       "Causas": [
         {
@@ -7616,6 +7850,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.05,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.1746031746031746,
+      "Prevenção_Index": 0.00909090909090909,
       "Total": 315,
       "Causas": [
         {
@@ -7681,6 +7917,8 @@
     "Médio Tejo": {
       "Percentagem": 0.36,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.36507936507936506,
+      "Prevenção_Index": 0.03130434782608695,
       "Total": 315,
       "Causas": [
         {
@@ -7746,6 +7984,8 @@
     "Oeste": {
       "Percentagem": 0.12,
       "Sapadores": 45.0,
+      "Eficacia_Index": 0.1490066225165563,
+      "Prevenção_Index": 0.026666666666666665,
       "Total": 302,
       "Causas": [
         {
@@ -7811,6 +8051,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.08,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 271,
       "Causas": [
         {
@@ -7876,6 +8118,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 2.27,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 59,
       "Causas": [
         {
@@ -7941,6 +8185,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -8006,6 +8252,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.13,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.078125,
+      "Prevenção_Index": 0.052,
       "Total": 320,
       "Causas": [
         {
@@ -8071,6 +8319,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.07,
       "Sapadores": 190.0,
+      "Eficacia_Index": 0.7723577235772358,
+      "Prevenção_Index": 0.00368421052631579,
       "Total": 246,
       "Causas": [
         {
@@ -8136,6 +8386,8 @@
     "Região de Leiria": {
       "Percentagem": 0.93,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.35555555555555557,
+      "Prevenção_Index": 0.11624999999999999,
       "Total": 225,
       "Causas": [
         {
@@ -8201,6 +8453,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.91,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.3111111111111111,
+      "Prevenção_Index": 0.13,
       "Total": 225,
       "Causas": [
         {
@@ -8266,6 +8520,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 2.05,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.05952380952380952,
+      "Prevenção_Index": 0.25625,
       "Total": 1344,
       "Causas": [
         {
@@ -8331,6 +8587,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 1.16,
       "Sapadores": 175.0,
+      "Eficacia_Index": 0.5434782608695652,
+      "Prevenção_Index": 0.06628571428571428,
       "Total": 322,
       "Causas": [
         {
@@ -8396,6 +8654,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 2.0,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.03541912632821724,
+      "Prevenção_Index": 0.3333333333333333,
       "Total": 1694,
       "Causas": [
         {
@@ -8463,6 +8723,8 @@
     "Alentejo Central": {
       "Percentagem": 0.15,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.04807692307692308,
+      "Prevenção_Index": 0.1,
       "Total": 312,
       "Causas": [
         {
@@ -8528,6 +8790,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.07,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.13071895424836602,
+      "Prevenção_Index": 0.035,
       "Total": 153,
       "Causas": [
         {
@@ -8593,6 +8857,8 @@
     "Algarve": {
       "Percentagem": 0.13,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.16786570743405277,
+      "Prevenção_Index": 0.018571428571428572,
       "Total": 417,
       "Causas": [
         {
@@ -8658,6 +8924,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.23,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.3633217993079585,
+      "Prevenção_Index": 0.021904761904761906,
       "Total": 289,
       "Causas": [
         {
@@ -8723,6 +8991,8 @@
     "Alto Minho": {
       "Percentagem": 1.38,
       "Sapadores": 130.0,
+      "Eficacia_Index": 0.23381294964028776,
+      "Prevenção_Index": 0.10615384615384615,
       "Total": 556,
       "Causas": [
         {
@@ -8788,6 +9058,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 0.83,
       "Sapadores": 175.0,
+      "Eficacia_Index": 0.4060324825986079,
+      "Prevenção_Index": 0.047428571428571424,
       "Total": 431,
       "Causas": [
         {
@@ -8853,6 +9125,8 @@
     "Ave": {
       "Percentagem": 1.19,
       "Sapadores": 90.0,
+      "Eficacia_Index": 0.17307692307692307,
+      "Prevenção_Index": 0.1322222222222222,
       "Total": 520,
       "Causas": [
         {
@@ -8918,6 +9192,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.19,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.07396449704142012,
+      "Prevenção_Index": 0.076,
       "Total": 338,
       "Causas": [
         {
@@ -8983,6 +9259,8 @@
     "Beira Baixa": {
       "Percentagem": 2.4,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.49145299145299143,
+      "Prevenção_Index": 0.20869565217391303,
       "Total": 234,
       "Causas": [
         {
@@ -9048,6 +9326,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.53,
       "Sapadores": 220.0,
+      "Eficacia_Index": 0.4814004376367615,
+      "Prevenção_Index": 0.024090909090909093,
       "Total": 457,
       "Causas": [
         {
@@ -9113,6 +9393,8 @@
     "Cávado": {
       "Percentagem": 1.53,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.17405063291139242,
+      "Prevenção_Index": 0.2781818181818182,
       "Total": 316,
       "Causas": [
         {
@@ -9178,6 +9460,8 @@
     "Douro": {
       "Percentagem": 1.27,
       "Sapadores": 90.0,
+      "Eficacia_Index": 0.16453382084095064,
+      "Prevenção_Index": 0.1411111111111111,
       "Total": 547,
       "Causas": [
         {
@@ -9243,6 +9527,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.5,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.04621072088724584,
+      "Prevenção_Index": 0.2,
       "Total": 541,
       "Causas": [
         {
@@ -9308,6 +9594,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.19,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.1206140350877193,
+      "Prevenção_Index": 0.034545454545454546,
       "Total": 456,
       "Causas": [
         {
@@ -9373,6 +9661,8 @@
     "Médio Tejo": {
       "Percentagem": 0.51,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.3303303303303303,
+      "Prevenção_Index": 0.046363636363636364,
       "Total": 333,
       "Causas": [
         {
@@ -9438,6 +9728,8 @@
     "Oeste": {
       "Percentagem": 0.33,
       "Sapadores": 45.0,
+      "Eficacia_Index": 0.0967741935483871,
+      "Prevenção_Index": 0.07333333333333333,
       "Total": 465,
       "Causas": [
         {
@@ -9503,6 +9795,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.11,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 292,
       "Causas": [
         {
@@ -9568,6 +9862,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.14,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 54,
       "Causas": [
         {
@@ -9633,6 +9929,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -9698,6 +9996,8 @@
     "Região de Aveiro": {
       "Percentagem": 2.51,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.06578947368421052,
+      "Prevenção_Index": 1.004,
       "Total": 380,
       "Causas": [
         {
@@ -9763,6 +10063,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.22,
       "Sapadores": 185.0,
+      "Eficacia_Index": 0.5196629213483146,
+      "Prevenção_Index": 0.011891891891891892,
       "Total": 356,
       "Causas": [
         {
@@ -9828,6 +10130,8 @@
     "Região de Leiria": {
       "Percentagem": 0.21,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.28169014084507044,
+      "Prevenção_Index": 0.026249999999999996,
       "Total": 284,
       "Causas": [
         {
@@ -9893,6 +10197,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.41,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.2631578947368421,
+      "Prevenção_Index": 0.058571428571428566,
       "Total": 266,
       "Causas": [
         {
@@ -9958,6 +10264,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 2.51,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.07285974499089254,
+      "Prevenção_Index": 0.31375,
       "Total": 1098,
       "Causas": [
         {
@@ -10023,6 +10331,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.64,
       "Sapadores": 165.0,
+      "Eficacia_Index": 0.38461538461538464,
+      "Prevenção_Index": 0.03878787878787879,
       "Total": 429,
       "Causas": [
         {
@@ -10088,6 +10398,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 0.84,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.04405286343612335,
+      "Prevenção_Index": 0.14,
       "Total": 1362,
       "Causas": [
         {
@@ -10155,6 +10467,8 @@
     "Alentejo Central": {
       "Percentagem": 0.0,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.09433962264150944,
+      "Prevenção_Index": 0.0,
       "Total": 159,
       "Causas": [
         {
@@ -10220,6 +10534,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.0,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.15,
+      "Prevenção_Index": 0.0,
       "Total": 100,
       "Causas": [
         {
@@ -10285,6 +10601,8 @@
     "Algarve": {
       "Percentagem": 7.01,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.18361581920903955,
+      "Prevenção_Index": 1.0784615384615384,
       "Total": 354,
       "Causas": [
         {
@@ -10350,6 +10668,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.12,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.3744493392070485,
+      "Prevenção_Index": 0.014117647058823528,
       "Total": 227,
       "Causas": [
         {
@@ -10415,6 +10735,8 @@
     "Alto Minho": {
       "Percentagem": 1.05,
       "Sapadores": 130.0,
+      "Eficacia_Index": 0.1455767077267637,
+      "Prevenção_Index": 0.08076923076923077,
       "Total": 893,
       "Causas": [
         {
@@ -10480,6 +10802,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 0.31,
       "Sapadores": 140.0,
+      "Eficacia_Index": 0.29723991507430997,
+      "Prevenção_Index": 0.02214285714285714,
       "Total": 471,
       "Causas": [
         {
@@ -10545,6 +10869,8 @@
     "Ave": {
       "Percentagem": 1.48,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.11477761836441894,
+      "Prevenção_Index": 0.185,
       "Total": 697,
       "Causas": [
         {
@@ -10610,6 +10936,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.17,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.1201923076923077,
+      "Prevenção_Index": 0.068,
       "Total": 208,
       "Causas": [
         {
@@ -10675,6 +11003,8 @@
     "Beira Baixa": {
       "Percentagem": 0.05,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.35185185185185186,
+      "Prevenção_Index": 0.005263157894736842,
       "Total": 270,
       "Causas": [
         {
@@ -10740,6 +11070,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 0.43,
       "Sapadores": 205.0,
+      "Eficacia_Index": 0.5694444444444444,
+      "Prevenção_Index": 0.020975609756097562,
       "Total": 360,
       "Causas": [
         {
@@ -10805,6 +11137,8 @@
     "Cávado": {
       "Percentagem": 2.64,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.10309278350515463,
+      "Prevenção_Index": 0.528,
       "Total": 485,
       "Causas": [
         {
@@ -10870,6 +11204,8 @@
     "Douro": {
       "Percentagem": 0.52,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.1032258064516129,
+      "Prevenção_Index": 0.065,
       "Total": 775,
       "Causas": [
         {
@@ -10935,6 +11271,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.89,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.04215851602023609,
+      "Prevenção_Index": 0.356,
       "Total": 593,
       "Causas": [
         {
@@ -11000,6 +11338,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.36,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.16467065868263472,
+      "Prevenção_Index": 0.06545454545454546,
       "Total": 334,
       "Causas": [
         {
@@ -11065,6 +11405,8 @@
     "Médio Tejo": {
       "Percentagem": 0.05,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.2361111111111111,
+      "Prevenção_Index": 0.005882352941176471,
       "Total": 360,
       "Causas": [
         {
@@ -11130,6 +11472,8 @@
     "Oeste": {
       "Percentagem": 0.09,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.08528784648187633,
+      "Prevenção_Index": 0.0225,
       "Total": 469,
       "Causas": [
         {
@@ -11195,6 +11539,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.17,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 328,
       "Causas": [
         {
@@ -11260,6 +11606,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.29,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 63,
       "Causas": [
         {
@@ -11325,6 +11673,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -11390,6 +11740,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.11,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.05787037037037037,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 432,
       "Causas": [
         {
@@ -11455,6 +11807,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.02,
       "Sapadores": 170.0,
+      "Eficacia_Index": 0.5501618122977346,
+      "Prevenção_Index": 0.0011764705882352942,
       "Total": 309,
       "Causas": [
         {
@@ -11520,6 +11874,8 @@
     "Região de Leiria": {
       "Percentagem": 0.02,
       "Sapadores": 80.0,
+      "Eficacia_Index": 0.34782608695652173,
+      "Prevenção_Index": 0.0025,
       "Total": 230,
       "Causas": [
         {
@@ -11585,6 +11941,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.47,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.1488833746898263,
+      "Prevenção_Index": 0.07833333333333332,
       "Total": 403,
       "Causas": [
         {
@@ -11650,6 +12008,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 0.91,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.05,
+      "Prevenção_Index": 0.13,
       "Total": 1400,
       "Causas": [
         {
@@ -11715,6 +12075,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.12,
       "Sapadores": 150.0,
+      "Eficacia_Index": 0.3464203233256351,
+      "Prevenção_Index": 0.008,
       "Total": 433,
       "Causas": [
         {
@@ -11780,6 +12142,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 0.5,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.03031834259727135,
+      "Prevenção_Index": 0.08333333333333333,
       "Total": 1979,
       "Causas": [
         {
@@ -11847,6 +12211,8 @@
     "Alentejo Central": {
       "Percentagem": 0.09,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.05263157894736842,
+      "Prevenção_Index": 0.06,
       "Total": 285,
       "Causas": [
         {
@@ -11912,6 +12278,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.64,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.05813953488372093,
+      "Prevenção_Index": 0.64,
       "Total": 172,
       "Causas": [
         {
@@ -11977,6 +12345,8 @@
     "Algarve": {
       "Percentagem": 0.07,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.13959390862944163,
+      "Prevenção_Index": 0.012727272727272728,
       "Total": 394,
       "Causas": [
         {
@@ -12042,6 +12412,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.38,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.18895348837209303,
+      "Prevenção_Index": 0.05846153846153847,
       "Total": 344,
       "Causas": [
         {
@@ -12107,6 +12479,8 @@
     "Alto Minho": {
       "Percentagem": 6.15,
       "Sapadores": 120.0,
+      "Eficacia_Index": 0.10318142734307825,
+      "Prevenção_Index": 0.5125000000000001,
       "Total": 1163,
       "Causas": [
         {
@@ -12172,6 +12546,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 4.57,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.09926854754440961,
+      "Prevenção_Index": 0.4810526315789474,
       "Total": 957,
       "Causas": [
         {
@@ -12237,6 +12613,8 @@
     "Ave": {
       "Percentagem": 10.24,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.04211332312404288,
+      "Prevenção_Index": 1.861818181818182,
       "Total": 1306,
       "Causas": [
         {
@@ -12302,6 +12680,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.15,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.08361204013377926,
+      "Prevenção_Index": 0.06,
       "Total": 299,
       "Causas": [
         {
@@ -12367,6 +12747,8 @@
     "Beira Baixa": {
       "Percentagem": 20.25,
       "Sapadores": 85.0,
+      "Eficacia_Index": 0.19813519813519814,
+      "Prevenção_Index": 2.3823529411764706,
       "Total": 429,
       "Causas": [
         {
@@ -12432,6 +12814,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 16.28,
       "Sapadores": 165.0,
+      "Eficacia_Index": 0.2129032258064516,
+      "Prevenção_Index": 0.9866666666666668,
       "Total": 775,
       "Causas": [
         {
@@ -12497,6 +12881,8 @@
     "Cávado": {
       "Percentagem": 3.54,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.06289308176100629,
+      "Prevenção_Index": 0.885,
       "Total": 636,
       "Causas": [
         {
@@ -12562,6 +12948,8 @@
     "Douro": {
       "Percentagem": 11.71,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.06918819188191883,
+      "Prevenção_Index": 1.5613333333333335,
       "Total": 1084,
       "Causas": [
         {
@@ -12627,6 +13015,8 @@
     "Grande Lisboa": {
       "Percentagem": 1.49,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.03169572107765452,
+      "Prevenção_Index": 0.745,
       "Total": 631,
       "Causas": [
         {
@@ -12692,6 +13082,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.16,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.04940711462450593,
+      "Prevenção_Index": 0.064,
       "Total": 506,
       "Causas": [
         {
@@ -12757,6 +13149,8 @@
     "Médio Tejo": {
       "Percentagem": 4.77,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.1001669449081803,
+      "Prevenção_Index": 0.7949999999999999,
       "Total": 599,
       "Causas": [
         {
@@ -12822,6 +13216,8 @@
     "Oeste": {
       "Percentagem": 20.3,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.025278058645096056,
+      "Prevenção_Index": 8.120000000000001,
       "Total": 989,
       "Causas": [
         {
@@ -12887,6 +13283,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.51,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 603,
       "Causas": [
         {
@@ -12952,6 +13350,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 2.56,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 94,
       "Causas": [
         {
@@ -13017,6 +13417,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -13082,6 +13484,8 @@
     "Região de Aveiro": {
       "Percentagem": 3.64,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.022857142857142857,
+      "Prevenção_Index": 1.8199999999999998,
       "Total": 875,
       "Causas": [
         {
@@ -13147,6 +13551,8 @@
     "Região de Coimbra": {
       "Percentagem": 43.21,
       "Sapadores": 125.0,
+      "Eficacia_Index": 0.15644555694618273,
+      "Prevenção_Index": 3.4568,
       "Total": 799,
       "Causas": [
         {
@@ -13212,6 +13618,8 @@
     "Região de Leiria": {
       "Percentagem": 31.33,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.14130434782608695,
+      "Prevenção_Index": 4.82,
       "Total": 460,
       "Causas": [
         {
@@ -13277,6 +13685,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 2.01,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.0532724505327245,
+      "Prevenção_Index": 0.5742857142857142,
       "Total": 657,
       "Causas": [
         {
@@ -13342,6 +13752,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 8.77,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.018682065217391304,
+      "Prevenção_Index": 1.5945454545454547,
       "Total": 2944,
       "Causas": [
         {
@@ -13407,6 +13819,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 12.42,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.10128913443830571,
+      "Prevenção_Index": 1.129090909090909,
       "Total": 1086,
       "Causas": [
         {
@@ -13472,6 +13886,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 11.18,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.020006668889629875,
+      "Prevenção_Index": 1.8633333333333333,
       "Total": 2999,
       "Causas": [
         {
@@ -13539,6 +13955,8 @@
     "Alentejo Central": {
       "Percentagem": 0.05,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.07425742574257425,
+      "Prevenção_Index": 0.03333333333333333,
       "Total": 202,
       "Causas": [
         {
@@ -13604,6 +14022,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.05,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.053763440860215055,
+      "Prevenção_Index": 0.05,
       "Total": 186,
       "Causas": [
         {
@@ -13669,6 +14089,8 @@
     "Algarve": {
       "Percentagem": 1.55,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.145985401459854,
+      "Prevenção_Index": 0.3875,
       "Total": 274,
       "Causas": [
         {
@@ -13734,6 +14156,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.22,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.2742616033755274,
+      "Prevenção_Index": 0.033846153846153845,
       "Total": 237,
       "Causas": [
         {
@@ -13799,6 +14223,8 @@
     "Alto Minho": {
       "Percentagem": 21.56,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.10379061371841156,
+      "Prevenção_Index": 1.874782608695652,
       "Total": 1108,
       "Causas": [
         {
@@ -13864,6 +14290,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 5.13,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.1310344827586207,
+      "Prevenção_Index": 0.54,
       "Total": 725,
       "Causas": [
         {
@@ -13929,6 +14357,8 @@
     "Ave": {
       "Percentagem": 11.43,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.04789272030651341,
+      "Prevenção_Index": 2.286,
       "Total": 1044,
       "Causas": [
         {
@@ -13994,6 +14424,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.08,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.12315270935960591,
+      "Prevenção_Index": 0.032,
       "Total": 203,
       "Causas": [
         {
@@ -14059,6 +14491,8 @@
     "Beira Baixa": {
       "Percentagem": 0.53,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.26881720430107525,
+      "Prevenção_Index": 0.07066666666666667,
       "Total": 279,
       "Causas": [
         {
@@ -14124,6 +14558,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 2.64,
       "Sapadores": 160.0,
+      "Eficacia_Index": 0.32719836400818,
+      "Prevenção_Index": 0.165,
       "Total": 489,
       "Causas": [
         {
@@ -14189,6 +14625,8 @@
     "Cávado": {
       "Percentagem": 6.53,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.07042253521126761,
+      "Prevenção_Index": 1.6325,
       "Total": 568,
       "Causas": [
         {
@@ -14254,6 +14692,8 @@
     "Douro": {
       "Percentagem": 3.75,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.10954616588419405,
+      "Prevenção_Index": 0.5357142857142857,
       "Total": 639,
       "Causas": [
         {
@@ -14319,6 +14759,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.35,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.03745318352059925,
+      "Prevenção_Index": 0.175,
       "Total": 534,
       "Causas": [
         {
@@ -14384,6 +14826,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.53,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.05112474437627812,
+      "Prevenção_Index": 0.212,
       "Total": 489,
       "Causas": [
         {
@@ -14449,6 +14893,8 @@
     "Médio Tejo": {
       "Percentagem": 1.39,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.17060367454068243,
+      "Prevenção_Index": 0.21384615384615385,
       "Total": 381,
       "Causas": [
         {
@@ -14514,6 +14960,8 @@
     "Oeste": {
       "Percentagem": 0.39,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.04120879120879121,
+      "Prevenção_Index": 0.13,
       "Total": 728,
       "Causas": [
         {
@@ -14579,6 +15027,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.23,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 657,
       "Causas": [
         {
@@ -14644,6 +15094,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 10.21,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 54,
       "Causas": [
         {
@@ -14709,6 +15161,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -14774,6 +15228,8 @@
     "Região de Aveiro": {
       "Percentagem": 14.58,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.036968576709796676,
+      "Prevenção_Index": 7.29,
       "Total": 541,
       "Causas": [
         {
@@ -14839,6 +15295,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.71,
       "Sapadores": 130.0,
+      "Eficacia_Index": 0.2669404517453799,
+      "Prevenção_Index": 0.054615384615384614,
       "Total": 487,
       "Causas": [
         {
@@ -14904,6 +15362,8 @@
     "Região de Leiria": {
       "Percentagem": 0.65,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.18691588785046728,
+      "Prevenção_Index": 0.10833333333333334,
       "Total": 321,
       "Causas": [
         {
@@ -14969,6 +15429,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.23,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.132013201320132,
+      "Prevenção_Index": 0.057499999999999996,
       "Total": 303,
       "Causas": [
         {
@@ -15034,6 +15496,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 14.27,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.018525379770285292,
+      "Prevenção_Index": 2.854,
       "Total": 2699,
       "Causas": [
         {
@@ -15099,6 +15563,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 1.56,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.18292682926829268,
+      "Prevenção_Index": 0.14857142857142858,
       "Total": 574,
       "Causas": [
         {
@@ -15164,6 +15630,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 29.21,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.02058460271716756,
+      "Prevenção_Index": 5.8420000000000005,
       "Total": 2429,
       "Causas": [
         {
@@ -15231,6 +15699,8 @@
     "Alentejo Central": {
       "Percentagem": 0.19,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.06,
+      "Prevenção_Index": 0.12666666666666665,
       "Total": 250,
       "Causas": [
         {
@@ -15296,6 +15766,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.2,
       "Sapadores": 5.0,
+      "Eficacia_Index": 0.024390243902439025,
+      "Prevenção_Index": 0.4,
       "Total": 205,
       "Causas": [
         {
@@ -15361,6 +15833,8 @@
     "Algarve": {
       "Percentagem": 0.12,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.09900990099009901,
+      "Prevenção_Index": 0.03,
       "Total": 404,
       "Causas": [
         {
@@ -15426,6 +15900,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.05,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.189873417721519,
+      "Prevenção_Index": 0.008333333333333333,
       "Total": 316,
       "Causas": [
         {
@@ -15491,6 +15967,8 @@
     "Alto Minho": {
       "Percentagem": 6.28,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.08327024981074943,
+      "Prevenção_Index": 0.5709090909090909,
       "Total": 1321,
       "Causas": [
         {
@@ -15556,6 +16034,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 2.04,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.09723643807574207,
+      "Prevenção_Index": 0.21473684210526314,
       "Total": 977,
       "Causas": [
         {
@@ -15621,6 +16101,8 @@
     "Ave": {
       "Percentagem": 4.73,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.041084634346754315,
+      "Prevenção_Index": 0.9460000000000001,
       "Total": 1217,
       "Causas": [
         {
@@ -15686,6 +16168,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.08,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.08680555555555555,
+      "Prevenção_Index": 0.032,
       "Total": 288,
       "Causas": [
         {
@@ -15751,6 +16235,8 @@
     "Beira Baixa": {
       "Percentagem": 0.33,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.20710059171597633,
+      "Prevenção_Index": 0.04714285714285714,
       "Total": 338,
       "Causas": [
         {
@@ -15816,6 +16302,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 3.12,
       "Sapadores": 150.0,
+      "Eficacia_Index": 0.2145922746781116,
+      "Prevenção_Index": 0.208,
       "Total": 699,
       "Causas": [
         {
@@ -15881,6 +16369,8 @@
     "Cávado": {
       "Percentagem": 3.74,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.062402496099843996,
+      "Prevenção_Index": 0.935,
       "Total": 641,
       "Causas": [
         {
@@ -15946,6 +16436,8 @@
     "Douro": {
       "Percentagem": 1.79,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.08187134502923976,
+      "Prevenção_Index": 0.2557142857142857,
       "Total": 855,
       "Causas": [
         {
@@ -16011,6 +16503,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.76,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.020242914979757085,
+      "Prevenção_Index": 0.38,
       "Total": 988,
       "Causas": [
         {
@@ -16076,6 +16570,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.18,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.03007518796992481,
+      "Prevenção_Index": 0.09,
       "Total": 665,
       "Causas": [
         {
@@ -16141,6 +16637,8 @@
     "Médio Tejo": {
       "Percentagem": 1.01,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.13319672131147542,
+      "Prevenção_Index": 0.1553846153846154,
       "Total": 488,
       "Causas": [
         {
@@ -16206,6 +16704,8 @@
     "Oeste": {
       "Percentagem": 0.77,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.025201612903225805,
+      "Prevenção_Index": 0.308,
       "Total": 992,
       "Causas": [
         {
@@ -16271,6 +16771,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.23,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 867,
       "Causas": [
         {
@@ -16336,6 +16838,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.76,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 76,
       "Causas": [
         {
@@ -16401,6 +16905,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -16466,6 +16972,8 @@
     "Região de Aveiro": {
       "Percentagem": 1.93,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.030534351145038167,
+      "Prevenção_Index": 0.9650000000000001,
       "Total": 655,
       "Causas": [
         {
@@ -16531,6 +17039,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.55,
       "Sapadores": 125.0,
+      "Eficacia_Index": 0.19201228878648233,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 651,
       "Causas": [
         {
@@ -16596,6 +17106,8 @@
     "Região de Leiria": {
       "Percentagem": 0.43,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.13129102844638948,
+      "Prevenção_Index": 0.07166666666666667,
       "Total": 457,
       "Causas": [
         {
@@ -16661,6 +17173,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.96,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.08350730688935282,
+      "Prevenção_Index": 0.24,
       "Total": 479,
       "Causas": [
         {
@@ -16726,6 +17240,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 2.6,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.01928268414963363,
+      "Prevenção_Index": 0.52,
       "Total": 2593,
       "Causas": [
         {
@@ -16791,6 +17307,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 1.86,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.14914772727272727,
+      "Prevenção_Index": 0.17714285714285713,
       "Total": 704,
       "Causas": [
         {
@@ -16856,6 +17374,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 2.56,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.019402405898331393,
+      "Prevenção_Index": 0.512,
       "Total": 2577,
       "Causas": [
         {
@@ -16923,6 +17443,8 @@
     "Alentejo Central": {
       "Percentagem": 0.08,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.08379888268156424,
+      "Prevenção_Index": 0.05333333333333333,
       "Total": 179,
       "Causas": [
         {
@@ -16988,6 +17510,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.02,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.08196721311475409,
+      "Prevenção_Index": 0.02,
       "Total": 122,
       "Causas": [
         {
@@ -17053,6 +17577,8 @@
     "Algarve": {
       "Percentagem": 0.2,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.11594202898550725,
+      "Prevenção_Index": 0.05,
       "Total": 345,
       "Causas": [
         {
@@ -17118,6 +17644,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.56,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.3125,
+      "Prevenção_Index": 0.08615384615384616,
       "Total": 208,
       "Causas": [
         {
@@ -17183,6 +17711,8 @@
     "Alto Minho": {
       "Percentagem": 0.62,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.2879581151832461,
+      "Prevenção_Index": 0.056363636363636366,
       "Total": 382,
       "Causas": [
         {
@@ -17248,6 +17778,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 0.42,
       "Sapadores": 95.0,
+      "Eficacia_Index": 0.25132275132275134,
+      "Prevenção_Index": 0.04421052631578947,
       "Total": 378,
       "Causas": [
         {
@@ -17313,6 +17845,8 @@
     "Ave": {
       "Percentagem": 0.49,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.12853470437017994,
+      "Prevenção_Index": 0.098,
       "Total": 389,
       "Causas": [
         {
@@ -17378,6 +17912,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.11,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.09225092250922509,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 271,
       "Causas": [
         {
@@ -17443,6 +17979,8 @@
     "Beira Baixa": {
       "Percentagem": 0.06,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.4143646408839779,
+      "Prevenção_Index": 0.008,
       "Total": 181,
       "Causas": [
         {
@@ -17508,6 +18046,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 1.2,
       "Sapadores": 150.0,
+      "Eficacia_Index": 0.3191489361702128,
+      "Prevenção_Index": 0.08,
       "Total": 470,
       "Causas": [
         {
@@ -17573,6 +18113,8 @@
     "Cávado": {
       "Percentagem": 0.27,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.18099547511312217,
+      "Prevenção_Index": 0.0675,
       "Total": 221,
       "Causas": [
         {
@@ -17638,6 +18180,8 @@
     "Douro": {
       "Percentagem": 0.63,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.15945330296127563,
+      "Prevenção_Index": 0.09,
       "Total": 439,
       "Causas": [
         {
@@ -17703,6 +18247,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.28,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.030120481927710843,
+      "Prevenção_Index": 0.14,
       "Total": 664,
       "Causas": [
         {
@@ -17768,6 +18314,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.08,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.05333333333333334,
+      "Prevenção_Index": 0.04,
       "Total": 375,
       "Causas": [
         {
@@ -17833,6 +18381,8 @@
     "Médio Tejo": {
       "Percentagem": 0.03,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.24074074074074073,
+      "Prevenção_Index": 0.004615384615384615,
       "Total": 270,
       "Causas": [
         {
@@ -17898,6 +18448,8 @@
     "Oeste": {
       "Percentagem": 0.13,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.048355899419729204,
+      "Prevenção_Index": 0.052,
       "Total": 517,
       "Causas": [
         {
@@ -17963,6 +18515,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.35,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 485,
       "Causas": [
         {
@@ -18028,6 +18582,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 0.71,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 44,
       "Causas": [
         {
@@ -18093,6 +18649,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -18158,6 +18716,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.04,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.07220216606498195,
+      "Prevenção_Index": 0.02,
       "Total": 277,
       "Causas": [
         {
@@ -18223,6 +18783,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.42,
       "Sapadores": 125.0,
+      "Eficacia_Index": 0.31565656565656564,
+      "Prevenção_Index": 0.0336,
       "Total": 396,
       "Causas": [
         {
@@ -18288,6 +18850,8 @@
     "Região de Leiria": {
       "Percentagem": 0.02,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.2843601895734597,
+      "Prevenção_Index": 0.003333333333333333,
       "Total": 211,
       "Causas": [
         {
@@ -18353,6 +18917,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.35,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.14035087719298245,
+      "Prevenção_Index": 0.0875,
       "Total": 285,
       "Causas": [
         {
@@ -18418,6 +18984,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 1.24,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.06016847172081829,
+      "Prevenção_Index": 0.248,
       "Total": 831,
       "Causas": [
         {
@@ -18483,6 +19051,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 0.34,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.28225806451612906,
+      "Prevenção_Index": 0.032380952380952385,
       "Total": 372,
       "Causas": [
         {
@@ -18548,6 +19118,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 0.37,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.044802867383512544,
+      "Prevenção_Index": 0.07400000000000001,
       "Total": 1116,
       "Causas": [
         {
@@ -18615,6 +19187,8 @@
     "Alentejo Central": {
       "Percentagem": 0.05,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.07575757575757576,
+      "Prevenção_Index": 0.03333333333333333,
       "Total": 198,
       "Causas": [
         {
@@ -18680,6 +19254,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.06,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.06172839506172839,
+      "Prevenção_Index": 0.06,
       "Total": 162,
       "Causas": [
         {
@@ -18745,6 +19321,8 @@
     "Algarve": {
       "Percentagem": 0.14,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.08830022075055188,
+      "Prevenção_Index": 0.035,
       "Total": 453,
       "Causas": [
         {
@@ -18810,6 +19388,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.18,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.25390625,
+      "Prevenção_Index": 0.02769230769230769,
       "Total": 256,
       "Causas": [
         {
@@ -18875,6 +19455,8 @@
     "Alto Minho": {
       "Percentagem": 8.62,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.06110520722635494,
+      "Prevenção_Index": 0.7495652173913042,
       "Total": 1882,
       "Causas": [
         {
@@ -18940,6 +19522,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 8.53,
       "Sapadores": 100.0,
+      "Eficacia_Index": 0.11574074074074074,
+      "Prevenção_Index": 0.8529999999999999,
       "Total": 864,
       "Causas": [
         {
@@ -19005,6 +19589,8 @@
     "Ave": {
       "Percentagem": 11.41,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.03990422984836393,
+      "Prevenção_Index": 2.282,
       "Total": 1253,
       "Causas": [
         {
@@ -19070,6 +19656,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.11,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.07062146892655367,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 354,
       "Causas": [
         {
@@ -19135,6 +19723,8 @@
     "Beira Baixa": {
       "Percentagem": 0.08,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.3024193548387097,
+      "Prevenção_Index": 0.010666666666666668,
       "Total": 248,
       "Causas": [
         {
@@ -19200,6 +19790,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 2.09,
       "Sapadores": 155.0,
+      "Eficacia_Index": 0.2143845089903181,
+      "Prevenção_Index": 0.13483870967741934,
       "Total": 723,
       "Causas": [
         {
@@ -19265,6 +19857,8 @@
     "Cávado": {
       "Percentagem": 6.09,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.05249343832020997,
+      "Prevenção_Index": 1.5225,
       "Total": 762,
       "Causas": [
         {
@@ -19330,6 +19924,8 @@
     "Douro": {
       "Percentagem": 7.07,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.06224066390041494,
+      "Prevenção_Index": 1.1783333333333332,
       "Total": 964,
       "Causas": [
         {
@@ -19395,6 +19991,8 @@
     "Grande Lisboa": {
       "Percentagem": 0.56,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.018050541516245487,
+      "Prevenção_Index": 0.28,
       "Total": 1108,
       "Causas": [
         {
@@ -19460,6 +20058,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.17,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.04672897196261682,
+      "Prevenção_Index": 0.068,
       "Total": 535,
       "Causas": [
         {
@@ -19525,6 +20125,8 @@
     "Médio Tejo": {
       "Percentagem": 0.11,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.16839378238341968,
+      "Prevenção_Index": 0.016923076923076923,
       "Total": 386,
       "Causas": [
         {
@@ -19590,6 +20192,8 @@
     "Oeste": {
       "Percentagem": 0.52,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.036231884057971016,
+      "Prevenção_Index": 0.17333333333333334,
       "Total": 828,
       "Causas": [
         {
@@ -19655,6 +20259,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.31,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 787,
       "Causas": [
         {
@@ -19720,6 +20326,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 2.17,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 63,
       "Causas": [
         {
@@ -19785,6 +20393,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -19850,6 +20460,8 @@
     "Região de Aveiro": {
       "Percentagem": 1.53,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.025157232704402517,
+      "Prevenção_Index": 0.765,
       "Total": 795,
       "Causas": [
         {
@@ -19915,6 +20527,8 @@
     "Região de Coimbra": {
       "Percentagem": 1.02,
       "Sapadores": 125.0,
+      "Eficacia_Index": 0.13873473917869034,
+      "Prevenção_Index": 0.0816,
       "Total": 901,
       "Causas": [
         {
@@ -19980,6 +20594,8 @@
     "Região de Leiria": {
       "Percentagem": 1.3,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.14527845036319612,
+      "Prevenção_Index": 0.21666666666666667,
       "Total": 413,
       "Causas": [
         {
@@ -20045,6 +20661,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 5.84,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.10256410256410256,
+      "Prevenção_Index": 1.46,
       "Total": 390,
       "Causas": [
         {
@@ -20110,6 +20728,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 12.74,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.014651038891848695,
+      "Prevenção_Index": 2.3163636363636364,
       "Total": 3754,
       "Causas": [
         {
@@ -20175,6 +20795,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 11.63,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.08883248730964467,
+      "Prevenção_Index": 1.1076190476190477,
       "Total": 1182,
       "Causas": [
         {
@@ -20240,6 +20862,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 5.09,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.012830382345393894,
+      "Prevenção_Index": 1.018,
       "Total": 3897,
       "Causas": [
         {
@@ -20307,6 +20931,8 @@
     "Alentejo Central": {
       "Percentagem": 0.06,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.04065040650406504,
+      "Prevenção_Index": 0.04,
       "Total": 369,
       "Causas": [
         {
@@ -20372,6 +20998,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.07,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.05181347150259067,
+      "Prevenção_Index": 0.07,
       "Total": 193,
       "Causas": [
         {
@@ -20437,6 +21065,8 @@
     "Algarve": {
       "Percentagem": 6.0,
       "Sapadores": 45.0,
+      "Eficacia_Index": 0.078397212543554,
+      "Prevenção_Index": 1.3333333333333333,
       "Total": 574,
       "Causas": [
         {
@@ -20502,6 +21132,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.27,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.20766773162939298,
+      "Prevenção_Index": 0.04153846153846154,
       "Total": 313,
       "Causas": [
         {
@@ -20567,6 +21199,8 @@
     "Alto Minho": {
       "Percentagem": 1.92,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.08640120210368145,
+      "Prevenção_Index": 0.16695652173913042,
       "Total": 1331,
       "Causas": [
         {
@@ -20632,6 +21266,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 2.2,
       "Sapadores": 100.0,
+      "Eficacia_Index": 0.08285004142502071,
+      "Prevenção_Index": 0.22000000000000003,
       "Total": 1207,
       "Causas": [
         {
@@ -20697,6 +21333,8 @@
     "Ave": {
       "Percentagem": 6.32,
       "Sapadores": 50.0,
+      "Eficacia_Index": 0.03486750348675035,
+      "Prevenção_Index": 1.2640000000000002,
       "Total": 1434,
       "Causas": [
         {
@@ -20762,6 +21400,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.15,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.09157509157509157,
+      "Prevenção_Index": 0.06,
       "Total": 273,
       "Causas": [
         {
@@ -20827,6 +21467,8 @@
     "Beira Baixa": {
       "Percentagem": 0.27,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.2336448598130841,
+      "Prevenção_Index": 0.036000000000000004,
       "Total": 321,
       "Causas": [
         {
@@ -20892,6 +21534,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 2.32,
       "Sapadores": 160.0,
+      "Eficacia_Index": 0.17543859649122806,
+      "Prevenção_Index": 0.145,
       "Total": 912,
       "Causas": [
         {
@@ -20957,6 +21601,8 @@
     "Cávado": {
       "Percentagem": 5.43,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.05865102639296188,
+      "Prevenção_Index": 1.3575,
       "Total": 682,
       "Causas": [
         {
@@ -21022,6 +21668,8 @@
     "Douro": {
       "Percentagem": 3.39,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.05003573981415296,
+      "Prevenção_Index": 0.4842857142857143,
       "Total": 1399,
       "Causas": [
         {
@@ -21087,6 +21735,8 @@
     "Grande Lisboa": {
       "Percentagem": 1.05,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.027472527472527472,
+      "Prevenção_Index": 0.42000000000000004,
       "Total": 910,
       "Causas": [
         {
@@ -21152,6 +21802,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.19,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.032467532467532464,
+      "Prevenção_Index": 0.076,
       "Total": 770,
       "Causas": [
         {
@@ -21217,6 +21869,8 @@
     "Médio Tejo": {
       "Percentagem": 4.2,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.11690647482014388,
+      "Prevenção_Index": 0.6461538461538462,
       "Total": 556,
       "Causas": [
         {
@@ -21282,6 +21936,8 @@
     "Oeste": {
       "Percentagem": 1.69,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.029166666666666667,
+      "Prevenção_Index": 0.4828571428571429,
       "Total": 1200,
       "Causas": [
         {
@@ -21347,6 +22003,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.13,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 836,
       "Causas": [
         {
@@ -21412,6 +22070,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 11.79,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 232,
       "Causas": [
         {
@@ -21477,6 +22137,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -21542,6 +22204,8 @@
     "Região de Aveiro": {
       "Percentagem": 1.88,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.01966568338249754,
+      "Prevenção_Index": 0.94,
       "Total": 1017,
       "Causas": [
         {
@@ -21607,6 +22271,8 @@
     "Região de Coimbra": {
       "Percentagem": 1.82,
       "Sapadores": 145.0,
+      "Eficacia_Index": 0.12267343485617598,
+      "Prevenção_Index": 0.12551724137931036,
       "Total": 1182,
       "Causas": [
         {
@@ -21672,6 +22338,8 @@
     "Região de Leiria": {
       "Percentagem": 0.88,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.09544787077826726,
+      "Prevenção_Index": 0.13538461538461538,
       "Total": 681,
       "Causas": [
         {
@@ -21737,6 +22405,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 3.06,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.046948356807511735,
+      "Prevenção_Index": 0.765,
       "Total": 852,
       "Causas": [
         {
@@ -21802,6 +22472,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 3.32,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.018254231662794558,
+      "Prevenção_Index": 0.6036363636363636,
       "Total": 3013,
       "Causas": [
         {
@@ -21867,6 +22539,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 4.94,
       "Sapadores": 110.0,
+      "Eficacia_Index": 0.08409785932721713,
+      "Prevenção_Index": 0.4490909090909091,
       "Total": 1308,
       "Causas": [
         {
@@ -21932,6 +22606,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 1.98,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.01375,
+      "Prevenção_Index": 0.36,
       "Total": 4000,
       "Causas": [
         {
@@ -21999,6 +22675,8 @@
     "Alentejo Central": {
       "Percentagem": 0.09,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.06944444444444445,
+      "Prevenção_Index": 0.06,
       "Total": 216,
       "Causas": [
         {
@@ -22064,6 +22742,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.01,
       "Sapadores": 5.0,
+      "Eficacia_Index": 0.03496503496503497,
+      "Prevenção_Index": 0.02,
       "Total": 143,
       "Causas": [
         {
@@ -22129,6 +22809,8 @@
     "Algarve": {
       "Percentagem": 0.03,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.07954545454545454,
+      "Prevenção_Index": 0.00857142857142857,
       "Total": 440,
       "Causas": [
         {
@@ -22194,6 +22876,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.04,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.21103896103896103,
+      "Prevenção_Index": 0.006153846153846154,
       "Total": 308,
       "Causas": [
         {
@@ -22259,6 +22943,8 @@
     "Alto Minho": {
       "Percentagem": 3.36,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.04736408566721582,
+      "Prevenção_Index": 0.29217391304347823,
       "Total": 2428,
       "Causas": [
         {
@@ -22324,6 +23010,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 6.03,
       "Sapadores": 100.0,
+      "Eficacia_Index": 0.06422607578676943,
+      "Prevenção_Index": 0.603,
       "Total": 1557,
       "Causas": [
         {
@@ -22389,6 +23077,8 @@
     "Ave": {
       "Percentagem": 4.91,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.027890466531440162,
+      "Prevenção_Index": 0.8927272727272728,
       "Total": 1972,
       "Causas": [
         {
@@ -22454,6 +23144,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.04,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.07886435331230283,
+      "Prevenção_Index": 0.016,
       "Total": 317,
       "Causas": [
         {
@@ -22519,6 +23211,8 @@
     "Beira Baixa": {
       "Percentagem": 0.65,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.26785714285714285,
+      "Prevenção_Index": 0.08666666666666667,
       "Total": 280,
       "Causas": [
         {
@@ -22584,6 +23278,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 2.6,
       "Sapadores": 175.0,
+      "Eficacia_Index": 0.1898047722342733,
+      "Prevenção_Index": 0.14857142857142858,
       "Total": 922,
       "Causas": [
         {
@@ -22649,6 +23345,8 @@
     "Cávado": {
       "Percentagem": 4.3,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.03127443315089914,
+      "Prevenção_Index": 1.075,
       "Total": 1279,
       "Causas": [
         {
@@ -22714,6 +23412,8 @@
     "Douro": {
       "Percentagem": 3.85,
       "Sapadores": 70.0,
+      "Eficacia_Index": 0.049191848208011243,
+      "Prevenção_Index": 0.55,
       "Total": 1423,
       "Causas": [
         {
@@ -22779,6 +23479,8 @@
     "Grande Lisboa": {
       "Percentagem": 1.23,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.025458248472505093,
+      "Prevenção_Index": 0.492,
       "Total": 982,
       "Causas": [
         {
@@ -22844,6 +23546,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.11,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.04595588235294118,
+      "Prevenção_Index": 0.044000000000000004,
       "Total": 544,
       "Causas": [
         {
@@ -22909,6 +23613,8 @@
     "Médio Tejo": {
       "Percentagem": 0.08,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.16290726817042606,
+      "Prevenção_Index": 0.012307692307692308,
       "Total": 399,
       "Causas": [
         {
@@ -22974,6 +23680,8 @@
     "Oeste": {
       "Percentagem": 0.9,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.023117569352708058,
+      "Prevenção_Index": 0.2571428571428571,
       "Total": 1514,
       "Causas": [
         {
@@ -23039,6 +23747,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.21,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 786,
       "Causas": [
         {
@@ -23104,6 +23814,8 @@
     "Região Autónoma da Madeira": {
       "Percentagem": 1.26,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 123,
       "Causas": [
         {
@@ -23169,6 +23881,8 @@
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -23234,6 +23948,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.9,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.014925373134328358,
+      "Prevenção_Index": 0.44999999999999996,
       "Total": 1340,
       "Causas": [
         {
@@ -23299,6 +24015,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.19,
       "Sapadores": 140.0,
+      "Eficacia_Index": 0.12987012987012986,
+      "Prevenção_Index": 0.013571428571428571,
       "Total": 1078,
       "Causas": [
         {
@@ -23364,6 +24082,8 @@
     "Região de Leiria": {
       "Percentagem": 1.01,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.11206896551724138,
+      "Prevenção_Index": 0.1553846153846154,
       "Total": 580,
       "Causas": [
         {
@@ -23429,6 +24149,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 1.67,
       "Sapadores": 40.0,
+      "Eficacia_Index": 0.04950495049504951,
+      "Prevenção_Index": 0.4175,
       "Total": 808,
       "Causas": [
         {
@@ -23494,6 +24216,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 3.8,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.013691809808314663,
+      "Prevenção_Index": 0.6909090909090909,
       "Total": 4017,
       "Causas": [
         {
@@ -23559,6 +24283,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 1.58,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.08641975308641975,
+      "Prevenção_Index": 0.15047619047619049,
       "Total": 1215,
       "Causas": [
         {
@@ -23624,6 +24350,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 3.15,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.01052430156907769,
+      "Prevenção_Index": 0.5727272727272728,
       "Total": 5226,
       "Causas": [
         {
@@ -23691,6 +24419,8 @@
     "Alentejo Central": {
       "Percentagem": 0.09,
       "Sapadores": 15.0,
+      "Eficacia_Index": 0.04261363636363636,
+      "Prevenção_Index": 0.06,
       "Total": 352,
       "Causas": [
         {
@@ -23756,6 +24486,8 @@
     "Alentejo Litoral": {
       "Percentagem": 0.49,
       "Sapadores": 10.0,
+      "Eficacia_Index": 0.06097560975609756,
+      "Prevenção_Index": 0.49,
       "Total": 164,
       "Causas": [
         {
@@ -23821,6 +24553,8 @@
     "Algarve": {
       "Percentagem": 0.03,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.06648936170212766,
+      "Prevenção_Index": 0.011999999999999999,
       "Total": 376,
       "Causas": [
         {
@@ -23886,6 +24620,8 @@
     "Alto Alentejo": {
       "Percentagem": 0.05,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.2195945945945946,
+      "Prevenção_Index": 0.007692307692307693,
       "Total": 296,
       "Causas": [
         {
@@ -23951,6 +24687,8 @@
     "Alto Minho": {
       "Percentagem": 16.78,
       "Sapadores": 115.0,
+      "Eficacia_Index": 0.050683120317320404,
+      "Prevenção_Index": 1.4591304347826086,
       "Total": 2269,
       "Causas": [
         {
@@ -24016,6 +24754,8 @@
     "Alto Tâmega e Barroso": {
       "Percentagem": 7.26,
       "Sapadores": 100.0,
+      "Eficacia_Index": 0.11210762331838565,
+      "Prevenção_Index": 0.726,
       "Total": 892,
       "Causas": [
         {
@@ -24081,6 +24821,8 @@
     "Ave": {
       "Percentagem": 7.44,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.04195804195804196,
+      "Prevenção_Index": 1.2400000000000002,
       "Total": 1430,
       "Causas": [
         {
@@ -24146,6 +24888,8 @@
     "Baixo Alentejo": {
       "Percentagem": 0.04,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.08503401360544217,
+      "Prevenção_Index": 0.016,
       "Total": 294,
       "Causas": [
         {
@@ -24211,6 +24955,8 @@
     "Beira Baixa": {
       "Percentagem": 0.12,
       "Sapadores": 75.0,
+      "Eficacia_Index": 0.2542372881355932,
+      "Prevenção_Index": 0.016,
       "Total": 295,
       "Causas": [
         {
@@ -24276,6 +25022,8 @@
     "Beiras e Serra da Estrela": {
       "Percentagem": 6.17,
       "Sapadores": 180.0,
+      "Eficacia_Index": 0.1859504132231405,
+      "Prevenção_Index": 0.34277777777777774,
       "Total": 968,
       "Causas": [
         {
@@ -24341,6 +25089,8 @@
     "Cávado": {
       "Percentagem": 11.77,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.041128084606345476,
+      "Prevenção_Index": 3.362857142857143,
       "Total": 851,
       "Causas": [
         {
@@ -24406,6 +25156,8 @@
     "Douro": {
       "Percentagem": 3.49,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.07411630558722919,
+      "Prevenção_Index": 0.536923076923077,
       "Total": 877,
       "Causas": [
         {
@@ -24471,6 +25223,8 @@
     "Grande Lisboa": {
       "Percentagem": 1.02,
       "Sapadores": 25.0,
+      "Eficacia_Index": 0.020729684908789386,
+      "Prevenção_Index": 0.40800000000000003,
       "Total": 1206,
       "Causas": [
         {
@@ -24536,6 +25290,8 @@
     "Lezíria do Tejo": {
       "Percentagem": 0.21,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.0408997955010225,
+      "Prevenção_Index": 0.10499999999999998,
       "Total": 489,
       "Causas": [
         {
@@ -24601,6 +25357,8 @@
     "Médio Tejo": {
       "Percentagem": 0.37,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.1282051282051282,
+      "Prevenção_Index": 0.06166666666666667,
       "Total": 468,
       "Causas": [
         {
@@ -24666,6 +25424,8 @@
     "Oeste": {
       "Percentagem": 0.27,
       "Sapadores": 30.0,
+      "Eficacia_Index": 0.031578947368421054,
+      "Prevenção_Index": 0.09000000000000001,
       "Total": 950,
       "Causas": [
         {
@@ -24731,6 +25491,8 @@
     "Península de Setúbal": {
       "Percentagem": 0.27,
       "Sapadores": 0.0,
+      "Eficacia_Index": 0.0,
+      "Prevenção_Index": 0,
       "Total": 837,
       "Causas": [
         {
@@ -24795,11 +25557,14 @@
     },
     "Região Autónoma da Madeira": {
       "Percentagem": 14.61,
-      "Sapadores": null
+      "Sapadores": null,
+      "Prevenção_Index": 0
     },
     "Região Autónoma dos Açores": {
       "Percentagem": 0.0,
       "Sapadores": null,
+      "Eficacia_Index": 0,
+      "Prevenção_Index": 0,
       "Total": 0,
       "Causas": [
         {
@@ -24865,6 +25630,8 @@
     "Região de Aveiro": {
       "Percentagem": 0.91,
       "Sapadores": 20.0,
+      "Eficacia_Index": 0.01631321370309951,
+      "Prevenção_Index": 0.45499999999999996,
       "Total": 1226,
       "Causas": [
         {
@@ -24930,6 +25697,8 @@
     "Região de Coimbra": {
       "Percentagem": 0.49,
       "Sapadores": 140.0,
+      "Eficacia_Index": 0.15021459227467812,
+      "Prevenção_Index": 0.035,
       "Total": 932,
       "Causas": [
         {
@@ -24995,6 +25764,8 @@
     "Região de Leiria": {
       "Percentagem": 0.67,
       "Sapadores": 65.0,
+      "Eficacia_Index": 0.14942528735632185,
+      "Prevenção_Index": 0.10307692307692308,
       "Total": 435,
       "Causas": [
         {
@@ -25060,6 +25831,8 @@
     "Terras de Trás-os-Montes": {
       "Percentagem": 0.76,
       "Sapadores": 35.0,
+      "Eficacia_Index": 0.08064516129032258,
+      "Prevenção_Index": 0.21714285714285714,
       "Total": 434,
       "Causas": [
         {
@@ -25125,6 +25898,8 @@
     "Tâmega e Sousa": {
       "Percentagem": 7.72,
       "Sapadores": 60.0,
+      "Eficacia_Index": 0.015368852459016393,
+      "Prevenção_Index": 1.2866666666666666,
       "Total": 3904,
       "Causas": [
         {
@@ -25190,6 +25965,8 @@
     "Viseu Dão Lafões": {
       "Percentagem": 5.35,
       "Sapadores": 105.0,
+      "Eficacia_Index": 0.07478632478632478,
+      "Prevenção_Index": 0.5095238095238095,
       "Total": 1404,
       "Causas": [
         {
@@ -25255,6 +26032,8 @@
     "Área Metropolitana do Porto": {
       "Percentagem": 8.91,
       "Sapadores": 55.0,
+      "Eficacia_Index": 0.011574074074074073,
+      "Prevenção_Index": 1.62,
       "Total": 4752,
       "Causas": [
         {
