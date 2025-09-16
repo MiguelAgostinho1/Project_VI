@@ -4,7 +4,7 @@ import json
 with open("./Causa/fires_causes.json", "r", encoding="utf-8") as f:
     causas = json.load(f)
 
-with open("./Dimensao/fires_dimensions.json", "r", encoding="utf-8") as f:
+with open("./DimensaoFogos/fires_dimensions.json", "r", encoding="utf-8") as f:
     dimensoes = json.load(f)
 
 with open("./Proporção/fires_percent.json", "r", encoding="utf-8") as f:
@@ -12,6 +12,9 @@ with open("./Proporção/fires_percent.json", "r", encoding="utf-8") as f:
 
 with open("./Sapadores/fires_sappers.json", "r", encoding="utf-8") as f:
     sapadores = json.load(f)
+
+with open("./AreaSubRegioes/area_subregions.json", "r", encoding="utf-8") as f:
+    area = json.load(f)
 
 # Initialize result
 merged = {}
@@ -36,6 +39,9 @@ for year in all_years:
     for region in sorted(regions):
         merged[year][region] = {}
 
+        # Add area data from area_subregions.json
+        merged[year][region]["Area"] = area["Portugal"]["subregioes"].get(region)
+
         # Add percentagens data
         if year in percentagens and region in percentagens[year]:
             merged[year][region]["Percentagem"] = percentagens[year][region]
@@ -51,10 +57,10 @@ for year in all_years:
             else:
                 merged[year][region]["Eficacia_Index"] = 0
 
-        # Calculate and add Prevenção_Index
-        if year in percentagens and region in percentagens[year] and year in sapadores and region in sapadores[year]:
-            if sapadores[year][region] is not None and sapadores[year][region] > 0:
-                merged[year][region]["Prevenção_Index"] = (percentagens[year][region] / sapadores[year][region]) * 10
+        if year in sapadores and region in sapadores[year]:
+            area_region = area["Portugal"]["subregioes"].get(region)
+            if sapadores[year][region] is not None and sapadores[year][region] > 0 and area_region is not None:
+                merged[year][region]["Prevenção_Index"] = sapadores[year][region] / area_region
             else:
                 merged[year][region]["Prevenção_Index"] = 0
         
@@ -66,6 +72,8 @@ for year in all_years:
         # Add dimensões data
         if year in dimensoes and region in dimensoes[year]:
             merged[year][region]["Dimensões"] = dimensoes[year][region].get("Dimensões", [])
+
+
 
 # Save merged result
 with open("fires_data.json", "w", encoding="utf-8") as f:

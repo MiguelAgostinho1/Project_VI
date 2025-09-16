@@ -1,0 +1,33 @@
+{    
+    "Portugal": {
+        "Area": 92225,
+        "subregioes": {
+            "Alto Minho": 2219,
+            "Cávado": 1246,
+            "Ave": 1451,
+            "Área Metropolitana do Porto": 2041,
+            "Alto Tâmega e Barroso": null,
+            "Tâmega e Sousa": 1832,
+            "Douro": 4032,
+            "Terras de Trás-os-Montes": 5544,
+            "Região de Aveiro": 1693,
+            "Região de Coimbra": 4336,
+            "Região de Leiria": 2449,
+            "Viseu Dão Lafões": 3238,
+            "Beira Baixa": 4615,
+            "Beiras e Serra da Estrela": 6305,
+            "Oeste": 2220,
+            "Médio Tejo": 3344,
+            "Lezíria do Tejo": 4275,
+            "Grande Lisboa": 1390,
+            "Península de Setúbal": null,
+            "Alentejo Litoral": 5309,
+            "Baixo Alentejo": 8543,
+            "Alto Alentejo": 6084,
+            "Alentejo Central": 7393,
+            "Algarve": 4997,
+            "Região Autónoma dos Açores": 2322,
+            "Região Autónoma da Madeira": 801
+        }
+    }  
+}
