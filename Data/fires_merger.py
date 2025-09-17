@@ -57,6 +57,7 @@ for year in all_years:
             else:
                 merged[year][region]["Eficacia_Index"] = 0
 
+        # Calculate and add Prevenção_Index
         if year in sapadores and region in sapadores[year]:
             area_region = area["Portugal"]["subregioes"].get(region)
             if sapadores[year][region] is not None and sapadores[year][region] > 0 and area_region is not None:
