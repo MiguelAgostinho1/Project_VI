@@ -61,7 +61,7 @@ for year in all_years:
         if year in sapadores and region in sapadores[year]:
             area_region = area["Portugal"]["subregioes"].get(region)
             if sapadores[year][region] is not None and sapadores[year][region] > 0 and area_region is not None:
-                merged[year][region]["Prevenção_Index"] = sapadores[year][region] / area_region
+                merged[year][region]["Prevenção_Index"] = ( sapadores[year][region] / area_region ) * 10
             else:
                 merged[year][region]["Prevenção_Index"] = 0
         
