@@ -57,37 +57,6 @@ function createRadialBarchart(data, containerId) {
         .startAngle(0)
         .endAngle(d => angleScale(d.total));
 
-  // After drawing arcs, add axis lines
-  const originAngle = 0;                // 0 degrees (12 o’clock)
-  const endAngle = 3 * Math.PI / 2;     // 270 degrees
-
-  // Helper to convert angle + radius → x,y
-  function polarToCartesian(angle, r) {
-      return [
-          Math.cos(angle - Math.PI / 2) * r,  // subtract π/2 so 0° is at top
-          Math.sin(angle - Math.PI / 2) * r
-      ];
-  }
-
-  // Axis line for origin
-  svg.append("line")
-      .attr("x1", ...polarToCartesian(originAngle, 70))   // just inside inner radius
-      .attr("y1", polarToCartesian(originAngle, 70)[1])
-      .attr("x2", ...polarToCartesian(originAngle, 270))  // a bit beyond outer radius
-      .attr("y2", polarToCartesian(originAngle, 270)[1])
-      .attr("stroke", "black")
-      .attr("stroke-width", 1.5);
-
-  // Axis line for end (270°)
-  svg.append("line")
-      .attr("x1", ...polarToCartesian(endAngle, 70))
-      .attr("y1", polarToCartesian(endAngle, 70)[1])
-      .attr("x2", ...polarToCartesian(endAngle, 270))
-      .attr("y2", polarToCartesian(endAngle, 270)[1])
-      .attr("stroke", "black")
-      .attr("stroke-width", 1.5);
-
-
     // Draw arcs
     svg.selectAll("path")
         .data(totalsByYear)
@@ -124,25 +93,49 @@ function createRadialBarchart(data, containerId) {
         .text(d => d.year);
 
     // Add radial axis ticks (like 5k, 10k, etc.)
-    const ticks = [5000, 10000, 15000, 20000, 25000, 30000];
-    svg.selectAll(".tick-circle")
-        .data(ticks)
-        .enter()
-        .append("circle")
-        .attr("class", "tick-circle")
-        .attr("r", d => (angleScale(d) / (2 * Math.PI)) * 250) // convert angle to radius length
-        .attr("fill", "none")
-        .attr("stroke", "#ccc")
-        .attr("stroke-dasharray", "2,2");
+    const innerR = 70, outerR = 270;
+    const originAngle = 0;
+    const endAngle = 3 * Math.PI / 2;    
 
-    svg.selectAll(".tick-label")
-        .data(ticks)
-        .enter()
-        .append("text")
-        .attr("class", "tick-label")
-        .attr("x", d => Math.cos(angleScale(d) - Math.PI / 2) * 260)
-        .attr("y", d => Math.sin(angleScale(d) - Math.PI / 2) * 260)
-        .attr("text-anchor", "middle")
-        .style("font-size", "10px")
-        .text(d => `${d / 1000}k`);
+    function polarToCartesian(angle, r) {
+        return {
+            x: Math.cos(angle - Math.PI / 2) * r,
+            y: Math.sin(angle - Math.PI / 2) * r
+        };
+    }
+
+    const step = 1000; // the rounding unit
+    const axisMax = Math.ceil(maxValue / step) * step;
+
+    for (let t = 0; t <= axisMax; t += 5000) {
+        const angle = angleScale(t);           // angle for this tick value
+        const end = polarToCartesian(angle, outerR); // end of the guide line
+
+        // dashed guide line from center to outer radius
+        if (t == 0 || t == axisMax) {
+            svg.append("line")
+            .attr("x1", 0).attr("y1", 0)
+            .attr("x2", end.x).attr("y2", end.y)
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1);
+        } else {
+            svg.append("line")
+            .attr("x1", 0).attr("y1", 0)
+            .attr("x2", end.x).attr("y2", end.y)
+            .attr("stroke", "#999")
+            .attr("stroke-dasharray", "3,3")
+            .attr("stroke-width", 1);
+        }
+
+        // label at the end of the guide
+        if (t != 0) {
+            svg.append("text")
+                .attr("x", end.x * 1.08)   // push label slightly beyond line
+                .attr("y", end.y * 1.08)
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "middle")
+                .style("font-size", "10px")
+                .text(`${t/1000}k`);
+        }
+    }
 }
