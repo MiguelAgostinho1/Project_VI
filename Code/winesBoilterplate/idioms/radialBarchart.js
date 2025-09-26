@@ -26,10 +26,11 @@ function createRadialBarchart(data, containerId) {
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
     regions.unshift("Portugal"); // add overall
 
-    const width = window.innerWidth * 0.45
-    const height = window.innerHeight * 0.65
-    const innerR = 70
-    const outerR = 270
+    const width = window.innerWidth * 0.45;
+    const height = window.innerHeight * 0.6;
+    const minDim = Math.min(width, height);  // whichever is smaller
+    const innerR = minDim * 0.15;            // 15% of container
+    const outerR = minDim * 0.40;            // 40% of container
 
     // Controls row
     const controls = d3.select(containerId)
@@ -55,12 +56,14 @@ function createRadialBarchart(data, containerId) {
 
     // SVG container
     const svgBase = d3.select(containerId)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+      .append("svg")
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet") 
+      .style("width", "100%")
+      .style("height", "auto");
 
     const svg = svgBase.append("g")
-        .attr("transform", `translate(${width / 2},${height / 2})`);
+        .attr("transform", `translate(${width / 2},${height / 2.3})`);
 
     // ========================
     // Update function
@@ -159,7 +162,7 @@ function createRadialBarchart(data, containerId) {
             .attr("y", d => -bandScale(d.year) - bandScale.bandwidth() / 2 + barPadding)
             .attr("text-anchor", "end")
             .style("alignment-baseline", "middle")
-            .style("font-size", "12px")
+            .style("font-size", "10px")
             .text(d => d.year);
     }
 
