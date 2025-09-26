@@ -1,1 +1,0 @@
-function createLinechart(data, containerId) {}

@@ -1,1 +1,0 @@
-function createScatterplot(data, containerId) {}
