@@ -31,6 +31,7 @@ function createRadialBarchart(data, containerId) {
     const minDim = Math.min(width, height);  // whichever is smaller
     const innerR = minDim * 0.15;            // 15% of container
     const outerR = minDim * 0.40;            // 40% of container
+    const barColor = "green"
 
     // Controls row
     const controls = d3.select(containerId)
@@ -136,12 +137,12 @@ function createRadialBarchart(data, containerId) {
             .enter()
             .append("path")
             .attr("d", arc)
-            .attr("fill", "green")
+            .attr("fill", barColor)
             .on("mouseover", function () {
                 d3.select(this).attr("fill", "orange");
             })
             .on("mouseout", function () {
-                d3.select(this).attr("fill", "green");
+                d3.select(this).attr("fill", barColor);
             })
             .on("click", (event, d) => {
                 Swal.fire({
