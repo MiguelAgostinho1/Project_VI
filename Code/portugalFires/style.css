@@ -8,8 +8,18 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "RadialBarChart";
+    "RadialBarChart DonutCharts";
 }
+
+.DonutCharts {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "CausesDonutChart DimensionsDonutChart";
+}
+
 .RadialBarChart {
   grid-area: RadialBarChart;
 }
@@ -18,4 +28,12 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
+}
+
+.CausesDonutChart {
+  grid-area: CausesDonutChart;
+}
+
+.DimensionsDonutChart {
+  grid-area: DimensionsDonutChart;
 }

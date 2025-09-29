@@ -16,6 +16,7 @@ function init() {
     }));
 
     createRadialBarchart(structured_data, ".RadialBarChart");
+    //createCausesDonutChart(structured_data, ".CausesDonutChart", true);
     // createScatterplot(structured_data, ".ScatterPlot");
     // createHistogram(structured_data, ".Histogram");
     // createSunburst(structured_data, ".Sunburst");
