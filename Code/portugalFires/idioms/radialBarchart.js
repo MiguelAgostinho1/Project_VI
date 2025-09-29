@@ -12,11 +12,11 @@ function createRadialBarchart(data, containerId) {
     function getTotals(region) {
         return data.map(d => {
             if (region === "Portugal") {
-                const total = d.regions.reduce((sum, r) => sum + (r.total || 0), 0);
+                const total = d.regions.reduce((sum, r) => sum + (r.total || 0), 0); // (r.total || 0) r.total or 0 if undefined
                 return { year: d.year, total };
             }
             const regionData = d.regions.find(r => r.region === region);
-            return { year: d.year, total: regionData ? regionData.total : 0 };
+            return { year: d.year, total: regionData ? (regionData.total || 0) : 0}; // if region doesnt exist then total=0, if exists and doens have total then total=0
         });
     }
 
@@ -24,29 +24,45 @@ function createRadialBarchart(data, containerId) {
     // Setup
     // ========================
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
-    regions.unshift("Portugal"); // add overall
+    regions.unshift("Portugal"); // add Portugal option to the begining array
 
     const width = window.innerWidth * 0.45;
     const height = window.innerHeight * 0.6;
     const minDim = Math.min(width, height);  // whichever is smaller
     const innerR = minDim * 0.15;            // 15% of container
     const outerR = minDim * 0.40;            // 40% of container
+    const barColor = "green"
+
+    // Criar tooltip (uma div escondida ao início)
+    const tooltip = d3.select(containerId)
+        .append("div")
+        .style("position", "absolute")
+        .style("background", "white")
+        .style("padding", "6px 10px")
+        .style("border", "1px solid #999")
+        .style("border-radius", "6px")
+        .style("font-size", "12px")
+        .style("pointer-events", "none")
+        .style("opacity", 0);
 
     // Controls row
     const controls = d3.select(containerId)
         .append("div")
         .attr("class", "controls")
 
+    // title
     controls.append("div")
         .style("font-size", "18px")
         .style("font-weight", "bold")
         .text("Total Fires per Year");
 
+    // dropdown
     const select = controls.append("select")
         .on("change", function () {
             updateChart(this.value);
         });
 
+    //dropdown data
     select.selectAll("option")
         .data(regions)
         .enter()
@@ -59,20 +75,20 @@ function createRadialBarchart(data, containerId) {
       .append("svg")
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet") 
-      .style("width", "100%")
+      .style("width", "auto")
       .style("height", "auto");
 
     const svg = svgBase.append("g")
-        .attr("transform", `translate(${width / 2},${height / 2.3})`);
+        .attr("transform", `translate(${width / 2},${height / 2.3})`); // draw on the center of the rbc
 
     // ========================
     // Update function
     // ========================
-    function updateChart(region) {
+    function updateChart(region) { //region string
         svg.selectAll("*").remove(); // clear
 
         const totalsByYear = getTotals(region);
-        const maxValue = d3.max(totalsByYear, d => d.total) || 0;
+        const maxValue = d3.max(getTotals(region), d => d.total) || 0;
 
         if (maxValue === 0) {
             svg.append("text")
@@ -116,9 +132,10 @@ function createRadialBarchart(data, containerId) {
                 .attr("x1", 0).attr("y1", 0)
                 .attr("x2", end.x).attr("y2", end.y)
                 .attr("stroke", t === 0 || t === axisMax ? "#000" : "#999")
-                .attr("stroke-dasharray", t === 0 || t === axisMax ? null : "3,3")
+                .attr("stroke-dasharray", t === 0 || t === axisMax ? null : "3,3") // dash size
                 .attr("stroke-width", 1);
-
+            
+            // ticks values writing
             if (t !== 0) {
                 svg.append("text")
                     .attr("x", end.x * 1.08)
@@ -136,20 +153,24 @@ function createRadialBarchart(data, containerId) {
             .enter()
             .append("path")
             .attr("d", arc)
-            .attr("fill", "green")
-            .on("mouseover", function () {
+            .attr("fill", barColor)
+            .on("mouseover", function (event, d) {
                 d3.select(this).attr("fill", "orange");
+
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip.html(`<strong>${d.year}</strong><br/>Total fires: ${d.total}`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mousemove", function (event) {
+                // atualizar posição do tooltip conforme o rato se mexe
+                tooltip.style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
             })
             .on("mouseout", function () {
-                d3.select(this).attr("fill", "green");
-            })
-            .on("click", (event, d) => {
-                Swal.fire({
-                    title: `Fires in ${d.year}`,
-                    text: `Total fires: ${d.total}`,
-                    icon: "info",
-                    confirmButtonText: "Close"
-                });
+                d3.select(this).attr("fill", barColor);
+
+                tooltip.transition().duration(200).style("opacity", 0);
             });
 
         // --- Year labels ---
