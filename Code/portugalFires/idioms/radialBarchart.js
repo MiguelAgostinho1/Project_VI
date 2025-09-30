@@ -147,13 +147,28 @@ function createRadialBarchart(data, containerId) {
             }
         });
 
-        // --- Arcs ---
-        svg.selectAll("path")
-            .data(totalsByYear)
-            .enter()
+        // ====== BARS WITH ANIMATION ======
+        const bars = svg.selectAll("path")
+            .data(totalsByYear, d => d.year); // key by year so D3 can match old/new data
+         
+        // EXIT old arcs
+        bars.exit().remove();
+         
+        // UPDATE + ENTER
+        bars.enter()
             .append("path")
-            .attr("d", arc)
             .attr("fill", barColor)
+            .attr("d", d => arc({ ...d, total: 0 })) // start from 0
+            .merge(bars) // merge with update selection
+            .transition()
+            .duration(800)
+            .attrTween("d", function(d) {
+                const i = d3.interpolate(0, d.total); // interpolate values
+                return t => arc({ ...d, total: i(t) });
+            });
+
+        // Tooltip interactivity
+        svg.selectAll("path")
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("fill", "orange");
 
