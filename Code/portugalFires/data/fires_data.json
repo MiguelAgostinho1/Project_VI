@@ -25940,7 +25940,68 @@
       "Area": 801,
       "Percentagem": 14.61,
       "Sapadores": null,
-      "Prevenção_Index": 0
+      "Prevenção_Index": 0,
+      "Total": 0,
+      "Causas": [
+        {
+          "Causa": "Negligência",
+          "Numero": 0
+        },
+        {
+          "Causa": "Intencional",
+          "Numero": 0
+        },
+        {
+          "Causa": "Naturais",
+          "Numero": 0
+        },
+        {
+          "Causa": "Reacendimentos",
+          "Numero": 0
+        },
+        {
+          "Causa": "Indeterminadas",
+          "Numero": 0
+        },
+        {
+          "Causa": "Não investigados",
+          "Numero": 0
+        }
+      ],
+      "Dimensões": [
+        {
+          "Dimensões": "< 1 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "1 - < 10 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "10 - < 20 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "20 - < 50 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "50 - < 100 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "100 - < 500 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": "500 - < 1 000 ha",
+          "Numero": 0
+        },
+        {
+          "Dimensões": ">= 1 000 ha",
+          "Numero": 0
+        }
+      ]
     },
     "Região Autónoma dos Açores": {
       "Area": 2322,

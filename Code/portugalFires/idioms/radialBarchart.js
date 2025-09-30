@@ -147,14 +147,14 @@ function createRadialBarchart(data, containerId) {
             }
         });
 
-        // ====== BARS WITH ANIMATION ======
+        // --- Bars with animation ---
         const bars = svg.selectAll("path")
             .data(totalsByYear, d => d.year); // key by year so D3 can match old/new data
          
-        // EXIT old arcs
+        // Exit old arcs
         bars.exit().remove();
-         
-        // UPDATE + ENTER
+
+        // Update + Enter
         bars.enter()
             .append("path")
             .attr("fill", barColor)
