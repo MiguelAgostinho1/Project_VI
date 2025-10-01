@@ -32,7 +32,7 @@ function createCausesDonutChart(data, containerId, overall) {
     let currentRegion = "Portugal";
 
     const width = window.innerWidth * 0.25;
-    const height = window.innerHeight * 0.4;
+    const height = window.innerHeight * 0.23;
     const radius = Math.min(width, height) / 2;
 
     const arc = d3.arc()
@@ -45,17 +45,41 @@ function createCausesDonutChart(data, containerId, overall) {
 
     const colorScale = d3.scaleOrdinal(causeColors);
 
-    // Controls
+    // ========================
+    // Controls wrapper
+    // ========================
     const controls = d3.select(containerId)
         .append("div")
-        .attr("class", "controls");
+        .attr("class", "controls")
+        .style("display", "flex")
+        .style("flex-direction", "column")
+        .style("align-items", "center")
+        .style("margin-bottom", "12px");
 
-    controls.append("div")
+    // Título com setas
+    const titleWrapper = controls.append("div")
+        .attr("class", "donut-title")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("justify-content", "center")
+        .style("gap", "12px")
         .style("font-size", "18px")
-        .style("font-weight", "bold")
+        .style("font-weight", "bold");
+
+    titleWrapper.append("span")
+        .style("cursor", "pointer")
+        .text("⟨")
+        .on("click", () => switchChart(-1));
+
+    const titleText = titleWrapper.append("span")
         .text("Causes of Fires");
 
-    // Dropdown
+    titleWrapper.append("span")
+        .style("cursor", "pointer")
+        .text("⟩")
+        .on("click", () => switchChart(1));
+
+    // Dropdown de regiões
     const select = controls.append("select")
         .on("change", function () {
             currentRegion = this.value;
@@ -95,14 +119,15 @@ function createCausesDonutChart(data, containerId, overall) {
             }
         });
 
-    // --- Container for donut + legend ---
+    // ========================
+    // Chart wrapper
+    // ========================
     const chartWrapper = d3.select(containerId)
         .append("div")
         .style("display", "flex")
-        .style("align-items", "center")   // vertical centering
-        .style("justify-content", "center"); // horizontal centering
+        .style("align-items", "center")
+        .style("justify-content", "center");
 
-    // SVG
     const svgBase = chartWrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
@@ -124,10 +149,10 @@ function createCausesDonutChart(data, containerId, overall) {
         .style("pointer-events", "none")
         .style("opacity", 0);
 
-    // Legend (placed to the right of donut)
+    // Legend
     const legend = chartWrapper.append("div")
         .attr("class", "legend")
-        .style("margin-left", "20px"); // spacing from donut
+        .style("margin-left", "20px");
 
     function updateLegend(causes) {
         legend.html("");
@@ -197,6 +222,10 @@ function createCausesDonutChart(data, containerId, overall) {
 
         updateLegend(causes);
     }
+
+    // Inicializa em causes
+    d3.select(".CausesDonutChart").classed("active", true);
+    d3.select(".DimensionsDonutChart").classed("active", false);
 
     // Draw initial chart
     updateChart();

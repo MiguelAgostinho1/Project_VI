@@ -4,69 +4,41 @@ body {
 
 .container {
   display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 0px 0px;
+  grid-template-columns: 1fr 1fr;  /* duas colunas */
+  grid-template-rows: 0.3fr 0.7fr;   /* donuts em cima, radial em baixo */
   grid-template-areas:
-    "RadialBarChart DonutCharts";
-  align-items: stretch;  /* instead of center */
+    "Empty DonutCharts"
+    "Empty RadialBarChart";
+  height: 100vh;
+}
+
+.Empty {
+  grid-area: Empty;
+}
+
+
+.DonutCharts {
+  max-height: 35vh;  /* não passam de 35% da altura da viewport */
+  grid-area: DonutCharts;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.CausesDonutChart,
+.DimensionsDonutChart {
+  display: none; /* escondidos por default */
+}
+
+.CausesDonutChart.active,
+.DimensionsDonutChart.active {
+  display: block; /* só o ativo aparece */
 }
 
 .RadialBarChart {
   grid-area: RadialBarChart;
-  border-right: 2px solid #ccc;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center children vertically */
-  align-items: center;   /* center children horizontally */
-}
-
-.RadialBarChart .controls {
-  flex: 0 0 auto;        /* controls stay natural size */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  padding-bottom: 8px;
-}
-
-.RadialBarChart svg {
-  max-width: 100%;       /* prevent overflow horizontally */
-  max-height: 100%;      /* prevent overflow vertically */
-  height: auto;          /* keep aspect ratio */
-}
-
-.DonutCharts {
-  grid-area: DonutCharts;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "CausesDonutChart"
-    "DimensionsDonutChart";
-}
-
-.CausesDonutChart {
-  grid-area: CausesDonutChart;
-  border-bottom: 2px solid #ccc; /* horizontal separator */
-  padding-bottom: 12px;          /* optional spacing */
-}
-.CausesDonutChart .controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.DimensionsDonutChart {
-  grid-area: DimensionsDonutChart;
-  padding-top: 12px; /* spacing after the line */
-}
-.DimensionsDonutChart .controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
 }

@@ -17,3 +17,21 @@ const causeColors = [
     "#741b47",
     "#999999"
 ]
+
+// ========================
+// Switch chart function
+// ========================
+// Title with arrows
+let charts = ["dimensions", "causes"];
+let currentChartIndex = 0; // começa em dimensions
+function switchChart(direction) {
+    currentChartIndex = (currentChartIndex + direction + charts.length) % charts.length;
+    const currentChart = charts[currentChartIndex];
+
+    d3.select(".CausesDonutChart").classed("active", currentChart === "causes");
+    d3.select(".DimensionsDonutChart").classed("active", currentChart === "dimensions");
+
+    titleText.text(
+        currentChart === "causes" ? "Causes of Fires" : "Dimensions of Fires"
+    );
+}
