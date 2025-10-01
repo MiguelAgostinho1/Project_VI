@@ -5,10 +5,10 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;  /* duas colunas */
-  grid-template-rows: 0.3fr 0.7fr;   /* donuts em cima, radial em baixo */
+  grid-template-rows: 0.7fr 0.3fr;   /* donuts em cima, radial em baixo */
   grid-template-areas:
-    "Empty DonutCharts"
-    "Empty RadialBarChart";
+    "Empty RadialBarChart"
+    "Empty DonutCharts";
   height: 100vh;
 }
 
@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 12px; /* spacing after the line */
 }
 
 
@@ -37,8 +38,10 @@ body {
 }
 
 .RadialBarChart {
+  max-height: 65vh;  /* não passam de 65% da altura da viewport */
   grid-area: RadialBarChart;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid #ccc; /* horizontal separator */
 }
