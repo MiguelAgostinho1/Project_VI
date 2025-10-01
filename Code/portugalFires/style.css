@@ -24,6 +24,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 12px; /* spacing after the line */
+  border-left: 2px solid #ccc;
 }
 
 
@@ -44,4 +45,6 @@ body {
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid #ccc; /* horizontal separator */
+  border-left: 2px solid #ccc;
+
 }
