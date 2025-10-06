@@ -1,49 +1,59 @@
 body {
+  margin: 0; /* remove default browser margin */
   font-family: sans-serif;
+  height: 100vh;
+  overflow: hidden; /* prevents scrollbars */
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* duas colunas */
-  grid-template-rows: 0.7fr 0.3fr;   /* donuts em cima, radial em baixo */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.7fr 0.3fr;
   grid-template-areas:
     "Empty RadialBarChart"
     "Empty DonutCharts";
+  height: 100vh; /* fill entire viewport */
+  box-sizing: border-box;
 }
 
 .Empty {
   grid-area: Empty;
-}
-
-
-.DonutCharts {
-  max-height: 35vh;  /* não passam de 35% da altura da viewport */
-  grid-area: DonutCharts;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 12px; /* spacing after the line */
-  border-left: 2px solid #ccc;
-}
-
-
-.CausesDonutChart,
-.DimensionsDonutChart {
-  display: none; /* escondidos por default */
-}
-
-.CausesDonutChart.active,
-.DimensionsDonutChart.active {
-  display: block; /* só o ativo aparece */
+  width: 100%;
+  height: 100%;
 }
 
 .RadialBarChart {
-  max-height: 65vh;  /* não passam de 65% da altura da viewport */
   grid-area: RadialBarChart;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #ccc; /* horizontal separator */
+  border-bottom: 2px solid #ccc;
   border-left: 2px solid #ccc;
+  width: 100%;
+  height: 100%;
+}
 
+.DonutCharts {
+  grid-area: DonutCharts;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+  border-left: 2px solid #ccc;
+  width: 100%;
+  height: 100%;
+}
+
+.CausesDonutChart,
+.DimensionsDonutChart {
+  display: none;
+  flex: 1; /* allow them to grow inside DonutCharts */
+  width: 100%;
+}
+
+.CausesDonutChart.active,
+.DimensionsDonutChart.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
