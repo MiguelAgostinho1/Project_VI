@@ -180,6 +180,25 @@ function createDimensionsDonutChart(data, containerId, overall) {
         const total = d3.sum(dimensions, d => d.numero);
 
         yearLabel.text(year);
+        svg.selectAll(".no-data-text").remove();
+
+        // No data
+        if (total === 0) {
+            // Remove arcos anteriores
+            svg.selectAll("path").remove();
+
+            // Atualiza a legenda com mensagem
+            updateLegend([]); // limpa legenda
+
+            svg.append("text")
+                .attr("class", "no-data-text")
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "middle")
+                .style("font-size", "14px")
+                .text("No data available for this region");
+            return;
+        }
+
 
         const arcs = pie(dimensions);
 

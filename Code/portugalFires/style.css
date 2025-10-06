@@ -9,7 +9,6 @@ body {
   grid-template-areas:
     "Empty RadialBarChart"
     "Empty DonutCharts";
-  height: 100vh;
 }
 
 .Empty {
