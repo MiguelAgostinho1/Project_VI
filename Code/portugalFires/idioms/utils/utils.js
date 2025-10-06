@@ -1,22 +1,22 @@
 const dimensionColors = [
-    "#ffdc32", 
-    "#ffcd5a",
-    "#ffb93c",
-    "#ffa528",
-    "#ff911e",
-    "#ff7314",
-    "#ff550a",
-    "#ff3700"
-]
+    "#ffdc32", // amarelo claro
+    "#ffcd5a", // amarelo mais forte
+    "#ffb93c", // laranja claro
+    "#ffa528", // laranja
+    "#ff911e", // laranja mais escuro
+    "#e94d00", // vermelho-alaranjado escuro
+    "#cc2500", // vermelho escuro
+    "#990000"  // vermelho profundo
+];
 
 const causeColors = [
-    "#ffff00",
-    "#00ffff",
-    "#9900ff",
-    "#4cdc8b",
-    "#741b47",
+    "#ffd84d",
+    "#5bc0de",
+    "#8e5ad1",
+    "#5cb85c",
+    "#8b4513",
     "#999999"
-]
+];
 
 // ========================
 // Switch chart function
