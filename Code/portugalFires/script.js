@@ -18,6 +18,7 @@ function init() {
     createRadialBarchart(structured_data, ".RadialBarChart");
     createCausesDonutChart(structured_data, ".CausesDonutChart", true);
     createDimensionsDonutChart(structured_data, ".DimensionsDonutChart", true);
+    createChoroplethMap(structured_data, ".ChoroplethMap");
     // createScatterplot(structured_data, ".ScatterPlot");
     // createHistogram(structured_data, ".Histogram");
     // createSunburst(structured_data, ".Sunburst");

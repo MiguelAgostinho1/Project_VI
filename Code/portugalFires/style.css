@@ -1,7 +1,6 @@
 body {
   margin: 0; /* remove default browser margin */
   font-family: sans-serif;
-  height: 100vh;
   overflow: hidden; /* prevents scrollbars */
 }
 
@@ -10,16 +9,22 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.7fr 0.3fr;
   grid-template-areas:
-    "Empty RadialBarChart"
-    "Empty DonutCharts";
+    "ChoroplethMap RadialBarChart"
+    "ChoroplethMap DonutCharts";
   height: 100vh; /* fill entire viewport */
   box-sizing: border-box;
 }
 
-.Empty {
-  grid-area: Empty;
+.ChoroplethMap {
+  grid-area: ChoroplethMap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
   width: 100%;
   height: 100%;
+  background-color: #f9f9f9;
+  position: relative;
 }
 
 .RadialBarChart {
@@ -47,7 +52,7 @@ body {
 .CausesDonutChart,
 .DimensionsDonutChart {
   display: none;
-  flex: 1; /* allow them to grow inside DonutCharts */
+  flex: 1;
   width: 100%;
 }
 
