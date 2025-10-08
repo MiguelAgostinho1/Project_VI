@@ -7,9 +7,9 @@ function createChoroplethMap(data, containerId) {
     const width = window.innerWidth * 0.45;
     const height = window.innerHeight * 0.6;
     const missingDataColor = "#ccc";
-    const lowRiskColor = "#d73027";
+    const lowRiskColor = "#1a9850";
     const mediumRiskColor = "#fee08b";
-    const highRiskColor = "#1a9850";
+    const highRiskColor = "#d73027";
     let currentYearIndex = 0;
     let updateMap;
 
@@ -27,9 +27,9 @@ function createChoroplethMap(data, containerId) {
 
     function getColor(value) {
         if (value === null || value === undefined || value === 0) return missingDataColor; // gray
-        if (value <= 0.009) return lowRiskColor; // red
+        if (value <= 0.009) return highRiskColor; // red
         if (value < 0.1) return mediumRiskColor; // yellow
-        return highRiskColor; // teal/green
+        return lowRiskColor; // teal/green
     }
 
     // ========================
