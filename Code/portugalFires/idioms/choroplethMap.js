@@ -12,6 +12,7 @@ function createChoroplethMap(data, containerId) {
     const highRiskColor = "#d73027";
     let currentYearIndex = 0;
     let updateMap;
+    let regionMap;
 
     // ========================
     // Helper functions
@@ -25,7 +26,7 @@ function createChoroplethMap(data, containerId) {
         }));
     }
 
-    function getColor(value) {
+    function getPreventionIndexColor(value) {
         if (value === null || value === undefined || value === 0) return missingDataColor;
         if (value <= 0.009) return highRiskColor;
         if (value < 0.1) return mediumRiskColor;
@@ -165,42 +166,142 @@ function createChoroplethMap(data, containerId) {
     // Map setup & update
     // ========================
     d3.json("../data/portugal_nuts3_2024.geojson").then(function (geoData) {
-        const projection = d3.geoMercator().fitSize([width, height], geoData);
-        const path = d3.geoPath().projection(projection);
+        // split features
+        const azores = geoData.features.filter(f => f.properties.NUTS_ID.startsWith("PT20"));
+        const madeira = geoData.features.filter(f => f.properties.NUTS_ID.startsWith("PT30"));
+        const mainland = geoData.features.filter(f =>
+            !f.properties.NUTS_ID.startsWith("PT20") && !f.properties.NUTS_ID.startsWith("PT30")
+        );
+    
+        // === MAINLAND ===
+        const mainlandProjection = d3.geoMercator().fitSize([width, height], {
+            type: "FeatureCollection",
+            features: mainland
+        });
+        const mainlandPath = d3.geoPath().projection(mainlandProjection);
+    
+        const mainlandGroup = svg.append("g").attr("class", "mainland-group");
+    
+        mainlandGroup.selectAll("path.region")
+            .data(mainland, d => d.properties.NUTS_ID)
+            .join(
+                enter => enter.append("path")
+                    .attr("class", "region mainland")
+                    .attr("d", mainlandPath)
+                    .attr("stroke", "#999")
+                    .attr("stroke-width", 0.5)
+                    .attr("fill", "#eee"),
+                update => update.attr("d", mainlandPath),
+                exit => exit.remove()
+            );
 
-        // Base map outline
-        svg.selectAll("path.base")
-            .data(geoData.features)
-            .enter()
-            .append("path")
-            .attr("class", "base")
-            .attr("d", path)
-            .attr("stroke", "#999")
-            .attr("stroke-width", 0.5)
-            .attr("fill", "#eee");
+        // inset scale (relative to mainland)
+        const insetScale = 4;
 
-        // Color scale (fixed domain for consistent color range)
-        const allValues = data.flatMap(d => d.regions.map(r => r.prevencaoIndex));
+        // Positioning for insets (more spacing + balanced layout)
+        const insetPadding = 20;
 
-        // Update function
-        updateMap = function (year) {
-            const mapData = getPreventionIndex(year);
-            const regionMap = new Map(mapData.map(d => [d.region, d.prevencaoIndex]));
+        // === MADEIRA INSET ===
+        const madeiraBoxW = Math.round(width / insetScale);
+        const madeiraBoxH = Math.round(height / insetScale);
 
-            const paths = svg.selectAll("path.region")
-                .data(geoData.features, d => d.properties.NUTS_ID);
+        // place Madeira in the bottom-left corner
+        const madeiraX = insetPadding;
+        const madeiraY = height - madeiraBoxH - insetPadding;
 
-            // Enter + update
-            paths.enter()
-                .append("path")
-                .attr("class", "region")
-                .attr("d", path)
-                .attr("stroke", "#333")
-                .attr("stroke-width", 0.6)
-                .attr("fill", d => {
-                    const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val) : "#ccc";
-                })
+        const madeiraProjection = d3.geoMercator()
+            .fitSize([madeiraBoxW, madeiraBoxH], { type: "FeatureCollection", features: madeira });
+        const madeiraPath = d3.geoPath().projection(madeiraProjection);
+        
+        const madeiraGroup = svg.append("g")
+            .attr("class", "inset madeira")
+            .attr("transform", `translate(${madeiraX}, ${madeiraY})`);
+        
+        madeiraGroup.append("rect")
+            .attr("width", madeiraBoxW)
+            .attr("height", madeiraBoxH)
+            .attr("fill", "transparent")
+            .attr("stroke", "#333")
+            .on("mouseover", function (event) {
+                const val = regionMap.get("Região Autónoma da Madeira");
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip.html(`<strong>Região Autónoma da Madeira</strong><br/>Prevention Index: ${val ?? "N/A"}`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip.style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function () {
+                tooltip.transition().duration(200).style("opacity", 0);
+            });
+        
+        madeiraGroup.selectAll("path.region")
+            .data(madeira, d => d.properties.NUTS_ID)
+            .join(
+                enter => enter.append("path")
+                    .attr("class", "region inset madeira-path")
+                    .attr("d", madeiraPath)
+                    .attr("stroke", "#999")
+                    .attr("stroke-width", 0.5)
+                    .attr("fill", "#eee"),
+                update => update.attr("d", madeiraPath),
+                exit => exit.remove()
+            );
+        
+        // === AZORES INSET ===
+        const azoresBoxW = Math.round(width / insetScale);
+        const azoresBoxH = Math.round(height / insetScale);
+
+        // place Azores above Madeira with spacing
+        const azoresX = insetPadding;
+        const azoresY = madeiraY - azoresBoxH - insetPadding;
+
+        const azoresProjection = d3.geoMercator()
+            .fitSize([azoresBoxW, azoresBoxH], { type: "FeatureCollection", features: azores });
+        const azoresPath = d3.geoPath().projection(azoresProjection);
+        
+        const azoresGroup = svg.append("g")
+            .attr("class", "inset azores")
+            .attr("transform", `translate(${azoresX}, ${azoresY})`);
+        
+        azoresGroup.append("rect")
+            .attr("width", azoresBoxW)
+            .attr("height", azoresBoxH)
+            .attr("fill", "transparent")
+            .attr("stroke", "#333")
+            .on("mouseover", function (event) {
+                const val = regionMap.get("Região Autónoma dos Açores");
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>Prevention Index: ${val ?? "N/A"}`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip.style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function () {
+                tooltip.transition().duration(200).style("opacity", 0);
+            });
+        
+        azoresGroup.selectAll("path.region")
+            .data(azores, d => d.properties.NUTS_ID)
+            .join(
+                enter => enter.append("path")
+                    .attr("class", "region inset azores-path")
+                    .attr("d", azoresPath)
+                    .attr("stroke", "#999")
+                    .attr("stroke-width", 0.5)
+                    .attr("fill", "#eee"),
+                update => update.attr("d", azoresPath),
+                exit => exit.remove()
+            );
+        
+        // helper to add the tooltip interaction (uses regionMap from updateMap closure)
+        function addInteractivity(selection, regionMap) {
+            selection
                 .on("mouseover", function (event, d) {
                     const val = regionMap.get(d.properties.NAME_LATN);
                     d3.select(this).attr("stroke-width", 1.2).attr("stroke", "#000");
@@ -216,17 +317,57 @@ function createChoroplethMap(data, containerId) {
                 .on("mouseout", function () {
                     d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#333");
                     tooltip.transition().duration(200).style("opacity", 0);
-                })
-                .merge(paths)
+                });
+        }
+    
+        // Update function (applies to mainland + both insets)
+        updateMap = function (year) {
+            const mapData = getPreventionIndex(year);
+            regionMap = new Map(mapData.map(d => [d.region, d.prevencaoIndex]));
+        
+            // mainland
+            mainlandGroup.selectAll("path.region")
+                .data(mainland, d => d.properties.NUTS_ID)
+                .join("path")
+                .attr("d", mainlandPath)
                 .transition()
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val) : "#ccc";
+                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
                 });
-        }
-
-        // Initialize with the latest year
+            
+            // madeira inset
+            madeiraGroup.selectAll("path.region")
+                .data(madeira, d => d.properties.NUTS_ID)
+                .join("path")
+                .attr("d", madeiraPath)
+                .transition()
+                .duration(800)
+                .attr("fill", d => {
+                    const val = regionMap.get(d.properties.NAME_LATN);
+                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
+                });
+            
+            // azores inset
+            azoresGroup.selectAll("path.region")
+                .data(azores, d => d.properties.NUTS_ID)
+                .join("path")
+                .attr("d", azoresPath)
+                .transition()
+                .duration(800)
+                .attr("fill", d => {
+                    const val = regionMap.get(d.properties.NAME_LATN);
+                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
+                });
+            
+            // attach tooltip interactivity (use the regionMap for current year)
+            addInteractivity(mainlandGroup.selectAll("path.region"), regionMap);
+            addInteractivity(madeiraGroup.selectAll("path.region"), regionMap);
+            addInteractivity(azoresGroup.selectAll("path.region"), regionMap);
+        };
+    
+        // initialize
         updateMap(years[currentYearIndex]);
     });
 }
