@@ -118,6 +118,44 @@ function createChoroplethMap(data, containerId) {
     const svg = svgBase.append("g");
 
     // ========================
+    // Legend (below map)
+    // ========================
+    const legend = wrapper.append("div")
+        .attr("class", "legend")
+        .style("display", "flex")
+        .style("justify-content", "center")
+        .style("align-items", "center")
+        .style("gap", "14px")
+        .style("margin-top", "10px");
+        
+    // Define legend items to match getColor() logic
+    const legendItems = [
+        { label: "No data / 0", color: "#ccc" },
+        { label: "≤ 0.009", color: "#d73027" },
+        { label: "< 0.1", color: "#fee08b" },
+        { label: "≥ 0.1", color: "#1a9850" }
+    ];
+
+    // Render legend
+    legendItems.forEach(item => {
+        const row = legend.append("div")
+            .style("display", "flex")
+            .style("align-items", "center")
+            .style("gap", "6px");   
+
+        row.append("div")
+            .style("width", "14px")
+            .style("height", "14px")
+            .style("background-color", item.color)
+            .style("border", "1px solid #999")
+            .style("border-radius", "2px"); 
+
+        row.append("span")
+            .style("font-size", "12px")
+            .text(item.label);
+    });
+
+    // ========================
     // Map setup & update
     // ========================
     d3.json("../data/portugal_nuts3_2024.geojson").then(function (geoData) {
