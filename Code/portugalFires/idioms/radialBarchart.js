@@ -27,7 +27,7 @@ function createRadialBarchart(data, containerId) {
     regions.unshift("Portugal");
 
     const width = window.innerWidth * 0.4;
-    const height = window.innerHeight * 0.5;
+    const height = window.innerHeight * 0.6;
     const minDim = Math.min(width, height);
     const innerR = minDim * 0.15;
     const outerR = minDim * 0.40;
