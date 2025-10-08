@@ -1,5 +1,17 @@
 function createChoroplethMap(data, containerId) {
+    // ========================
+    // Constants & state
+    // ========================
     const container = d3.select(containerId);
+    const years = data.map(d => d.year);
+    const width = window.innerWidth * 0.45;
+    const height = window.innerHeight * 0.6;
+    const missingDataColor = "#ccc";
+    const lowRiskColor = "#d73027";
+    const mediumRiskColor = "#fee08b";
+    const highRiskColor = "#1a9850";
+    let currentYearIndex = 0;
+    let updateMap;
 
     // ========================
     // Helper functions
@@ -14,21 +26,15 @@ function createChoroplethMap(data, containerId) {
     }
 
     function getColor(value) {
-        if (value === null || value === undefined || value === 0) return "#ccc"; // gray
-        if (value <= 0.009) return "#d73027"; // red
-        if (value < 0.1) return "#fee08b"; // yellow
-        return "#1a9850"; // teal/green
+        if (value === null || value === undefined || value === 0) return missingDataColor; // gray
+        if (value <= 0.009) return lowRiskColor; // red
+        if (value < 0.1) return mediumRiskColor; // yellow
+        return highRiskColor; // teal/green
     }
 
     // ========================
     // Setup
     // ========================
-    const years = data.map(d => d.year);
-    const width = window.innerWidth * 0.45;
-    const height = window.innerHeight * 0.6;
-    let currentYearIndex = 0;
-    let updateMap;
-
     // Tooltip
     const tooltip = container.append("div")
         .style("position", "absolute")
@@ -127,7 +133,7 @@ function createChoroplethMap(data, containerId) {
         .style("align-items", "center")
         .style("gap", "14px")
         .style("margin-top", "10px");
-        
+
     // Define legend items to match getColor() logic
     const legendItems = [
         { label: "No data / 0", color: "#ccc" },
