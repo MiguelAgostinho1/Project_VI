@@ -78,7 +78,7 @@ function createDimensionsDonutChart(data, containerId, overall) {
         .text("⟩")
         .on("click", () => switchChart(1));
 
-    // Dropdown de regiões
+    // Region dropdown
     const select = controls.append("select")
         .on("change", function () {
             currentRegion = this.value;
@@ -184,11 +184,11 @@ function createDimensionsDonutChart(data, containerId, overall) {
 
         // No data
         if (total === 0) {
-            // Remove arcos anteriores
+            // Remove previous arcs
             svg.selectAll("path").remove();
 
-            // Atualiza a legenda com mensagem
-            updateLegend([]); // limpa legenda
+            // Update legend with message
+            updateLegend([]); // Clear legend
 
             svg.append("text")
                 .attr("class", "no-data-text")
@@ -241,7 +241,7 @@ function createDimensionsDonutChart(data, containerId, overall) {
         updateLegend(dimensions);
     }
 
-    // Inicializa em dimensions
+    // Initializes Dimensions
     d3.select(".DimensionsDonutChart").classed("active", true);
     d3.select(".CausesDonutChart").classed("active", false);
 

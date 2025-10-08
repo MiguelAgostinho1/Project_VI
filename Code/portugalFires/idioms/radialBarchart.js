@@ -43,13 +43,13 @@ function createRadialBarchart(data, containerId) {
         .style("pointer-events", "none")
         .style("opacity", 0);
 
-    // --- NEW: vertical wrapper ---
+    // Vertical wrapper
     const wrapper = container.append("div")
         .style("display", "flex")
         .style("flex-direction", "column")
         .style("align-items", "center");
 
-    // --- Controls wrapper (title + dropdown) ---
+    // Controls wrapper (title + dropdown)
     const controls = wrapper.append("div")
         .attr("class", "controls")
         .style("display", "flex")
@@ -58,7 +58,7 @@ function createRadialBarchart(data, containerId) {
         .style("margin-bottom", "12px")
         .style("gap", "6px");
 
-    // Título
+    // Title
     controls.append("div")
         .style("font-size", "18px")
         .style("font-weight", "bold")
@@ -77,7 +77,7 @@ function createRadialBarchart(data, containerId) {
         .attr("value", d => d)
         .text(d => d);
 
-    // --- SVG wrapper ---
+    // SVG wrapper
     const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet") 
@@ -88,7 +88,7 @@ function createRadialBarchart(data, containerId) {
         .attr("transform", `translate(${width / 2},${height / 2.3})`);
 
     // ========================
-    // Update function (igual ao teu)
+    // Update function
     // ========================
     function updateChart(region) {
         svg.selectAll("*").remove();
@@ -127,7 +127,7 @@ function createRadialBarchart(data, containerId) {
             .startAngle(0)
             .endAngle(d => angleScale(d.total));
 
-        // ticks
+        // Ticks
         ticks.forEach(t => {
             const angle = angleScale(t);
             const end = polarToCartesian(angle, outerR);
@@ -150,7 +150,7 @@ function createRadialBarchart(data, containerId) {
             }
         });
 
-        // bars
+        // Bars
         const bars = svg.selectAll("path")
             .data(totalsByYear, d => d.year);
 

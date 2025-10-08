@@ -7,7 +7,7 @@ function createChoroplethMap(data, containerId) {
     const width = window.innerWidth * 0.45;
     const height = window.innerHeight * 0.6;
     const missingDataColor = "#ccc";
-    const lowRiskColor = "#1a9850";
+    const lowRiskColor = "#1a987dff";
     const mediumRiskColor = "#fee08b";
     const highRiskColor = "#d73027";
     let currentYearIndex = 0;
@@ -26,10 +26,10 @@ function createChoroplethMap(data, containerId) {
     }
 
     function getColor(value) {
-        if (value === null || value === undefined || value === 0) return missingDataColor; // gray
-        if (value <= 0.009) return highRiskColor; // red
-        if (value < 0.1) return mediumRiskColor; // yellow
-        return lowRiskColor; // teal/green
+        if (value === null || value === undefined || value === 0) return missingDataColor;
+        if (value <= 0.009) return highRiskColor;
+        if (value < 0.1) return mediumRiskColor;
+        return lowRiskColor;
     }
 
     // ========================
@@ -46,13 +46,13 @@ function createChoroplethMap(data, containerId) {
         .style("pointer-events", "none")
         .style("opacity", 0);
 
-    // --- vertical wrapper ---
+    // Vertical wrapper
     const wrapper = container.append("div")
         .style("display", "flex")
         .style("flex-direction", "column")
         .style("align-items", "center");
 
-    // --- Controls wrapper (title + dropdown) ---
+    // Controls wrapper (title + dropdown)
     const controls = wrapper.append("div")
         .attr("class", "controls")
         .style("display", "flex")
@@ -114,7 +114,7 @@ function createChoroplethMap(data, containerId) {
             }
         });
 
-    // --- SVG wrapper ---
+    // SVG wrapper
     const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
@@ -124,7 +124,7 @@ function createChoroplethMap(data, containerId) {
     const svg = svgBase.append("g");
 
     // ========================
-    // Legend (below map)
+    // Legend
     // ========================
     const legend = wrapper.append("div")
         .attr("class", "legend")
@@ -136,10 +136,10 @@ function createChoroplethMap(data, containerId) {
 
     // Define legend items to match getColor() logic
     const legendItems = [
-        { label: "No data / 0", color: "#ccc" },
-        { label: "≤ 0.009", color: "#d73027" },
-        { label: "< 0.1", color: "#fee08b" },
-        { label: "≥ 0.1", color: "#1a9850" }
+        { label: "No data / 0", color: missingDataColor },
+        { label: "≤ 0.009", color: highRiskColor },
+        { label: "< 0.1", color: mediumRiskColor },
+        { label: "≥ 0.1", color: lowRiskColor }
     ];
 
     // Render legend
@@ -182,7 +182,7 @@ function createChoroplethMap(data, containerId) {
         // Color scale (fixed domain for consistent color range)
         const allValues = data.flatMap(d => d.regions.map(r => r.prevencaoIndex));
 
-        // --- Update function ---
+        // Update function
         updateMap = function (year) {
             const mapData = getPreventionIndex(year);
             const regionMap = new Map(mapData.map(d => [d.region, d.prevencaoIndex]));
