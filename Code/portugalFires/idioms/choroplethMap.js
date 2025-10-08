@@ -13,24 +13,87 @@ function createChoroplethMap(data, containerId) {
     let currentYearIndex = 0;
     let updateMap;
     let regionMap;
+    const filters = ["Total Fires", "Prevention Index", "Efficiency Index", "Percentage Burned"];
+    let currentFilter = filters[0]; // default filter
+
+    // For testing different filters, uncomment one of the lines below:
+    // currentFilter = filters[1];
+    // currentFilter = filters[2];
+    // currentFilter = filters[3];
+
+    // ========================
+    // TODO: Add way to change currentFilter
+    // ========================
 
     // ========================
     // Helper functions
     // ========================
-    function getPreventionIndex(year) {
+    function getData(year) {
         const yearData = data.find(d => d.year === year);
         if (!yearData) return [];
-        return yearData.regions.map(r => ({
-            region: r.region,
-            prevencaoIndex: r.prevencaoIndex || 0
-        }));
+        switch (currentFilter) {
+            case "Prevention Index":
+                return yearData.regions.map(r => ({
+                    region: r.region,
+                    total: r.prevencaoIndex || 0
+                }));
+            case "Efficiency Index":
+                return yearData.regions.map(r => ({
+                    region: r.region,
+                    total: r.eficaciaIndex || 0
+                }));
+            case "Percentage Burned":
+                return yearData.regions.map(r => ({
+                    region: r.region,
+                    total: r.percentagem || 0
+                }));
+            default:
+                return yearData.regions.map(r => ({
+                    region: r.region,
+                    total: r.total || 0
+                })); // default to total number of fires
+        }
     }
 
-    function getPreventionIndexColor(value) {
+    function getPreventionColor(value) {
         if (value === null || value === undefined || value === 0) return missingDataColor;
         if (value <= 0.009) return highRiskColor;
         if (value < 0.1) return mediumRiskColor;
         return lowRiskColor;
+    }  
+
+    function getEfficiencyColor(value) {
+        if (value === null || value === undefined || value === 0) return missingDataColor;
+        if (value <= 0.009) return highRiskColor;
+        if (value < 0.1) return mediumRiskColor;
+        return lowRiskColor;
+    }
+    
+    function getPercentageColor(value) {
+        if (value === null || value === undefined || value === 0) return missingDataColor;
+        if (value <= 1.99) return lowRiskColor;
+        if (value < 2.5) return mediumRiskColor;
+        return highRiskColor;
+    }
+
+    function getTotalFiresColor(value) {
+        if (value === null || value === undefined || value === 0) return missingDataColor;
+        if (value <= 199) return lowRiskColor;
+        if (value <= 500) return mediumRiskColor;
+        return highRiskColor;
+    }
+
+    function getColor(value) {
+        switch (currentFilter) {
+            case "Efficiency Index":
+                return getEfficiencyColor(value);
+            case "Percentage Burned":
+                return getPercentageColor(value);
+            case "Prevention Index":
+                return getPreventionColor(value);
+            default:
+                return getTotalFiresColor(value);
+        }
     }
 
     // ========================
@@ -66,7 +129,7 @@ function createChoroplethMap(data, containerId) {
     controls.append("div")
         .style("font-size", "18px")
         .style("font-weight", "bold")
-        .text("Prevention Index by Region");
+        .text(`${currentFilter} by Region`);
 
     // Year Controls
     const yearControls = controls.append("div")
@@ -322,8 +385,8 @@ function createChoroplethMap(data, containerId) {
     
         // Update function (applies to mainland + both insets)
         updateMap = function (year) {
-            const mapData = getPreventionIndex(year);
-            regionMap = new Map(mapData.map(d => [d.region, d.prevencaoIndex]));
+            const mapData = getData(year);
+            regionMap = new Map(mapData.map(d => [d.region, d.total]));
         
             // mainland
             mainlandGroup.selectAll("path.region")
@@ -334,7 +397,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val) : missingDataColor;
                 });
             
             // madeira inset
@@ -346,7 +409,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val) : missingDataColor;
                 });
             
             // azores inset
@@ -358,7 +421,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getPreventionIndexColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val) : missingDataColor;
                 });
             
             // attach tooltip interactivity (use the regionMap for current year)
