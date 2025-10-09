@@ -2,25 +2,6 @@ function createRadialBarchart(data, containerId) {
     const container = d3.select(containerId);
 
     // ========================
-    // Helper functions
-    // ========================
-    const polarToCartesian = (angle, r) => ({
-        x: Math.cos(angle - Math.PI / 2) * r,
-        y: Math.sin(angle - Math.PI / 2) * r
-    });
-
-    function getTotals(region) {
-        return data.map(d => {
-            if (region === "Portugal") {
-                const total = d.regions.reduce((sum, r) => sum + (r.total || 0), 0);
-                return { year: d.year, total };
-            }
-            const regionData = d.regions.find(r => r.region === region);
-            return { year: d.year, total: regionData ? (regionData.total || 0) : 0 };
-        });
-    }
-
-    // ========================
     // Setup
     // ========================
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
@@ -93,7 +74,7 @@ function createRadialBarchart(data, containerId) {
     function updateChart(region) {
         svg.selectAll("*").remove();
 
-        const totalsByYear = getTotals(region);
+        const totalsByYear = getTotals(region, data);
         const maxValue = d3.max(totalsByYear, d => d.total) || 0;
 
         if (maxValue === 0) {

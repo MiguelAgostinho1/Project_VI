@@ -1,27 +1,5 @@
 function createDimensionsDonutChart(data, containerId, overall) {
     // ========================
-    // Helper functions
-    // ========================
-    function getDimensions(region, year) {
-        const yearData = data.find(d => d.year === year);
-        if (!yearData) return [];
-
-        if (region === "Portugal") {
-            const dimensionMap = new Map();
-            yearData.regions.forEach(r => {
-                (r.dimensoes || []).forEach(c => {
-                    const prev = dimensionMap.get(c.label) || 0;
-                    dimensionMap.set(c.label, prev + (c.numero || 0));
-                });
-            });
-            return Array.from(dimensionMap, ([label, numero]) => ({ label, numero }));
-        } else {
-            const regionData = yearData.regions.find(r => r.region === region);
-            return regionData ? regionData.dimensoes || [] : [];
-        }
-    }
-
-    // ========================
     // Setup
     // ========================
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
@@ -176,7 +154,7 @@ function createDimensionsDonutChart(data, containerId, overall) {
     // ========================
     function updateChart() {
         const year = years[currentYearIndex];
-        const dimensions = getDimensions(currentRegion, year);
+        const dimensions = getDimensions(currentRegion, year, data);
         const total = d3.sum(dimensions, d => d.numero);
 
         yearLabel.text(year);

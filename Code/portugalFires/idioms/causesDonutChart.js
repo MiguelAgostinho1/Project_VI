@@ -1,27 +1,5 @@
 function createCausesDonutChart(data, containerId, overall) {
     // ========================
-    // Helper functions
-    // ========================
-    function getCauses(region, year) {
-        const yearData = data.find(d => d.year === year);
-        if (!yearData) return [];
-
-        if (region === "Portugal") {
-            const causeMap = new Map();
-            yearData.regions.forEach(r => {
-                (r.causas || []).forEach(c => {
-                    const prev = causeMap.get(c.causa) || 0;
-                    causeMap.set(c.causa, prev + (c.numero || 0));
-                });
-            });
-            return Array.from(causeMap, ([causa, numero]) => ({ causa, numero }));
-        } else {
-            const regionData = yearData.regions.find(r => r.region === region);
-            return regionData ? regionData.causas || [] : [];
-        }
-    }
-
-    // ========================
     // Setup
     // ========================
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
@@ -177,7 +155,7 @@ function createCausesDonutChart(data, containerId, overall) {
     // ========================
     function updateChart() {
         const year = years[currentYearIndex];
-        const causes = getCauses(currentRegion, year);
+        const causes = getCauses(currentRegion, year, data);
         const total = d3.sum(causes, d => d.numero);
 
         yearLabel.text(year);

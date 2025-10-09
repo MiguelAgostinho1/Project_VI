@@ -1,3 +1,22 @@
+// =================================================
+// Radial Bar chart helper functions and variables
+// =================================================
+const polarToCartesian = (angle, r) => ({
+    x: Math.cos(angle - Math.PI / 2) * r,
+    y: Math.sin(angle - Math.PI / 2) * r
+});
+
+function getTotals(region, data) {
+    return data.map(d => {
+        if (region === "Portugal") {
+            const total = d.regions.reduce((sum, r) => sum + (r.total || 0), 0);
+            return { year: d.year, total };
+        }
+        const regionData = d.regions.find(r => r.region === region);
+        return { year: d.year, total: regionData ? (regionData.total || 0) : 0 };
+    });
+}
+
 // ============================================
 // Donut chart helper functions and variables
 // ============================================
@@ -36,6 +55,44 @@ function switchChart(direction) {
     titleText.text(
         currentChart === "causes" ? "Causes of Fires" : "Dimensions of Fires"
     );
+}
+
+function getCauses(region, year, data) {
+    const yearData = data.find(d => d.year === year);
+    if (!yearData) return [];
+
+    if (region === "Portugal") {
+        const causeMap = new Map();
+        yearData.regions.forEach(r => {
+            (r.causas || []).forEach(c => {
+                const prev = causeMap.get(c.causa) || 0;
+                causeMap.set(c.causa, prev + (c.numero || 0));
+            });
+        });
+        return Array.from(causeMap, ([causa, numero]) => ({ causa, numero }));
+    } else {
+        const regionData = yearData.regions.find(r => r.region === region);
+        return regionData ? regionData.causas || [] : [];
+    }
+}
+
+function getDimensions(region, year, data) {
+    const yearData = data.find(d => d.year === year);
+    if (!yearData) return [];
+
+    if (region === "Portugal") {
+        const dimensionMap = new Map();
+        yearData.regions.forEach(r => {
+            (r.dimensoes || []).forEach(c => {
+                const prev = dimensionMap.get(c.label) || 0;
+                dimensionMap.set(c.label, prev + (c.numero || 0));
+            });
+        });
+        return Array.from(dimensionMap, ([label, numero]) => ({ label, numero }));
+    } else {
+        const regionData = yearData.regions.find(r => r.region === region);
+        return regionData ? regionData.dimensoes || [] : [];
+    }
 }
 
 // ================================================
