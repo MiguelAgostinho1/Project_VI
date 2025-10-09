@@ -1,6 +1,8 @@
-// ========================
-// Donut chart colors
-// ========================
+// ============================================
+// Donut chart helper functions and variables
+// ============================================
+// Title
+const title = d3.select("#donutChartTitle");
 const dimensionColors = [
     "#ffdc32", // amarelo claro
     "#ffcd5a", // amarelo mais forte
@@ -21,9 +23,6 @@ const causeColors = [
     "#999999"
 ];
 
-// ========================
-// Switch chart function
-// ========================
 // Title with arrows
 let charts = ["dimensions", "causes"];
 let currentChartIndex = 0; // começa em dimensions
@@ -39,9 +38,9 @@ function switchChart(direction) {
     );
 }
 
-// ========================
-// Choropleth map colors
-// ========================
+// ================================================
+// Choropleth map helper functions and variables
+// ================================================
 const missingDataColor = "#ccc";
 const lowRiskColor = "#1a987dff";
 const mediumRiskColor = "#ffa528";
@@ -54,7 +53,7 @@ function getPreventionColor(value) {
     return lowRiskColor;
 }  
 
- function getEfficiencyColor(value) {
+function getEfficiencyColor(value) {
     if (value === null || value === undefined || value === 0) return missingDataColor;
     if (value <= 0.009) return highRiskColor;
     if (value < 0.1) return mediumRiskColor;
@@ -68,14 +67,14 @@ function getPercentageColor(value) {
     return highRiskColor;
 }
 
- function getTotalFiresColor(value) {
+function getTotalFiresColor(value) {
     if (value === null || value === undefined || value === 0) return missingDataColor;
     if (value <= 199) return lowRiskColor;
     if (value <= 500) return mediumRiskColor;
     return highRiskColor;
 }
 
- function getColor(value, currentFilter) {
+function getColor(value, currentFilter) {
     switch (currentFilter) {
         case "Efficiency Index":
             return getEfficiencyColor(value);
@@ -118,5 +117,32 @@ function getLegendItems(currentFilter) {
                 { label: "199 < x < 500", color: mediumRiskColor },
                 { label: "≥ 500", color: highRiskColor }
             ];
+    }
+}
+
+function getData(year, data, currentFilter) {
+    const yearData = data.find(d => d.year === year);
+    if (!yearData) return [];
+    switch (currentFilter) {
+        case "Prevention Index":
+            return yearData.regions.map(r => ({
+                region: r.region,
+                total: r.prevencaoIndex || 0
+            }));
+        case "Efficiency Index":
+            return yearData.regions.map(r => ({
+                region: r.region,
+                total: r.eficaciaIndex || 0
+            }));
+        case "Percentage Burned":
+            return yearData.regions.map(r => ({
+                region: r.region,
+                total: r.percentagem || 0
+            }));
+        default:
+            return yearData.regions.map(r => ({
+                region: r.region,
+                total: r.total || 0
+            })); // default to total number of fires
     }
 }

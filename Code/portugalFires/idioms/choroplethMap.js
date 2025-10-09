@@ -11,46 +11,7 @@ function createChoroplethMap(data, containerId) {
     let regionMap;
     let legendItems;
     const filters = ["Total Fires", "Prevention Index", "Efficiency Index", "Percentage Burned"];
-    let currentFilter = filters[0]; // default filter
-
-    // For testing different filters, uncomment one of the lines below:
-    // currentFilter = filters[1];
-    // currentFilter = filters[2];
-    // currentFilter = filters[3];
-
-    // ========================
-    // TODO: Add way to change currentFilter
-    // ========================
-
-    // ========================
-    // Helper functions
-    // ========================
-    function getData(year) {
-        const yearData = data.find(d => d.year === year);
-        if (!yearData) return [];
-        switch (currentFilter) {
-            case "Prevention Index":
-                return yearData.regions.map(r => ({
-                    region: r.region,
-                    total: r.prevencaoIndex || 0
-                }));
-            case "Efficiency Index":
-                return yearData.regions.map(r => ({
-                    region: r.region,
-                    total: r.eficaciaIndex || 0
-                }));
-            case "Percentage Burned":
-                return yearData.regions.map(r => ({
-                    region: r.region,
-                    total: r.percentagem || 0
-                }));
-            default:
-                return yearData.regions.map(r => ({
-                    region: r.region,
-                    total: r.total || 0
-                })); // default to total number of fires
-        }
-    }
+    let currentFilter = filters[0]; // default filter (Total Fires)
 
     // ========================
     // Setup
@@ -382,7 +343,7 @@ function createChoroplethMap(data, containerId) {
     
         // Update function (applies to mainland + both insets)
         updateMap = function (year) {
-            const mapData = getData(year);
+            const mapData = getData(year, data, currentFilter);
             regionMap = new Map(mapData.map(d => [d.region, d.total]));
         
             // mainland
