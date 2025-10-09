@@ -246,7 +246,7 @@ function createChoroplethMap(data, containerId) {
             .on("mouseover", function (event) {
                 const val = regionMap.get("Região Autónoma da Madeira");
                 tooltip.transition().duration(200).style("opacity", 1);
-                tooltip.html(`<strong>Região Autónoma da Madeira</strong><br/>Prevention Index: ${val ?? "N/A"}`)
+                tooltip.html(`<strong>Região Autónoma da Madeira</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
@@ -295,7 +295,7 @@ function createChoroplethMap(data, containerId) {
             .on("mouseover", function (event) {
                 const val = regionMap.get("Região Autónoma dos Açores");
                 tooltip.transition().duration(200).style("opacity", 1);
-                tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>Prevention Index: ${val ?? "N/A"}`)
+                tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
@@ -327,7 +327,7 @@ function createChoroplethMap(data, containerId) {
                     const val = regionMap.get(d.properties.NAME_LATN);
                     d3.select(this).attr("stroke-width", 1.2).attr("stroke", "#000");
                     tooltip.transition().duration(200).style("opacity", 1);
-                    tooltip.html(`<strong>${d.properties.NAME_LATN}</strong><br/>Prevention Index: ${val ?? "N/A"}`)
+                    tooltip.html(`<strong>${d.properties.NAME_LATN}</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
                         .style("left", (event.pageX + 10) + "px")
                         .style("top", (event.pageY - 28) + "px");
                 })
