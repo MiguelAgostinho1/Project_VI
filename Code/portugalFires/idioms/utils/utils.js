@@ -1,3 +1,6 @@
+// ========================
+// Donut chart colors
+// ========================
 const dimensionColors = [
     "#ffdc32", // amarelo claro
     "#ffcd5a", // amarelo mais forte
@@ -18,6 +21,27 @@ const causeColors = [
     "#999999"
 ];
 
+// ========================
+// Switch chart function
+// ========================
+// Title with arrows
+let charts = ["dimensions", "causes"];
+let currentChartIndex = 0; // começa em dimensions
+function switchChart(direction) {
+    currentChartIndex = (currentChartIndex + direction + charts.length) % charts.length;
+    const currentChart = charts[currentChartIndex];
+
+    d3.select(".CausesDonutChart").classed("active", currentChart === "causes");
+    d3.select(".DimensionsDonutChart").classed("active", currentChart === "dimensions");
+
+    titleText.text(
+        currentChart === "causes" ? "Causes of Fires" : "Dimensions of Fires"
+    );
+}
+
+// ========================
+// Choropleth map colors
+// ========================
 const missingDataColor = "#ccc";
 const lowRiskColor = "#1a987dff";
 const mediumRiskColor = "#ffa528";
@@ -95,22 +119,4 @@ function getLegendItems(currentFilter) {
                 { label: "≥ 500", color: highRiskColor }
             ];
     }
-}
-
-// ========================
-// Switch chart function
-// ========================
-// Title with arrows
-let charts = ["dimensions", "causes"];
-let currentChartIndex = 0; // começa em dimensions
-function switchChart(direction) {
-    currentChartIndex = (currentChartIndex + direction + charts.length) % charts.length;
-    const currentChart = charts[currentChartIndex];
-
-    d3.select(".CausesDonutChart").classed("active", currentChart === "causes");
-    d3.select(".DimensionsDonutChart").classed("active", currentChart === "dimensions");
-
-    titleText.text(
-        currentChart === "causes" ? "Causes of Fires" : "Dimensions of Fires"
-    );
 }
