@@ -141,9 +141,10 @@ function createChoroplethMap(data, containerId) {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("width", "100%")
-        .style("height", "60vh");
+        .style("height", "80vh");
 
-    const svg = svgBase.append("g");
+    const svg = svgBase.append("g")
+        .attr("transform", "translate(80, 0)");
 
     // ========================
     // Legend
@@ -210,7 +211,7 @@ function createChoroplethMap(data, containerId) {
                     .attr("class", "region mainland")
                     .attr("d", mainlandPath)
                     .attr("stroke", "#999")
-                    .attr("stroke-width", 0.5)
+                    .attr("stroke-width", 1)
                     .attr("fill", "#eee"),
                 update => update.attr("d", mainlandPath),
                 exit => exit.remove()
@@ -220,7 +221,7 @@ function createChoroplethMap(data, containerId) {
         const insetScale = 4;
 
         // Positioning for insets (more spacing + balanced layout)
-        const insetPadding = 20;
+        const insetPadding = 30;
 
         // === MADEIRA INSET ===
         const madeiraBoxW = Math.round(width / insetScale);
