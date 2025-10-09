@@ -126,10 +126,48 @@ function createChoroplethMap(data, containerId) {
         .style("gap", "6px");
 
     // Title
-    controls.append("div")
+    const title = controls.append("div")
         .style("font-size", "18px")
         .style("font-weight", "bold")
         .text(`${currentFilter} by Region`);
+    
+    // ========================
+    // Filter buttons
+    // ========================
+    const filterControls = controls.append("div")
+        .attr("class", "filter-buttons")
+        .style("display", "flex")
+        .style("flex-wrap", "wrap")
+        .style("justify-content", "center")
+        .style("gap", "8px");
+    
+    // Create buttons for each filter
+    filterControls.selectAll("button.filter")
+        .data(filters)
+        .enter()
+        .append("button")
+        .attr("class", "filter")
+        .text(d => d)
+        .style("padding", "6px 10px")
+        .style("border", "1px solid #aaa")
+        .style("border-radius", "6px")
+        .style("background", d => (d === currentFilter ? "#1a987dff" : "#f8f8f8"))
+        .style("color", d => (d === currentFilter ? "white" : "black"))
+        .style("cursor", "pointer")
+        .on("click", function(event, d) {
+            currentFilter = d;
+            title.text(`${currentFilter} by Region`);
+        
+            // Update button styles
+            filterControls.selectAll("button.filter")
+                .style("background", b => (b === currentFilter ? "#1a987dff" : "#f8f8f8"))
+                .style("color", b => (b === currentFilter ? "white" : "black"));
+        
+            // Update map for current year
+            const year = years[currentYearIndex];
+            updateMap(year);
+        });
+
 
     // Year Controls
     const yearControls = controls.append("div")
