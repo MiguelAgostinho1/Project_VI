@@ -6,13 +6,10 @@ function createChoroplethMap(data, containerId) {
     const years = data.map(d => d.year);
     const width = window.innerWidth * 0.45;
     const height = window.innerHeight * 0.6;
-    const missingDataColor = "#ccc";
-    const lowRiskColor = "#1a987dff";
-    const mediumRiskColor = "#fee08b";
-    const highRiskColor = "#d73027";
     let currentYearIndex = 0;
     let updateMap;
     let regionMap;
+    let legendItems;
     const filters = ["Total Fires", "Prevention Index", "Efficiency Index", "Percentage Burned"];
     let currentFilter = filters[0]; // default filter
 
@@ -52,47 +49,6 @@ function createChoroplethMap(data, containerId) {
                     region: r.region,
                     total: r.total || 0
                 })); // default to total number of fires
-        }
-    }
-
-    function getPreventionColor(value) {
-        if (value === null || value === undefined || value === 0) return missingDataColor;
-        if (value <= 0.009) return highRiskColor;
-        if (value < 0.1) return mediumRiskColor;
-        return lowRiskColor;
-    }  
-
-    function getEfficiencyColor(value) {
-        if (value === null || value === undefined || value === 0) return missingDataColor;
-        if (value <= 0.009) return highRiskColor;
-        if (value < 0.1) return mediumRiskColor;
-        return lowRiskColor;
-    }
-    
-    function getPercentageColor(value) {
-        if (value === null || value === undefined || value === 0) return missingDataColor;
-        if (value <= 1.99) return lowRiskColor;
-        if (value < 2.5) return mediumRiskColor;
-        return highRiskColor;
-    }
-
-    function getTotalFiresColor(value) {
-        if (value === null || value === undefined || value === 0) return missingDataColor;
-        if (value <= 199) return lowRiskColor;
-        if (value <= 500) return mediumRiskColor;
-        return highRiskColor;
-    }
-
-    function getColor(value) {
-        switch (currentFilter) {
-            case "Efficiency Index":
-                return getEfficiencyColor(value);
-            case "Percentage Burned":
-                return getPercentageColor(value);
-            case "Prevention Index":
-                return getPreventionColor(value);
-            default:
-                return getTotalFiresColor(value);
         }
     }
 
@@ -163,6 +119,9 @@ function createChoroplethMap(data, containerId) {
                 .style("background", b => (b === currentFilter ? "#1a987dff" : "#f8f8f8"))
                 .style("color", b => (b === currentFilter ? "white" : "black"));
         
+            // Update legend for the new filter
+            updateLegend(currentFilter);
+            
             // Update map for current year
             const year = years[currentYearIndex];
             updateMap(year);
@@ -228,40 +187,40 @@ function createChoroplethMap(data, containerId) {
     // ========================
     // Legend
     // ========================
-    const legend = wrapper.append("div")
-        .attr("class", "legend")
-        .style("display", "flex")
-        .style("justify-content", "center")
-        .style("align-items", "center")
-        .style("gap", "14px")
-        .style("margin-top", "10px");
+    function updateLegend(currentFilter) {
+        // Remove previous legend before drawing a new one
+        wrapper.select(".legend").remove();
 
-    // Define legend items to match getColor() logic
-    const legendItems = [
-        { label: "No data / 0", color: missingDataColor },
-        { label: "≤ 0.009", color: highRiskColor },
-        { label: "< 0.1", color: mediumRiskColor },
-        { label: "≥ 0.1", color: lowRiskColor }
-    ];
-
-    // Render legend
-    legendItems.forEach(item => {
-        const row = legend.append("div")
+        const legend = wrapper.append("div")
+            .attr("class", "legend")
             .style("display", "flex")
+            .style("justify-content", "center")
             .style("align-items", "center")
-            .style("gap", "6px");   
+            .style("gap", "14px")
+            .style("margin-top", "10px");
 
-        row.append("div")
-            .style("width", "14px")
-            .style("height", "14px")
-            .style("background-color", item.color)
-            .style("border", "1px solid #999")
-            .style("border-radius", "2px"); 
+        // Get the legend items for the current filter
+        legendItems = getLegendItems(currentFilter);
 
-        row.append("span")
-            .style("font-size", "12px")
-            .text(item.label);
-    });
+        // Render legend
+        legendItems.forEach(item => {
+            const row = legend.append("div")
+                .style("display", "flex")
+                .style("align-items", "center")
+                .style("gap", "6px");   
+
+            row.append("div")
+                .style("width", "14px")
+                .style("height", "14px")
+                .style("background-color", item.color)
+                .style("border", "1px solid #999")
+                .style("border-radius", "2px"); 
+
+            row.append("span")
+                .style("font-size", "12px")
+                .text(item.label);
+        });
+    }
 
     // ========================
     // Map setup & update
@@ -435,7 +394,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
                 });
             
             // madeira inset
@@ -447,7 +406,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
                 });
             
             // azores inset
@@ -459,7 +418,7 @@ function createChoroplethMap(data, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val) : missingDataColor;
+                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
                 });
             
             // attach tooltip interactivity (use the regionMap for current year)
@@ -470,5 +429,6 @@ function createChoroplethMap(data, containerId) {
     
         // initialize
         updateMap(years[currentYearIndex]);
+        updateLegend(currentFilter);
     });
 }
