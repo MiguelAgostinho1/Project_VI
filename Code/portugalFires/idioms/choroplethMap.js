@@ -200,7 +200,7 @@ function createChoroplethMap(sharedState, containerId) {
     // ========================
     // Map setup & update
     // ========================
-    d3.json("../data/portugal_nuts3_2024.geojson").then(function (geoData) {
+    d3.json("./data/portugal_nuts3_2024.geojson").then(function (geoData) {
         // split features
         const azores = geoData.features.filter(f => f.properties.NUTS_ID.startsWith("PT20"));
         const madeira = geoData.features.filter(f => f.properties.NUTS_ID.startsWith("PT30"));
@@ -350,7 +350,7 @@ function createChoroplethMap(sharedState, containerId) {
                         .style("top", (event.pageY - 28) + "px");
                 })
                 .on("mouseout", function () {
-                    d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#333");
+                    d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#999");
                     tooltip.transition().duration(200).style("opacity", 0);
                 });
         }
