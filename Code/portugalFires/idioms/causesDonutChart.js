@@ -1,4 +1,4 @@
-function createCausesDonutChart(sharedState, containerId, overall) {
+function createCausesDonutChart(sharedState, containerId) {
     // ========================
     // Setup
     // ========================
