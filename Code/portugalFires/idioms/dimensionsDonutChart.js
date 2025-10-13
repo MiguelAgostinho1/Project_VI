@@ -1,13 +1,12 @@
-function createDimensionsDonutChart(data, containerId, overall) {
+function createDimensionsDonutChart(sharedState, containerId, overall) {
     // ========================
     // Setup
     // ========================
+    const data = sharedState.data; // Optional if you store data there
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
     regions.unshift("Portugal");
 
     const years = data.map(d => d.year);
-    let currentYearIndex = 0;
-    let currentRegion = "Portugal";
 
     const width = window.innerWidth * 0.25;
     const height = window.innerHeight * 0.23;
@@ -34,6 +33,7 @@ function createDimensionsDonutChart(data, containerId, overall) {
         .style("align-items", "center")
         .style("margin-bottom", "12px");
 
+    // Title with arrows
     const titleWrapper = controls.append("div")
         .attr("class", "donut-title")
         .style("display", "flex")
@@ -56,11 +56,12 @@ function createDimensionsDonutChart(data, containerId, overall) {
         .text("⟩")
         .on("click", () => switchChart(1));
 
+    // ========================
     // Region dropdown
+    // ========================
     const select = controls.append("select")
         .on("change", function () {
-            currentRegion = this.value;
-            updateChart();
+            sharedState.setRegion(this.value);
         });
 
     select.selectAll("option")
@@ -70,30 +71,28 @@ function createDimensionsDonutChart(data, containerId, overall) {
         .attr("value", d => d)
         .text(d => d);
 
+    // ========================
     // Year controls
+    // ========================
     const yearControls = controls.append("div").style("margin", "8px 0");
 
     yearControls.append("button")
         .text("⟨")
         .on("click", () => {
-            if (currentYearIndex > 0) {
-                currentYearIndex--;
-                updateChart();
-            }
+            const index = sharedState.getYearIndex() - 1;
+            if (index >= 0) sharedState.setYearIndex(index);
         });
 
     const yearLabel = yearControls.append("span")
         .style("margin", "0 10px")
         .style("font-weight", "bold")
-        .text(years[currentYearIndex]);
+        .text(years[sharedState.getYearIndex()]);
 
     yearControls.append("button")
         .text("⟩")
         .on("click", () => {
-            if (currentYearIndex < years.length - 1) {
-                currentYearIndex++;
-                updateChart();
-            }
+            const index = sharedState.getYearIndex() + 1;
+            if (index < years.length) sharedState.setYearIndex(index);
         });
 
     // ========================
@@ -150,24 +149,20 @@ function createDimensionsDonutChart(data, containerId, overall) {
     }
 
     // ========================
-    // Update function
+    // Update chart
     // ========================
-    function updateChart() {
-        const year = years[currentYearIndex];
-        const dimensions = getDimensions(currentRegion, year, data);
+    function updateDimensionsChart(state = sharedState) {
+        const year = years[state.getYearIndex()];
+        const dimensions = getDimensions(state.region, year, data);
         const total = d3.sum(dimensions, d => d.numero);
 
         yearLabel.text(year);
+        select.property("value", state.region);
         svg.selectAll(".no-data-text").remove();
 
-        // No data
         if (total === 0) {
-            // Remove previous arcs
             svg.selectAll("path").remove();
-
-            // Update legend with message
-            updateLegend([]); // Clear legend
-
+            updateLegend([]);
             svg.append("text")
                 .attr("class", "no-data-text")
                 .attr("text-anchor", "middle")
@@ -176,7 +171,6 @@ function createDimensionsDonutChart(data, containerId, overall) {
                 .text("No data available for this region");
             return;
         }
-
 
         const arcs = pie(dimensions);
 
@@ -193,7 +187,6 @@ function createDimensionsDonutChart(data, containerId, overall) {
             .merge(paths)
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("stroke", "#000").attr("stroke-width", 1.5);
-
                 tooltip.transition().duration(200).style("opacity", 1);
                 const percentage = ((d.data.numero / total) * 100).toFixed(1);
                 tooltip.html(`<strong>${d.data.label}</strong><br/>Fires: ${d.data.numero}<br/>(${percentage}%)`)
@@ -219,10 +212,18 @@ function createDimensionsDonutChart(data, containerId, overall) {
         updateLegend(dimensions);
     }
 
-    // Initializes Dimensions
+    // ========================
+    // Listen to sharedState updates
+    // ========================
+    sharedState.onChange(state => {
+        updateDimensionsChart(state);
+    });
+
+    // ========================
+    // Initialize
+    // ========================
     d3.select(".DimensionsDonutChart").classed("active", true);
     d3.select(".CausesDonutChart").classed("active", false);
 
-    // Draw initial chart
-    updateChart();
+    updateDimensionsChart(sharedState);
 }

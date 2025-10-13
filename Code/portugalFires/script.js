@@ -15,13 +15,18 @@ function init() {
         ))
     }));
 
-    createRadialBarchart(structured_data, ".RadialBarChart");
-    createCausesDonutChart(structured_data, ".CausesDonutChart", true);
-    createDimensionsDonutChart(structured_data, ".DimensionsDonutChart", true);
+    const sharedState = new SharedState(structured_data, "Portugal", 0);
+
     createChoroplethMap(structured_data, ".ChoroplethMap");
-    // createScatterplot(structured_data, ".ScatterPlot");
-    // createHistogram(structured_data, ".Histogram");
-    // createSunburst(structured_data, ".Sunburst");
-    // createLinechart(structured_data, ".LineChart");
+    createRadialBarchart(sharedState, ".RadialBarChart");
+    createCausesDonutChart(sharedState, ".CausesDonutChart", true);
+    createDimensionsDonutChart(sharedState, ".DimensionsDonutChart", true);
+
+    sharedState.onChange(state => {
+      updateMap(state);
+      updateRadialBarChart(state);
+      updateCausesChart(state);
+      updateDimensionsChart(state);
+    });
   });
 }

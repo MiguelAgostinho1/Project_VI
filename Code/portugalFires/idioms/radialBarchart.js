@@ -1,9 +1,10 @@
-function createRadialBarchart(data, containerId) {
+function createRadialBarchart(sharedState, containerId) {
     const container = d3.select(containerId);
 
     // ========================
     // Setup
     // ========================
+    const data = sharedState.data
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
     regions.unshift("Portugal");
 
@@ -13,6 +14,8 @@ function createRadialBarchart(data, containerId) {
     const innerR = minDim * 0.15;
     const outerR = minDim * 0.40;
     const barColor = "green";
+
+    //let currentRegion = "Portugal";
 
     const tooltip = container.append("div")
         .style("position", "absolute")
@@ -48,7 +51,8 @@ function createRadialBarchart(data, containerId) {
     // Dropdown
     const select = controls.append("select")
         .on("change", function () {
-            updateChart(this.value);
+            sharedState.setRegion(this.value);
+            updateRadialBarChart(sharedState.region);
         });
 
     select.selectAll("option")
@@ -69,12 +73,22 @@ function createRadialBarchart(data, containerId) {
         .attr("transform", `translate(${width / 2},${height / 2.3})`);
 
     // ========================
+    // Helper function
+    // ========================
+    function polarToCartesian(angle, radius) {
+        return {
+            x: Math.cos(angle - Math.PI / 2) * radius,
+            y: Math.sin(angle - Math.PI / 2) * radius
+        };
+    }
+
+    // ========================
     // Update function
     // ========================
-    function updateChart(region) {
+    function updateRadialBarChart(state) {
         svg.selectAll("*").remove();
 
-        const totalsByYear = getTotals(region, data);
+        const totalsByYear = getTotals(state.region, state.data);
         const maxValue = d3.max(totalsByYear, d => d.total) || 0;
 
         if (maxValue === 0) {
@@ -149,6 +163,7 @@ function createRadialBarchart(data, containerId) {
                 return t => arc({ ...d, total: i(t) });
             });
 
+        // Tooltip behavior
         svg.selectAll("path")
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("fill", "orange");
@@ -166,6 +181,7 @@ function createRadialBarchart(data, containerId) {
                 tooltip.transition().duration(200).style("opacity", 0);
             });
 
+        // Year labels
         svg.selectAll(".year-label")
             .data(totalsByYear)
             .enter()
@@ -179,5 +195,20 @@ function createRadialBarchart(data, containerId) {
             .text(d => d.year);
     }
 
-    updateChart("Portugal");
+    // ========================
+    // Listen to sharedState updates
+    // ========================
+    sharedState.onChange(state => {
+        updateRadialBarChart(state);
+
+
+        // Sync dropdown selection if region changes elsewhere
+        select.property("value", state.region);
+    });
+
+
+    // ========================
+    // Initial Draw
+    // ========================
+    updateRadialBarChart(sharedState);
 }
