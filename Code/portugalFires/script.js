@@ -17,16 +17,9 @@ function init() {
 
     const sharedState = new SharedState(structured_data, "Portugal", 0);
 
-    createChoroplethMap(structured_data, ".ChoroplethMap");
+    createChoroplethMap(sharedState, ".ChoroplethMap");
     createRadialBarchart(sharedState, ".RadialBarChart");
-    createCausesDonutChart(sharedState, ".CausesDonutChart", true);
-    createDimensionsDonutChart(sharedState, ".DimensionsDonutChart", true);
-
-    sharedState.onChange(state => {
-      updateMap(state);
-      updateRadialBarChart(state);
-      updateCausesChart(state);
-      updateDimensionsChart(state);
-    });
+    createCausesDonutChart(sharedState, ".CausesDonutChart");
+    createDimensionsDonutChart(sharedState, ".DimensionsDonutChart");
   });
 }

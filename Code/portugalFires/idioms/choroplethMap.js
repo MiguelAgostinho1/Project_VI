@@ -1,12 +1,12 @@
-function createChoroplethMap(data, containerId) {
+function createChoroplethMap(sharedState, containerId) {
     // ========================
     // Constants & state
     // ========================
+    const data = sharedState.data;
     const container = d3.select(containerId);
     const years = data.map(d => d.year);
     const width = window.innerWidth * 0.45;
     const height = window.innerHeight * 0.6;
-    let currentYearIndex = 0;
     let updateMap;
     let regionMap;
     let legendItems;
@@ -94,8 +94,7 @@ function createChoroplethMap(data, containerId) {
             updateLegend(currentFilter);
             
             // Update map for current year
-            const year = years[currentYearIndex];
-            updateMap(year);
+            updateMap(sharedState);
         });
 
 
@@ -115,11 +114,12 @@ function createChoroplethMap(data, containerId) {
         .style("background", "#f8f8f8")
         .style("cursor", "pointer")
         .on("click", () => {
+            let currentYearIndex = sharedState.getYearIndex();
             if (currentYearIndex > 0) {
                 currentYearIndex--;
-                const year = years[currentYearIndex];
-                yearLabel.text(year);
-                updateMap(year);
+                yearLabel.text(years[currentYearIndex]);
+                sharedState.setYearIndex(currentYearIndex);
+                updateMap(sharedState);
             }
         });
 
@@ -127,7 +127,7 @@ function createChoroplethMap(data, containerId) {
     const yearLabel = yearControls.append("span")
         .style("font-weight", "bold")
         .style("font-size", "16px")
-        .text(years[currentYearIndex]);
+        .text(years[sharedState.getYearIndex()]);
 
     // Next year button
     yearControls.append("button")
@@ -138,11 +138,12 @@ function createChoroplethMap(data, containerId) {
         .style("background", "#f8f8f8")
         .style("cursor", "pointer")
         .on("click", () => {
+            let currentYearIndex = sharedState.getYearIndex();
             if (currentYearIndex < years.length - 1) {
                 currentYearIndex++;
-                const year = years[currentYearIndex];
-                yearLabel.text(year);
-                updateMap(year);
+                yearLabel.text(years[currentYearIndex]);
+                sharedState.setYearIndex(currentYearIndex);
+                updateMap(sharedState);
             }
         });
 
@@ -355,9 +356,12 @@ function createChoroplethMap(data, containerId) {
         }
     
         // Update function (applies to mainland + both insets)
-        updateMap = function (year) {
-            const mapData = getData(year, data, currentFilter);
+        updateMap = function (sharedState) {
+            const year = years[sharedState.getYearIndex()];
+            const mapData = getData(year, sharedState.data, currentFilter);
             regionMap = new Map(mapData.map(d => [d.region, d.total]));
+
+            yearLabel.text(year);
         
             // mainland
             mainlandGroup.selectAll("path.region")
@@ -400,9 +404,13 @@ function createChoroplethMap(data, containerId) {
             addInteractivity(madeiraGroup.selectAll("path.region"), regionMap);
             addInteractivity(azoresGroup.selectAll("path.region"), regionMap);
         };
+
+        sharedState.onChange(state => {
+            updateMap(state);
+        });
     
         // initialize
-        updateMap(years[currentYearIndex]);
+        updateMap(sharedState);
         updateLegend(currentFilter);
     });
 }

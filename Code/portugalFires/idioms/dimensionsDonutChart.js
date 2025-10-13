@@ -1,4 +1,4 @@
-function createDimensionsDonutChart(sharedState, containerId, overall) {
+function createDimensionsDonutChart(sharedState, containerId) {
     // ========================
     // Setup
     // ========================

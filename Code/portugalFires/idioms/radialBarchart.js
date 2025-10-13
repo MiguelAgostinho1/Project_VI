@@ -14,6 +14,7 @@ function createRadialBarchart(sharedState, containerId) {
     const innerR = minDim * 0.15;
     const outerR = minDim * 0.40;
     const barColor = "green";
+    let previousRegion = sharedState.region;
 
     //let currentRegion = "Portugal";
 
@@ -52,7 +53,7 @@ function createRadialBarchart(sharedState, containerId) {
     const select = controls.append("select")
         .on("change", function () {
             sharedState.setRegion(this.value);
-            updateRadialBarChart(sharedState.region);
+            updateRadialBarChart(sharedState);
         });
 
     select.selectAll("option")
@@ -199,8 +200,10 @@ function createRadialBarchart(sharedState, containerId) {
     // Listen to sharedState updates
     // ========================
     sharedState.onChange(state => {
-        updateRadialBarChart(state);
-
+        if (state.region !== previousRegion) {
+            updateRadialBarChart(state);
+            previousRegion = state.region;
+        }
 
         // Sync dropdown selection if region changes elsewhere
         select.property("value", state.region);
