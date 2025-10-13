@@ -33,6 +33,7 @@ function createChoroplethMap(data, containerId) {
         .style("flex-direction", "column")
         .style("align-items", "center");
 
+
     // Controls wrapper (title + dropdown)
     const controls = wrapper.append("div")
         .attr("class", "controls")
@@ -41,6 +42,15 @@ function createChoroplethMap(data, containerId) {
         .style("align-items", "center")
         .style("margin-bottom", "12px")
         .style("gap", "6px");
+
+    // Mapa + legenda lado a lado
+    const mapArea = wrapper.append("div")
+    .style("display", "flex")
+    .style("flex-direction", "row")      // horizontal layout
+    .style("align-items", "center")
+    .style("justify-content", "flex-start")
+    .style("gap", "20px");               // espaço entre mapa e legenda
+
 
     // Title
     const title = controls.append("div")
@@ -68,7 +78,7 @@ function createChoroplethMap(data, containerId) {
         .style("padding", "6px 10px")
         .style("border", "1px solid #aaa")
         .style("border-radius", "6px")
-        .style("background", d => (d === currentFilter ? "#1a987dff" : "#f8f8f8"))
+        .style("background", d => (d === currentFilter ? "#7393b3" : "#f8f8f8"))
         .style("color", d => (d === currentFilter ? "white" : "black"))
         .style("cursor", "pointer")
         .on("click", function(event, d) {
@@ -77,7 +87,7 @@ function createChoroplethMap(data, containerId) {
         
             // Update button styles
             filterControls.selectAll("button.filter")
-                .style("background", b => (b === currentFilter ? "#1a987dff" : "#f8f8f8"))
+                .style("background", b => (b === currentFilter ? "#7393b3" : "#f8f8f8"))
                 .style("color", b => (b === currentFilter ? "white" : "black"));
         
             // Update legend for the new filter
@@ -137,7 +147,7 @@ function createChoroplethMap(data, containerId) {
         });
 
     // SVG wrapper
-    const svgBase = wrapper.append("svg")
+    const svgBase = mapArea.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("width", "100%")
@@ -153,13 +163,15 @@ function createChoroplethMap(data, containerId) {
         // Remove previous legend before drawing a new one
         wrapper.select(".legend").remove();
 
-        const legend = wrapper.append("div")
+        const legend = mapArea.append("div")
             .attr("class", "legend")
             .style("display", "flex")
             .style("justify-content", "center")
-            .style("align-items", "center")
+            .style("flex-direction", "column")
+            .style("align-items", "flex-start")
             .style("gap", "14px")
-            .style("margin-top", "10px");
+            .style("margin-top", "10px")
+            .style("margin-right", "50px")
 
         // Get the legend items for the current filter
         legendItems = getLegendItems(currentFilter);
@@ -179,7 +191,7 @@ function createChoroplethMap(data, containerId) {
                 .style("border-radius", "2px"); 
 
             row.append("span")
-                .style("font-size", "12px")
+                .style("font-size", "14px")
                 .text(item.label);
         });
     }
