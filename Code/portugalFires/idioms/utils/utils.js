@@ -23,14 +23,14 @@ function getTotals(region, data) {
 // Title
 const title = d3.select("#donutChartTitle");
 const dimensionColors = [
-    "#ffdc32", // amarelo claro
-    "#ffcd5a", // amarelo mais forte
-    "#ffb93c", // laranja claro
-    "#ffa528", // laranja
-    "#ff911e", // laranja mais escuro
-    "#e94d00", // vermelho-alaranjado escuro
-    "#cc2500", // vermelho escuro
-    "#990000"  // vermelho profundo
+    "#ffdc32",
+    "#ffcd5a",
+    "#ffb93c",
+    "#ffa528",
+    "#ff911e",
+    "#e94d00",
+    "#cc2500",
+    "#990000"
 ];
 
 const causeColors = [
@@ -44,7 +44,7 @@ const causeColors = [
 
 // Title with arrows
 let charts = ["dimensions", "causes"];
-let currentChartIndex = 0; // começa em dimensions
+let currentChartIndex = 0;
 function switchChart(direction) {
     currentChartIndex = (currentChartIndex + direction + charts.length) % charts.length;
     const currentChart = charts[currentChartIndex];
@@ -57,42 +57,79 @@ function switchChart(direction) {
     );
 }
 
-function getCauses(region, year, data) {
-    const yearData = data.find(d => d.year === year);
-    if (!yearData) return [];
+// Helper function to extract years from indices
+function getYearsInRange(startYearIndex, endYearIndex, data) {
+    const years = data.map(d => d.year);
+    const startYear = years[startYearIndex];
+    const endYear = years[endYearIndex];
 
-    if (region === "Portugal") {
-        const causeMap = new Map();
-        yearData.regions.forEach(r => {
-            (r.causas || []).forEach(c => {
-                const prev = causeMap.get(c.causa) || 0;
-                causeMap.set(c.causa, prev + (c.numero || 0));
-            });
-        });
-        return Array.from(causeMap, ([causa, numero]) => ({ causa, numero }));
-    } else {
-        const regionData = yearData.regions.find(r => r.region === region);
-        return regionData ? regionData.causas || [] : [];
-    }
+    return data.filter(d => d.year >= startYear && d.year <= endYear);
 }
 
-function getDimensions(region, year, data) {
-    const yearData = data.find(d => d.year === year);
-    if (!yearData) return [];
+function getCausesForRange(region, startYearIndex, endYearIndex, data) {
+    // 1. Get all year objects in the selected range
+    const yearsData = getYearsInRange(startYearIndex, endYearIndex, data);
+    if (yearsData.length === 0) return [];
 
-    if (region === "Portugal") {
-        const dimensionMap = new Map();
-        yearData.regions.forEach(r => {
-            (r.dimensoes || []).forEach(c => {
-                const prev = dimensionMap.get(c.label) || 0;
-                dimensionMap.set(c.label, prev + (c.numero || 0));
+    const causeMap = new Map();
+
+    // 2. Iterate and aggregate across ALL years in the range
+    yearsData.forEach(yearData => {
+        if (region === "Portugal") {
+            // Aggregation across regions AND years
+            yearData.regions.forEach(r => {
+                (r.causas || []).forEach(c => {
+                    const prev = causeMap.get(c.causa) || 0;
+                    causeMap.set(c.causa, prev + (c.numero || 0));
+                });
             });
-        });
-        return Array.from(dimensionMap, ([label, numero]) => ({ label, numero }));
-    } else {
-        const regionData = yearData.regions.find(r => r.region === region);
-        return regionData ? regionData.dimensoes || [] : [];
-    }
+        } else {
+            // Aggregation across only years for a specific region
+            const regionData = yearData.regions.find(r => r.region === region);
+            if (regionData) {
+                (regionData.causas || []).forEach(c => {
+                    const prev = causeMap.get(c.causa) || 0;
+                    causeMap.set(c.causa, prev + (c.numero || 0));
+                });
+            }
+        }
+    });
+
+    // 3. Convert the map back to the desired array format
+    return Array.from(causeMap, ([causa, numero]) => ({ causa, numero }));
+}
+
+function getDimensionsForRange(region, startYearIndex, endYearIndex, data) {
+    // 1. Get all year objects in the selected range
+    const yearsData = getYearsInRange(startYearIndex, endYearIndex, data);
+    if (yearsData.length === 0) return [];
+
+    const dimensionMap = new Map();
+
+    // 2. Iterate and aggregate across ALL years in the range
+    yearsData.forEach(yearData => {
+        if (region === "Portugal") {
+            // Aggregation across regions AND years
+            yearData.regions.forEach(r => {
+                (r.dimensoes || []).forEach(d => {
+                    const prev = dimensionMap.get(d.label) || 0;
+                    dimensionMap.set(d.label, prev + (d.numero || 0));
+                });
+            });
+        } else {
+            // Aggregation across only years for a specific region
+            const regionData = yearData.regions.find(r => r.region === region);
+            if (regionData) {
+                (regionData.dimensoes || []).forEach(d => {
+                    const prev = dimensionMap.get(d.label) || 0;
+                    dimensionMap.set(d.label, prev + (d.numero || 0));
+                });
+            }
+        }
+    });
+
+    // 3. Convert the map back to the desired array format
+    return Array.from(dimensionMap, ([label, numero]) => ({ label, numero }));
 }
 
 // ================================================
@@ -103,48 +140,115 @@ const lowRiskColor = "#1a987dff";
 const mediumRiskColor = "#ffa528";
 const highRiskColor = "#990000";
 
-function getPreventionColor(value) {
+/**
+ * Calculates the color for the Efficiency Index (Average).
+ * Thresholds: >= 0.1 (Low), 0.1 > x > 0.009 (Medium), <= 0.009 (High).
+ * The rangeLength is unused as the average remains on the same scale.
+ * * @param {number} value - The calculated average Efficiency Index.
+ * @returns {string} The corresponding color code.
+ */
+function getRangeEfficiencyColor(value) {
     if (value === null || value === undefined || value === 0) return missingDataColor;
+    
+    // Low Risk: value >= 0.1
+    if (value >= 0.1) return lowRiskColor;
+    
+    // High Risk: value <= 0.009
     if (value <= 0.009) return highRiskColor;
-    if (value < 0.1) return mediumRiskColor;
-    return lowRiskColor;
-}  
-
-function getEfficiencyColor(value) {
-    if (value === null || value === undefined || value === 0) return missingDataColor;
-    if (value <= 0.009) return highRiskColor;
-    if (value < 0.1) return mediumRiskColor;
-    return lowRiskColor;
+    
+    // Medium Risk: 0.009 < value < 0.1
+    return mediumRiskColor;
 }
 
-function getPercentageColor(value) {
+/**
+ * Calculates the color for the Prevention Index (Average).
+ * NOTE: Aligned with the thresholds previously defined in the legend: 
+ * >= 0.5 (Low), 0.5 > x > 0.09 (Medium), <= 0.09 (High).
+ * The rangeLength is unused as the average remains on the same scale.
+ * * @param {number} value - The calculated average Prevention Index.
+ * @returns {string} The corresponding color code.
+ */
+function getRangePreventionColor(value) {
     if (value === null || value === undefined || value === 0) return missingDataColor;
+
+    // Low Risk: value >= 0.5
+    if (value >= 0.5) return lowRiskColor;
+    
+    // High Risk: value <= 0.09
+    if (value <= 0.09) return highRiskColor;
+    
+    // Medium Risk: 0.09 < value < 0.5
+    return mediumRiskColor;
+}
+
+/**
+ * Calculates the color for the Percentage Burned (Average).
+ * NOTE: Aligned with the thresholds previously defined in the legend: 
+ * <= 1.99% (Low), 1.99% < x < 5% (Medium), >= 5% (High).
+ * The rangeLength is unused as the average remains on the same scale.
+ * * @param {number} value - The calculated average Percentage Burned (0 to 100).
+ * @returns {string} The corresponding color code.
+ */
+function getRangePercentageColor(value) {
+    if (value === null || value === undefined || value === 0) return missingDataColor;
+    
+    // High Risk: value >= 5.0
+    if (value >= 5.0) return highRiskColor;
+    
+    // Low Risk: value <= 1.99
     if (value <= 1.99) return lowRiskColor;
-    if (value < 2.5) return mediumRiskColor;
-    return highRiskColor;
+    
+    // Medium Risk: 1.99 < value < 5.0
+    return mediumRiskColor;
 }
 
-function getTotalFiresColor(value) {
+/**
+ * Calculates the color for the Total Fires (Sum).
+ * Thresholds are dynamically scaled by the number of years selected (rangeLength) 
+ * to ensure the map colors are visually representative and comparable within the 
+ * current time window.
+ * * @param {number} value - The calculated total number of fires (sum).
+ * @param {number} rangeLength - The number of years in the selected time range.
+ * @returns {string} The corresponding color code.
+ */
+function getRangeTotalFiresColor(value, rangeLength) {
     if (value === null || value === undefined || value === 0) return missingDataColor;
-    if (value <= 199) return lowRiskColor;
-    if (value <= 500) return mediumRiskColor;
-    return highRiskColor;
+
+    // Default to a range factor of 1 if not provided (for single-year calculation fallback)
+    const factor = rangeLength || 1;
+
+    // Dynamic thresholds based on single-year (199 and 500) scaled by the range length
+    const lowToMediumThreshold = 199 * factor;
+    const mediumToHighThreshold = 500 * factor;
+    
+    // High Risk: value > mediumToHighThreshold
+    if (value > mediumToHighThreshold) return highRiskColor;
+    
+    // Low Risk: value <= lowToMediumThreshold
+    if (value <= lowToMediumThreshold) return lowRiskColor;
+
+    // Medium Risk: lowToMediumThreshold < value <= mediumToHighThreshold
+    return mediumRiskColor;
 }
 
-function getColor(value, currentFilter) {
+function getColor(value, currentFilter, rangeLength) {
+    // Ensure rangeLength is at least 1 if not defined, to prevent zero multiplication
+    const length = rangeLength && rangeLength > 0 ? rangeLength : 1; 
+    
     switch (currentFilter) {
         case "Efficiency Index":
-            return getEfficiencyColor(value);
+            return getRangeEfficiencyColor(value);
         case "Percentage Burned":
-            return getPercentageColor(value);
+            return getRangePercentageColor(value);
         case "Prevention Index":
-            return getPreventionColor(value);
+            return getRangePreventionColor(value);
         default:
-            return getTotalFiresColor(value);
+            return getRangeTotalFiresColor(value, length);
     }
 }
 
-function getLegendItems(currentFilter) {
+function getLegendItems(currentFilter, rangeLength) {
+    const length = rangeLength && rangeLength > 0 ? rangeLength : 1;
     switch (currentFilter) {
         case "Efficiency Index":
             return [
@@ -170,36 +274,81 @@ function getLegendItems(currentFilter) {
         default:
             return [
                 { label: "No data", color: missingDataColor },
-                { label: "≤ 199", color: lowRiskColor },
-                { label: "199 < x < 500", color: mediumRiskColor },
-                { label: "≥ 500", color: highRiskColor }
+                { label: `≤ ${199 * length}`, color: lowRiskColor },
+                { label: `${199 * length} < x < ${500 * length}`, color: mediumRiskColor },
+                { label: `≥ ${500 * length}`, color: highRiskColor }
             ];
     }
 }
 
-function getData(year, data, currentFilter) {
-    const yearData = data.find(d => d.year === year);
-    if (!yearData) return [];
+/**
+ * Retrieves and aggregates data for all regions across a specified time range.
+ * Calculates the sum for "Total Fires" and the average for all indices/percentages.
+ * * @param {number} startYear - The starting year of the range (inclusive).
+ * @param {number} endYear - The ending year of the range (inclusive).
+ * @param {Array<Object>} data - The full dataset, structured by year.
+ * @param {string} currentFilter - The currently selected metric (e.g., "Total Fires").
+ * @returns {Array<{region: string, total: number}>} An array of region data with the aggregated value.
+ */
+function getData(startYearIndex, endYearIndex, data, currentFilter) {
+    const years = data.map(d => d.year);
+    const startYear = years[startYearIndex];
+    const endYear = years[endYearIndex];
+    const rangeLength = endYear - startYear + 1;
+
+    // 1. Filter data for the selected range
+    const relevantData = data.filter(d => d.year >= startYear && d.year <= endYear);
+
+    if (relevantData.length === 0) return [];
+
+    // 2. Determine the key to extract from the region objects
+    let dataKey;
     switch (currentFilter) {
         case "Prevention Index":
-            return yearData.regions.map(r => ({
-                region: r.region,
-                total: r.prevencaoIndex || 0
-            }));
+            dataKey = 'prevencaoIndex';
+            break;
         case "Efficiency Index":
-            return yearData.regions.map(r => ({
-                region: r.region,
-                total: r.eficaciaIndex || 0
-            }));
+            dataKey = 'eficaciaIndex';
+            break;
         case "Percentage Burned":
-            return yearData.regions.map(r => ({
-                region: r.region,
-                total: r.percentagem || 0
-            }));
+            dataKey = 'percentagem';
+            break;
         default:
-            return yearData.regions.map(r => ({
-                region: r.region,
-                total: r.total || 0
-            })); // default to total number of fires
+            dataKey = 'total'; // Total Fires
+            break;
     }
+
+    // 3. Aggregate the sums across all regions and years
+    // Map stores the sum of values for each region
+    const aggregatedData = {};
+
+    relevantData.forEach(yearData => {
+        yearData.regions.forEach(regionData => {
+            const regionName = regionData.region;
+            const value = regionData[dataKey] || 0;
+
+            if (!aggregatedData[regionName]) {
+                aggregatedData[regionName] = 0;
+            }
+            aggregatedData[regionName] += value;
+        });
+    });
+
+    // 4. Calculate the final value (sum or average) and format the output
+    const finalData = Object.keys(aggregatedData).map(region => {
+        let finalValue = aggregatedData[region];
+
+        // For Averages (Indices and Percentage Burned), divide the sum by the number of years
+        if (currentFilter !== "Total Fires" && rangeLength > 0) {
+            finalValue /= rangeLength;
+        }
+
+        // Return the region name and the aggregated metric value
+        return {
+            region: region,
+            total: finalValue
+        };
+    });
+
+    return finalData;
 }

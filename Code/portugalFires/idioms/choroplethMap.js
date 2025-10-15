@@ -113,7 +113,8 @@ function createChoroplethMap(sharedState, containerId) {
             .style("gap", "10px")
 
         // Get the legend items for the current filter
-        legendItems = getLegendItems(currentFilter);
+        const range = sharedState.getEndYearIndex() - sharedState.getStartYearIndex()
+        legendItems = getLegendItems(currentFilter, range);
 
         // Render legend
         legendItems.forEach(item => {
@@ -316,8 +317,8 @@ function createChoroplethMap(sharedState, containerId) {
     
         // Update function (applies to mainland + both insets)
         updateMap = function (sharedState) {
-            const year = years[sharedState.getYearIndex()];
-            const mapData = getData(year, sharedState.data, currentFilter);
+            const year = years[sharedState.getStartYearIndex()];
+            const mapData = getData(sharedState.getStartYearIndex(), sharedState.getEndYearIndex(), sharedState.data, currentFilter);
             regionMap = new Map(mapData.map(d => [d.region, d.total]));
         
             // mainland
@@ -329,7 +330,8 @@ function createChoroplethMap(sharedState, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
+                    const range = sharedState.getEndYearIndex() - sharedState.getStartYearIndex()
+                    return val !== undefined ? getColor(val, currentFilter, range) : missingDataColor;
                 });
             
             // madeira inset
@@ -341,7 +343,8 @@ function createChoroplethMap(sharedState, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
+                    const range = sharedState.getEndYearIndex() - sharedState.getStartYearIndex()
+                    return val !== undefined ? getColor(val, currentFilter, range) : missingDataColor;
                 });
             
             // azores inset
@@ -353,7 +356,8 @@ function createChoroplethMap(sharedState, containerId) {
                 .duration(800)
                 .attr("fill", d => {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    return val !== undefined ? getColor(val, currentFilter) : missingDataColor;
+                    const range = sharedState.getEndYearIndex() - sharedState.getStartYearIndex()
+                    return val !== undefined ? getColor(val, currentFilter, range) : missingDataColor;
                 });
             
             // attach tooltip interactivity (use the regionMap for current year)
@@ -364,6 +368,7 @@ function createChoroplethMap(sharedState, containerId) {
 
         sharedState.onChange(state => {
             updateMap(state);
+            updateLegend(currentFilter);
         });
     
         // initialize

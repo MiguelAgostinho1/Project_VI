@@ -43,14 +43,15 @@ body {
 .RadialBarChart {
   grid-area: RadialBarChart;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 12px;
+  flex-direction: column; /* Keep it column to stack title and chart */
+  padding-top: 6px; /* Reduced from 12px, or set to 0 */
   border-top: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   border-left: 2px solid #ccc;
   width: 100%;
   height: 100%;
+  /* Optional: Keep it at the start, or center it if you prefer */
+  justify-content: flex-start; 
 }
 
 .DonutCharts {
@@ -78,10 +79,12 @@ body {
   align-items: center;
 }
 
+/* Modify the general rule */
 .ChoroplethMap,
 .RadialBarChart {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* Use flex-start to keep content closer to the top, which will reduce space below */
+  justify-content: flex-start; 
   align-items: center;
 }

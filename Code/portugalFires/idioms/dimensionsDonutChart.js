@@ -121,10 +121,12 @@ function createDimensionsDonutChart(sharedState, containerId) {
     // Update chart
     // ========================
     function updateDimensionsChart(state = sharedState) {
-        const year = years[state.getYearIndex()];
-        const dimensions = getDimensions(state.region, year, data);
+        const year = years[state.getStartYearIndex()];
+        const dimensions = getDimensionsForRange(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
         const total = d3.sum(dimensions, d => d.numero);
 
+        titleText.text("Dimensions of Fires in " + state.region);
+        
         svg.selectAll(".no-data-text").remove();
 
         if (total === 0) {

@@ -1,6 +1,10 @@
 function createRadialBarchart(sharedState, containerId) {
     const container = d3.select(containerId);
 
+    // Define colors for bar visualization
+    const selectedBarColor = "green"; // Green for selected years
+    const unselectedBarColor = "#A9A9A9"; // Grey for unselected years
+
     // ========================
     // Setup
     // ========================
@@ -13,10 +17,7 @@ function createRadialBarchart(sharedState, containerId) {
     const minDim = Math.min(width, height);
     const innerR = minDim * 0.15;
     const outerR = minDim * 0.40;
-    const barColor = "green";
     let previousRegion = sharedState.region;
-
-    //let currentRegion = "Portugal";
 
     const tooltip = container.append("div")
         .style("position", "absolute")
@@ -43,18 +44,17 @@ function createRadialBarchart(sharedState, containerId) {
         .style("margin-bottom", "12px")
         .style("gap", "6px");
 
-    // Title
-    controls.append("div")
+    // Title (updated below in update function)
+    const titleElement = controls.append("div")
         .style("font-size", "18px")
-        .style("font-weight", "bold")
-        .text("Total Fires per Year");
+        .style("font-weight", "bold");
 
     // SVG wrapper
     const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet") 
         .style("width", "100%")
-        .style("height", "60vh");
+        .style("height", "55vh");
 
     const svg = svgBase.append("g")
         .attr("transform", `translate(${width / 2},${height / 2.3})`);
@@ -70,13 +70,19 @@ function createRadialBarchart(sharedState, containerId) {
     }
 
     // ========================
-    // Update function
+     // Update function
     // ========================
     function updateRadialBarChart(state) {
         svg.selectAll("*").remove();
 
+        titleElement.text("Total Fires per Year in " + state.region);
+
         const totalsByYear = getTotals(state.region, state.data);
         const maxValue = d3.max(totalsByYear, d => d.total) || 0;
+         
+        // Determine the selected year range
+        const startYear = state.data[state.startYearIndex]?.year;
+        const endYear = state.data[state.endYearIndex]?.year;
 
         if (maxValue === 0) {
             svg.append("text")
@@ -108,6 +114,18 @@ function createRadialBarchart(sharedState, containerId) {
             .outerRadius(d => bandScale(d.year) + bandScale.bandwidth() - barPadding)
             .startAngle(0)
             .endAngle(d => angleScale(d.total));
+        
+        /**
+         * Determines the color of a bar based on the current time range selection.
+         * @param {number} year - The year of the bar.
+         * @returns {string} The color (green for selected, grey otherwise).
+         */
+        const getBarColor = (year) => {
+            if (year >= startYear && year <= endYear) {
+                return selectedBarColor;
+            }
+            return unselectedBarColor;
+        };
 
         // Ticks
         ticks.forEach(t => {
@@ -140,7 +158,7 @@ function createRadialBarchart(sharedState, containerId) {
 
         bars.enter()
             .append("path")
-            .attr("fill", barColor)
+            .attr("fill", d => getBarColor(d.year)) // Initial color set here
             .attr("d", d => arc({ ...d, total: 0 }))
             .merge(bars)
             .transition()
@@ -148,7 +166,9 @@ function createRadialBarchart(sharedState, containerId) {
             .attrTween("d", function(d) {
                 const i = d3.interpolate(0, d.total);
                 return t => arc({ ...d, total: i(t) });
-            });
+            })
+            .selection() // Switch back to selection after transition
+            .attr("fill", d => getBarColor(d.year)); // Apply final color after transition
 
         // Tooltip behavior
         svg.selectAll("path")
@@ -158,20 +178,27 @@ function createRadialBarchart(sharedState, containerId) {
                 tooltip.html(`<strong>${d.year}</strong><br/>Total fires: ${d.total}`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
-            })
+                })
             .on("mousemove", function (event) {
                 tooltip.style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
-            .on("mouseout", function () {
-                d3.select(this).attr("fill", barColor);
+            .on("mouseout", function (event, d) {
+                // Revert to the dynamic color based on selection
+                d3.select(this).attr("fill", getBarColor(d.year)); 
                 tooltip.transition().duration(200).style("opacity", 0);
             })
             .on("click", function(event, d) {
-                if (state.yearIndex != state.data.findIndex(yr => yr.year === d.year)) {
-                    sharedState.setYearIndex(state.data.findIndex(yr => yr.year === d.year));
+                 console.log("CHANGING YEAR TO", d.year);
+                // If the clicked year is already the start year, reset the selection to the beginning of the data.
+                // Otherwise, set the clicked year as the new start year (effectively selecting only that year initially).
+                if (state.data[state.startYearIndex]?.year === d.year && state.data[state.endYearIndex]?.year === d.year) {
+                    sharedState.setStartYearIndex(0);
+                    sharedState.setEndYearIndex(0);
                 } else {
-                    sharedState.setYearIndex(0);
+                    const newIndex = state.data.findIndex(yr => yr.year === d.year);
+                    sharedState.setStartYearIndex(newIndex);
+                    sharedState.setEndYearIndex(newIndex); // Set end index to match start for single year selection
                 }
             });
 
@@ -193,10 +220,10 @@ function createRadialBarchart(sharedState, containerId) {
     // Listen to sharedState updates
     // ========================
     sharedState.onChange(state => {
-        if (state.region !== previousRegion) {
-            updateRadialBarChart(state);
-            previousRegion = state.region;
-        }
+        // Update on any state change, especially startYearIndex and endYearIndex, 
+        // regardless of region change
+        updateRadialBarChart(state);
+        previousRegion = state.region; // Still track region change if needed elsewhere
     });
 
 

@@ -122,9 +122,11 @@ function createCausesDonutChart(sharedState, containerId) {
     // Update chart
     // ========================
     function updateCausesChart(state = sharedState) {
-        const year = years[state.getYearIndex()];
-        const causes = getCauses(state.region, year, data);
+        const year = years[state.getStartYearIndex()];
+        const causes = getCausesForRange(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
         const total = d3.sum(causes, d => d.numero);
+
+        titleText.text("Causes of Fires in " + state.region);
 
         svg.selectAll(".no-data-text").remove();
 

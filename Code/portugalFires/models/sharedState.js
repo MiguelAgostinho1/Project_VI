@@ -1,8 +1,9 @@
 class SharedState {
-  constructor(data, region, yearIndex) {
+  constructor(data, region, startYearIndex, endYearIndex) {
     this.data = data;
     this.region = region;
-    this.yearIndex = yearIndex;
+    this.startYearIndex = startYearIndex;
+    this.endYearIndex = endYearIndex;
     this.listeners = [];
   }
 
@@ -22,12 +23,21 @@ class SharedState {
     this.notify();
   }
 
-  setYearIndex(yearIndex) {
-    this.yearIndex = yearIndex;
+  setStartYearIndex(yearIndex) {
+    this.startYearIndex = yearIndex;
     this.notify();
   }
 
-  getYearIndex() {
-    return this.yearIndex;
+  getStartYearIndex() {
+    return this.startYearIndex;
+  }
+
+  setEndYearIndex(yearIndex) {
+    this.endYearIndex = yearIndex;
+    this.notify();
+  }
+
+  getEndYearIndex() {
+    return this.endYearIndex;
   }
 }

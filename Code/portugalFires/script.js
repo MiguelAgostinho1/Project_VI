@@ -15,7 +15,7 @@ function init() {
         ))
     }));
 
-    const sharedState = new SharedState(structured_data, "Portugal", 0);
+    const sharedState = new SharedState(structured_data, "Portugal", 0, structured_data.length - 1);
 
     createTitle(sharedState, ".Title");
     createChoroplethMap(sharedState, ".ChoroplethMap");
