@@ -49,20 +49,6 @@ function createRadialBarchart(sharedState, containerId) {
         .style("font-weight", "bold")
         .text("Total Fires per Year");
 
-    // Dropdown
-    const select = controls.append("select")
-        .on("change", function () {
-            sharedState.setRegion(this.value);
-            updateRadialBarChart(sharedState);
-        });
-
-    select.selectAll("option")
-        .data(regions)
-        .enter()
-        .append("option")
-        .attr("value", d => d)
-        .text(d => d);
-
     // SVG wrapper
     const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
@@ -180,6 +166,13 @@ function createRadialBarchart(sharedState, containerId) {
             .on("mouseout", function () {
                 d3.select(this).attr("fill", barColor);
                 tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .on("click", function(event, d) {
+                if (state.yearIndex != state.data.findIndex(yr => yr.year === d.year)) {
+                    sharedState.setYearIndex(state.data.findIndex(yr => yr.year === d.year));
+                } else {
+                    sharedState.setYearIndex(0);
+                }
             });
 
         // Year labels
@@ -204,9 +197,6 @@ function createRadialBarchart(sharedState, containerId) {
             updateRadialBarChart(state);
             previousRegion = state.region;
         }
-
-        // Sync dropdown selection if region changes elsewhere
-        select.property("value", state.region);
     });
 
 

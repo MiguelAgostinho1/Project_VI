@@ -40,16 +40,7 @@ function createChoroplethMap(sharedState, containerId) {
         .style("display", "flex")
         .style("flex-direction", "column")
         .style("align-items", "center")
-        .style("margin-bottom", "12px")
         .style("gap", "6px");
-
-    // Mapa + legenda lado a lado
-    const mapArea = wrapper.append("div")
-    .style("display", "flex")
-    .style("flex-direction", "row")      // horizontal layout
-    .style("align-items", "center")
-    .style("justify-content", "flex-start")
-    .style("gap", "20px");               // espaço entre mapa e legenda
 
 
     // Title
@@ -97,58 +88,8 @@ function createChoroplethMap(sharedState, containerId) {
             updateMap(sharedState);
         });
 
-
-    // Year Controls
-    const yearControls = controls.append("div")
-    .style("margin", "8px 0")
-    .style("display", "flex")
-    .style("align-items", "center")
-    .style("gap", "8px");
-
-    // Previous year button
-    yearControls.append("button")
-        .text("⟨")
-        .style("padding", "4px 10px")
-        .style("border", "1px solid #999")
-        .style("border-radius", "4px")
-        .style("background", "#f8f8f8")
-        .style("cursor", "pointer")
-        .on("click", () => {
-            let currentYearIndex = sharedState.getYearIndex();
-            if (currentYearIndex > 0) {
-                currentYearIndex--;
-                yearLabel.text(years[currentYearIndex]);
-                sharedState.setYearIndex(currentYearIndex);
-                updateMap(sharedState);
-            }
-        });
-
-    // Year label (bold text between arrows)
-    const yearLabel = yearControls.append("span")
-        .style("font-weight", "bold")
-        .style("font-size", "16px")
-        .text(years[sharedState.getYearIndex()]);
-
-    // Next year button
-    yearControls.append("button")
-        .text("⟩")
-        .style("padding", "4px 10px")
-        .style("border", "1px solid #999")
-        .style("border-radius", "4px")
-        .style("background", "#f8f8f8")
-        .style("cursor", "pointer")
-        .on("click", () => {
-            let currentYearIndex = sharedState.getYearIndex();
-            if (currentYearIndex < years.length - 1) {
-                currentYearIndex++;
-                yearLabel.text(years[currentYearIndex]);
-                sharedState.setYearIndex(currentYearIndex);
-                updateMap(sharedState);
-            }
-        });
-
     // SVG wrapper
-    const svgBase = mapArea.append("svg")
+    const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("width", "100%")
@@ -164,15 +105,12 @@ function createChoroplethMap(sharedState, containerId) {
         // Remove previous legend before drawing a new one
         wrapper.select(".legend").remove();
 
-        const legend = mapArea.append("div")
+        const legend = wrapper.append("div")
             .attr("class", "legend")
             .style("display", "flex")
             .style("justify-content", "center")
-            .style("flex-direction", "column")
-            .style("align-items", "flex-start")
-            .style("gap", "14px")
-            .style("margin-top", "10px")
-            .style("margin-right", "50px")
+            .style("align-items", "center")
+            .style("gap", "10px")
 
         // Get the legend items for the current filter
         legendItems = getLegendItems(currentFilter);
@@ -270,6 +208,13 @@ function createChoroplethMap(sharedState, containerId) {
             })
             .on("mouseout", function () {
                 tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .on("click", function() {
+                if (sharedState.region != "Região Autónoma da Madeira") {
+                    sharedState.setRegion("Região Autónoma da Madeira");
+                } else {
+                    sharedState.setRegion("Portugal");
+                }
             });
         
         madeiraGroup.selectAll("path.region")
@@ -319,6 +264,13 @@ function createChoroplethMap(sharedState, containerId) {
             })
             .on("mouseout", function () {
                 tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .on("click", function(event, d) {
+                if (sharedState.region != "Região Autónoma dos Açores") {
+                    sharedState.setRegion("Região Autónoma dos Açores");
+                } else {
+                    sharedState.setRegion("Portugal");
+                }
             });
         
         azoresGroup.selectAll("path.region")
@@ -352,6 +304,13 @@ function createChoroplethMap(sharedState, containerId) {
                 .on("mouseout", function () {
                     d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#999");
                     tooltip.transition().duration(200).style("opacity", 0);
+                })
+                .on("click", function(event, d) {
+                    if (sharedState.region != d.properties.NAME_LATN) {
+                            sharedState.setRegion(d.properties.NAME_LATN);
+                    } else {
+                        sharedState.setRegion("Portugal");
+                    }
                 });
         }
     
@@ -360,8 +319,6 @@ function createChoroplethMap(sharedState, containerId) {
             const year = years[sharedState.getYearIndex()];
             const mapData = getData(year, sharedState.data, currentFilter);
             regionMap = new Map(mapData.map(d => [d.region, d.total]));
-
-            yearLabel.text(year);
         
             // mainland
             mainlandGroup.selectAll("path.region")

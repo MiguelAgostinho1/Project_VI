@@ -23,15 +23,24 @@ function createDimensionsDonutChart(sharedState, containerId) {
     const colorScale = d3.scaleOrdinal(dimensionColors);
 
     // ========================
+    // Wrapper for controls + chart
+    // ========================
+    const wrapper = d3.select(containerId)
+        .append("div")
+        .style("display", "flex")
+        .style("flex-direction", "column") // stack vertically
+        .style("align-items", "center")
+        .style("justify-content", "center")
+        .style("padding-top", "1vh"); // relative to viewport height
+
+    // ========================
     // Controls wrapper
     // ========================
-    const controls = d3.select(containerId)
-        .append("div")
+    const controls = wrapper.append("div")
         .attr("class", "controls")
         .style("display", "flex")
         .style("flex-direction", "column")
         .style("align-items", "center")
-        .style("margin-bottom", "12px");
 
     // Title with arrows
     const titleWrapper = controls.append("div")
@@ -39,8 +48,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .style("display", "flex")
         .style("align-items", "center")
         .style("justify-content", "center")
-        .style("gap", "12px")
-        .style("font-size", "18px")
+        .style("gap", "4px")
         .style("font-weight", "bold");
 
     titleWrapper.append("span")
@@ -49,7 +57,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .on("click", () => switchChart(-1));
 
     const titleText = titleWrapper.append("span")
-        .text("Dimensions of Fires");
+        .text("Dimensions of Fires in " + sharedState.region);
 
     titleWrapper.append("span")
         .style("cursor", "pointer")
@@ -57,52 +65,13 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .on("click", () => switchChart(1));
 
     // ========================
-    // Region dropdown
-    // ========================
-    const select = controls.append("select")
-        .on("change", function () {
-            sharedState.setRegion(this.value);
-        });
-
-    select.selectAll("option")
-        .data(regions)
-        .enter()
-        .append("option")
-        .attr("value", d => d)
-        .text(d => d);
-
-    // ========================
-    // Year controls
-    // ========================
-    const yearControls = controls.append("div").style("margin", "8px 0");
-
-    yearControls.append("button")
-        .text("⟨")
-        .on("click", () => {
-            const index = sharedState.getYearIndex() - 1;
-            if (index >= 0) sharedState.setYearIndex(index);
-        });
-
-    const yearLabel = yearControls.append("span")
-        .style("margin", "0 10px")
-        .style("font-weight", "bold")
-        .text(years[sharedState.getYearIndex()]);
-
-    yearControls.append("button")
-        .text("⟩")
-        .on("click", () => {
-            const index = sharedState.getYearIndex() + 1;
-            if (index < years.length) sharedState.setYearIndex(index);
-        });
-
-    // ========================
     // Chart wrapper
     // ========================
-    const chartWrapper = d3.select(containerId)
+    const chartWrapper = wrapper.append("div")
         .append("div")
         .style("display", "flex")
         .style("align-items", "center")
-        .style("justify-content", "center");
+        .style("justify-content", "center")
 
     const svgBase = chartWrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
@@ -128,7 +97,6 @@ function createDimensionsDonutChart(sharedState, containerId) {
     // Legend
     const legend = chartWrapper.append("div")
         .attr("class", "legend")
-        .style("margin-left", "20px");
 
     function updateLegend(dimensions) {
         legend.html("");
@@ -156,8 +124,6 @@ function createDimensionsDonutChart(sharedState, containerId) {
         const dimensions = getDimensions(state.region, year, data);
         const total = d3.sum(dimensions, d => d.numero);
 
-        yearLabel.text(year);
-        select.property("value", state.region);
         svg.selectAll(".no-data-text").remove();
 
         if (total === 0) {

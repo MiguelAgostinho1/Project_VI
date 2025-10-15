@@ -17,6 +17,7 @@ function init() {
 
     const sharedState = new SharedState(structured_data, "Portugal", 0);
 
+    createTitle(sharedState, ".Title");
     createChoroplethMap(sharedState, ".ChoroplethMap");
     createRadialBarchart(sharedState, ".RadialBarChart");
     createCausesDonutChart(sharedState, ".CausesDonutChart");
