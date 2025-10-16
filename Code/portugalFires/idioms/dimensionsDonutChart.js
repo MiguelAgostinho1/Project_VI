@@ -49,6 +49,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .style("align-items", "center")
         .style("justify-content", "center")
         .style("gap", "4px")
+        .style("padding-bottom", "16px")
         .style("font-size", "18px")
         .style("font-weight", "bold")
 

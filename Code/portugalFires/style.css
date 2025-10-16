@@ -44,13 +44,13 @@ body {
   grid-area: RadialBarChart;
   display: flex;
   flex-direction: column; /* Keep it column to stack title and chart */
+  flex-grow: 1; /* Allow it to grow and fill available space */
   padding-top: 6px; /* Reduced from 12px, or set to 0 */
   border-top: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   border-left: 2px solid #ccc;
   width: 100%;
   height: 100%;
-  /* Optional: Keep it at the start, or center it if you prefer */
   justify-content: flex-start; 
 }
 
@@ -59,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 12px;
+  padding-top: 6px;
   border-left: 2px solid #ccc;
   width: 100%;
   height: 100%;

@@ -95,7 +95,7 @@ function createChoroplethMap(sharedState, containerId) {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("width", "100%")
-        .style("height", "80vh");
+        .style("height", "73vh");
 
     const svg = svgBase.append("g")
         .attr("transform", "translate(80, 0)");

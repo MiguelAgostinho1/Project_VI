@@ -12,11 +12,11 @@ function createRadialBarchart(sharedState, containerId) {
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
     regions.unshift("Portugal");
 
-    const width = window.innerWidth * 0.4;
-    const height = window.innerHeight * 0.6;
+    const width = window.innerWidth * 0.3;
+    const height = window.innerHeight * 0.45;
     const minDim = Math.min(width, height);
     const innerR = minDim * 0.15;
-    const outerR = minDim * 0.40;
+    const outerR = minDim * 0.45;
     let previousRegion = sharedState.region;
 
     const tooltip = container.append("div")
@@ -53,8 +53,8 @@ function createRadialBarchart(sharedState, containerId) {
     const svgBase = wrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet") 
-        .style("width", "100%")
-        .style("height", "55vh");
+        .style("width", width + "px")
+        .style("height", height + "px");
 
     const svg = svgBase.append("g")
         .attr("transform", `translate(${width / 2},${height / 2.3})`);
@@ -208,11 +208,11 @@ function createRadialBarchart(sharedState, containerId) {
             .enter()
             .append("text")
             .attr("class", "year-label")
-            .attr("x", -10)
+            .attr("x", -6)
             .attr("y", d => -bandScale(d.year) - bandScale.bandwidth() / 2 + barPadding)
             .attr("text-anchor", "end")
             .style("alignment-baseline", "middle")
-            .style("font-size", "10px")
+            .style("font-size", `${Math.max(6, bandScale.bandwidth() * 0.4)}px`)
             .text(d => d.year);
     }
 
