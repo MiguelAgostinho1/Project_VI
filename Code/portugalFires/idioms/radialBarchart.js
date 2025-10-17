@@ -17,7 +17,6 @@ function createRadialBarchart(sharedState, containerId) {
     const minDim = Math.min(width, height);
     const innerR = minDim * 0.15;
     const outerR = minDim * 0.45;
-    let previousRegion = sharedState.region;
 
     const tooltip = container.append("div")
         .style("position", "absolute")
@@ -220,10 +219,8 @@ function createRadialBarchart(sharedState, containerId) {
     // Listen to sharedState updates
     // ========================
     sharedState.onChange(state => {
-        // Update on any state change, especially startYearIndex and endYearIndex, 
-        // regardless of region change
+        // Update on any state change
         updateRadialBarChart(state);
-        previousRegion = state.region; // Still track region change if needed elsewhere
     });
 
 
