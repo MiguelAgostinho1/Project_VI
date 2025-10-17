@@ -190,11 +190,11 @@ function createRadialBarchart(sharedState, containerId) {
             })
             .on("click", function(event, d) {
                  console.log("CHANGING YEAR TO", d.year);
-                // If the clicked year is already the start year, reset the selection to the beginning of the data.
+                // If the clicked year is already the start year, reset the selection to the default year state (2010-2024).
                 // Otherwise, set the clicked year as the new start year (effectively selecting only that year initially).
                 if (state.data[state.startYearIndex]?.year === d.year && state.data[state.endYearIndex]?.year === d.year) {
                     sharedState.setStartYearIndex(0);
-                    sharedState.setEndYearIndex(0);
+                    sharedState.setEndYearIndex(state.data.length - 1);
                 } else {
                     const newIndex = state.data.findIndex(yr => yr.year === d.year);
                     sharedState.setStartYearIndex(newIndex);
