@@ -201,19 +201,21 @@ function createChoroplethMap(sharedState, containerId) {
             .on("mouseover", function (event) {
                 const val = regionMap.get("Região Autónoma da Madeira");
                 tooltip.transition().duration(200).style("opacity", 1);
+                const [x, y] = d3.pointer(event, container.node());
                 if(currentFilter!="Total Fires"){
                 tooltip.html(`<strong>Região Autónoma da Madeira</strong><br/>${currentFilter}: ${val != null ? format3(val) : "N/A"}`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                    .style("left", (x + 10) + "px")
+                    .style("top", (y - 28) + "px");
                 }else{
                     tooltip.html(`<strong>Região Autónoma da Madeira</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
+                        .style("left", (x + 10) + "px")
+                        .style("top", (y - 28) + "px");
                 }
             })
             .on("mousemove", function (event) {
-                tooltip.style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                const [x, y] = d3.pointer(event, container.node());
+                tooltip.style("left", (x + 10) + "px")
+                    .style("top", (y - 28) + "px");
             })
             .on("mouseout", function () {
                 tooltip.transition().duration(200).style("opacity", 0);
@@ -263,19 +265,21 @@ function createChoroplethMap(sharedState, containerId) {
             .on("mouseover", function (event) {
                 const val = regionMap.get("Região Autónoma dos Açores");
                 tooltip.transition().duration(200).style("opacity", 1);
+                const [x, y] = d3.pointer(event, container.node());
                 if(currentFilter!="Total Fires" && currentFilter!="Percentage Burned"){
-                tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>${currentFilter}: ${val != null ? format3(val) : "N/A"}`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                    tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>${currentFilter}: ${val != null ? format3(val) : "N/A"}`)
+                        .style("left", (x + 10) + "px")
+                        .style("top", (y - 28) + "px");
                 } else{
-                tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                    tooltip.html(`<strong>Região Autónoma dos Açores</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
+                        .style("left", (x + 10) + "px")
+                        .style("top", (y - 28) + "px");
                 }
             })
             .on("mousemove", function (event) {
-                tooltip.style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                const [x, y] = d3.pointer(event, container.node());
+                tooltip.style("left", (x + 10) + "px")
+                    .style("top", (y - 28) + "px");
             })
             .on("mouseout", function () {
                 tooltip.transition().duration(200).style("opacity", 0);
@@ -310,28 +314,28 @@ function createChoroplethMap(sharedState, containerId) {
                     // d3.select(this).attr("stroke-width", 1.2).attr("stroke", "#000"); // <-- REMOVER/COMENTAR
                     d3.select(this)
                         .style("opacity", 0.9) // Adiciona um pequeno efeito de hover no fill
-                        .raise(); // Traz o elemento para a frente
                     
+                    const [x, y] = d3.pointer(event, container.node());
                     tooltip.transition().duration(200).style("opacity", 1);
-                    // ... (O resto da lógica do tooltip permanece)
                     if(currentFilter!="Total Fires"){
-                    tooltip.html(`<strong>${d.properties.NAME_LATN}</strong><br/>${currentFilter}: ${val != null ? format3(val) : "N/A"}`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
+                        tooltip.html(`<strong>${d.properties.NAME_LATN}</strong><br/>${currentFilter}: ${val != null ? format3(val) : "N/A"}`)
+                            .style("left", (x + 10) + "px")
+                            .style("top", (y - 28) + "px");
                     }else{
                         tooltip.html(`<strong>${d.properties.NAME_LATN}</strong><br/>${currentFilter}: ${val ?? "N/A"}`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
+                        .style("left", (x + 10) + "px")
+                        .style("top", (y - 28) + "px");
                     }
                 })
                 .on("mousemove", function (event) {
-                    tooltip.style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
+                    const [x, y] = d3.pointer(event, container.node());
+                    tooltip.style("left", (x + 10) + "px")
+                        .style("top", (y - 28) + "px");
                 })
                 .on("mouseout", function (event, d) {
                     // VAMOS REMOVER A ALTERAÇÃO DO STROKE AQUI
                     // d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#999"); // <-- REMOVER/COMENTAR
-                    d3.select(this).style("opacity", 1); // Remove o efeito de hover no fill
+                    d3.select(this).style("opacity", 1) // Remove o efeito de hover no fill
                     tooltip.transition().duration(200).style("opacity", 0);
                     
                     // ATENÇÃO: Se o elemento não estiver selecionado, pode querer restaurar o stroke-width original.
@@ -340,6 +344,7 @@ function createChoroplethMap(sharedState, containerId) {
                     // Manter o stroke inalterado aqui é a melhor abordagem para a seleção persistente.
                 })
                 .on("click", function(event, d) {
+                    d3.select(this).style("opacity", 1);
                     if (sharedState.region != d.properties.NAME_LATN) {
                         sharedState.setRegion(d.properties.NAME_LATN);
                     } else {
@@ -367,7 +372,10 @@ function createChoroplethMap(sharedState, containerId) {
                     return val !== undefined ? getColor(val, currentFilter, range) : missingDataColor;
                 })
                 .attr("stroke", d => d.properties.NAME_LATN === sharedState.region ? "#000" : "#999")   // cor do contorno
-                .attr("stroke-width", d => d.properties.NAME_LATN === sharedState.region ? 3 : 0.6);
+                .attr("stroke-width", d => d.properties.NAME_LATN === sharedState.region ? 3 : 0.6)
+                .selection() // exit transition context
+                .filter(d => d.properties.NAME_LATN === sharedState.region)
+                .raise();
             
             
             // madeira inset
