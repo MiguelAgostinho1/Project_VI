@@ -39,64 +39,93 @@ function createDonutChart(sharedState, containerId, config) {
         .append("div")
         .style("display", "flex")
         .style("flex-direction", "column")
-        .style("align-items", "center")
-        .style("justify-content", "center")
-        .style("padding-top", "1vh");
 
     // ========================
-    // Controls wrapper
+    // Wrappers for title + controls + chart
     // ========================
-    const controls = wrapper.append("div")
-        .attr("class", "controls")
-        .style("display", "flex")
-        .style("flex-direction", "column")
-        .style("align-items", "center");
-
-    // Title container (stacked layout)
-    const titleWrapper = controls.append("div")
+    // Title (above everything)
+    const titleWrapper = wrapper.append("div")
         .attr("class", "donut-title")
         .style("display", "flex")
-        .style("flex-direction", "column")   // stack title and toggle vertically
+        .style("flex-direction", "column")
         .style("align-items", "center")
-        .style("justify-content", "center")
-        .style("gap", "8px")
-        .style("padding-bottom", "16px");
+        .style("gap", "4px")
+        .style("margin-bottom", "4px"); 
 
-    // Title text above toggle
     const titleText = titleWrapper.append("span")
         .style("font-size", "18px")
         .style("font-weight", "bold")
         .text("Fire Characteristics in " + sharedState.region);
 
-    // Toggle + labels row
-    const toggleRow = titleWrapper.append("div")
+    // Create a horizontal layout for toggles + chart
+    const chartArea = wrapper.append("div")
+        .style("display", "flex")
+
+    // Toggle controls (on the left)
+    const toggleControls = chartArea.append("div")
+        .attr("class", "toggle-controls")
+        .style("display", "flex")
+
+    // Chart + legend wrapper (on the right)
+    const chartWrapper = chartArea.append("div")
         .style("display", "flex")
         .style("align-items", "center")
         .style("justify-content", "center")
+        .style("gap", "20px");
+
+    // Toggle + labels row
+    const toggleRow = toggleControls.append("div")
+        .style("display", "flex")
+        .style("align-items", "flex-start")
+        .style("justify-content", "center")
+        .style("flex-direction", "column")
         .style("gap", "4px");
 
-    // Left label
-    toggleRow.append("span")
+    // Toggle group for Dimensions
+    const dimensionsGroup = toggleRow.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "6px");
+
+    dimensionsGroup.append("span")
         .attr("class", "chart-label")
         .style("font-weight", "bold")
+        .style("display", "inline-block")
+        .style("width", "100px") // ensures alignment
         .text("Dimensions");
 
-    // Rounded toggle switch
-    const toggleWrapper = toggleRow.append("label")
+    const dimensionsToggleWrapper = dimensionsGroup.append("label")
         .attr("class", "toggle-switch");
 
-    const toggleInput = toggleWrapper.append("input")
+    const dimensionsToggleInput = dimensionsToggleWrapper.append("input")
         .attr("type", "checkbox")
         .on("change", switchChart);
 
-    toggleWrapper.append("span")
+    dimensionsToggleWrapper.append("span")
         .attr("class", "slider");
 
-    // Right label
-    toggleRow.append("span")
+    // Toggle group for Causes
+    const causesGroup = toggleRow.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "4px");
+
+    causesGroup.append("span")
         .attr("class", "chart-label")
         .style("font-weight", "bold")
+        .style("display", "inline-block")
+        .style("width", "100px")
         .text("Causes");
+
+    const causesToggleWrapper = causesGroup.append("label")
+        .attr("class", "toggle-switch");
+
+    const causesToggleInput = causesToggleWrapper.append("input")
+        .attr("type", "checkbox")
+        .on("change", switchChart);
+
+    causesToggleWrapper.append("span")
+        .attr("class", "slider");
 
     function switchChart() {
         const thisChart = d3.select(containerId);
@@ -112,12 +141,6 @@ function createDonutChart(sharedState, containerId, config) {
     // ========================
     // Chart wrapper
     // ========================
-    const chartWrapper = wrapper.append("div")
-        .append("div")
-        .style("display", "flex")
-        .style("align-items", "center")
-        .style("justify-content", "center");
-
     const svgBase = chartWrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
@@ -187,10 +210,12 @@ function createDonutChart(sharedState, containerId, config) {
 
         // Visually update toggle
         if (config.inactiveSelector === ".CausesDonutChart") {
-            toggleInput.property("checked", false);
+            dimensionsToggleInput.property("checked", true);
+            causesToggleInput.property("checked", false);
         } else {
-            toggleInput.property("checked", true);
-        } 
+            dimensionsToggleInput.property("checked", false);
+            causesToggleInput.property("checked", true);
+        }
 
         titleText.text("Fire Characteristics in " + state.region);
 
