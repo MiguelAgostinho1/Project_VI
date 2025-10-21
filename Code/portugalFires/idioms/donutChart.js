@@ -52,47 +52,62 @@ function createDonutChart(sharedState, containerId, config) {
         .style("flex-direction", "column")
         .style("align-items", "center");
 
-    // Title with arrows
+    // Title container (stacked layout)
     const titleWrapper = controls.append("div")
         .attr("class", "donut-title")
         .style("display", "flex")
+        .style("flex-direction", "column")   // stack title and toggle vertically
         .style("align-items", "center")
         .style("justify-content", "center")
-        .style("gap", "4px")
-        .style("padding-bottom", "16px")
-        .style("font-size", "18px")
-        .style("font-weight", "bold");
+        .style("gap", "8px")
+        .style("padding-bottom", "16px");
 
-    // Title text
+    // Title text above toggle
     const titleText = titleWrapper.append("span")
-        .text(config.titlePrefix + sharedState.region);
+        .style("font-size", "18px")
+        .style("font-weight", "bold")
+        .text("Fire Characteristics in " + sharedState.region);
 
-    // Switch chart logic (local to this chart)
+    // Toggle + labels row
+    const toggleRow = titleWrapper.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("justify-content", "center")
+        .style("gap", "4px");
+
+    // Left label
+    toggleRow.append("span")
+        .attr("class", "chart-label")
+        .style("font-weight", "bold")
+        .text("Dimensions");
+
+    // Rounded toggle switch
+    const toggleWrapper = toggleRow.append("label")
+        .attr("class", "toggle-switch");
+
+    const toggleInput = toggleWrapper.append("input")
+        .attr("type", "checkbox")
+        .on("change", switchChart);
+
+    toggleWrapper.append("span")
+        .attr("class", "slider");
+
+    // Right label
+    toggleRow.append("span")
+        .attr("class", "chart-label")
+        .style("font-weight", "bold")
+        .text("Causes");
+
     function switchChart() {
-        const isActive = d3.select(containerId).classed("active");
-        if (!isActive) return;
-
-        // Toggle visibility between current and inactive chart
         const thisChart = d3.select(containerId);
         const otherChart = d3.select(config.inactiveSelector);
 
-        const thisActive = thisChart.classed("active");
-        thisChart.classed("active", !thisActive);
-        otherChart.classed("active", thisActive);
-
-        // Optionally, reset tooltips or UI if needed
+        // Flip active states
+        thisChart.classed("active", !thisChart.classed("active"));
+        otherChart.classed("active", !otherChart.classed("active"));
+        
+        updateChart(sharedState);
     }
-
-    // Add left/right arrows
-    titleWrapper.insert("span", ":first-child")
-        .style("cursor", "pointer")
-        .text("⟨")
-        .on("click", switchChart);
-
-    titleWrapper.append("span")
-        .style("cursor", "pointer")
-        .text("⟩")
-        .on("click", switchChart);
 
     // ========================
     // Chart wrapper
@@ -154,7 +169,14 @@ function createDonutChart(sharedState, containerId, config) {
         const chartData = config.dataFunction(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
         const total = d3.sum(chartData, d => d.numero);
 
-        titleText.text(config.titlePrefix + state.region);
+        // Visually update toggle
+        if (config.inactiveSelector === ".CausesDonutChart") {
+            toggleInput.property("checked", false);
+        } else {
+            toggleInput.property("checked", true);
+        } 
+
+        titleText.text("Fire Characteristics in " + state.region);
 
         svg.selectAll(".no-data-text").remove();
 

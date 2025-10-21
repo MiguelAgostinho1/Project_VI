@@ -1,11 +1,6 @@
 function createTitle(sharedState, containerId) {
     const container = d3.select(containerId);
 
-    // Helper to get the X position of an index, clamped to the scale's visual limits
-    function getXFromIndex(index) {
-        return xScale(Math.max(minIndex, Math.min(maxIndex, index)));
-    }
-
     // ========================
     // Setup
     // ========================
@@ -74,7 +69,7 @@ function createTitle(sharedState, containerId) {
         .attr("class", "slider-range")
         .attr("y1", TRACK_Y)
         .attr("y2", TRACK_Y)
-        .style("stroke", "#7393b3") // Green color for selected range
+        .style("stroke", "#7393b3")
         .style("stroke-width", 6)
         .style("stroke-linecap", "round");
 
