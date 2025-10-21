@@ -148,9 +148,25 @@ function createDonutChart(sharedState, containerId, config) {
         legend.html("");
         chartData.forEach(c => {
             const row = legend.append("div")
+                .attr("class", "legend-row")
                 .style("display", "flex")
                 .style("align-items", "center")
-                .style("margin-bottom", "4px");
+                .style("margin-bottom", "4px")
+                .style("cursor", "pointer")
+                .on("mouseover", function () {
+                    // Destaca a fatia correspondente
+                    svg.selectAll("path")
+                        .filter(d => d.data.label === c.label)
+                        .attr("stroke", "#000")
+                        .attr("stroke-width", 1.5)
+                        .raise(); // traz para a frente
+                })
+                .on("mouseout", function () {
+                    // Remove destaque
+                    svg.selectAll("path")
+                        .filter(d => d.data.label === c.label)
+                        .attr("stroke", "none");
+                });
 
             row.append("div")
                 .style("width", "14px")
