@@ -30,7 +30,6 @@ function createDonutChart(sharedState, containerId, config) {
         .sort(null)
         .value(d => d.numero);
 
-    // Use config for colors
     const colorScale = d3.scaleOrdinal(config.colors);
 
     // ========================
@@ -64,19 +63,36 @@ function createDonutChart(sharedState, containerId, config) {
         .style("font-size", "18px")
         .style("font-weight", "bold");
 
-    titleWrapper.append("span")
-        .style("cursor", "pointer")
-        .text("⟨")
-        .on("click", () => switchChart(-1)); // Assumes switchChart is globally available
-
-    // Use config for title
+    // Title text
     const titleText = titleWrapper.append("span")
         .text(config.titlePrefix + sharedState.region);
+
+    // Switch chart logic (local to this chart)
+    function switchChart() {
+        const isActive = d3.select(containerId).classed("active");
+        if (!isActive) return;
+
+        // Toggle visibility between current and inactive chart
+        const thisChart = d3.select(containerId);
+        const otherChart = d3.select(config.inactiveSelector);
+
+        const thisActive = thisChart.classed("active");
+        thisChart.classed("active", !thisActive);
+        otherChart.classed("active", thisActive);
+
+        // Optionally, reset tooltips or UI if needed
+    }
+
+    // Add left/right arrows
+    titleWrapper.insert("span", ":first-child")
+        .style("cursor", "pointer")
+        .text("⟨")
+        .on("click", switchChart);
 
     titleWrapper.append("span")
         .style("cursor", "pointer")
         .text("⟩")
-        .on("click", () => switchChart(1));
+        .on("click", switchChart);
 
     // ========================
     // Chart wrapper
@@ -111,7 +127,7 @@ function createDonutChart(sharedState, containerId, config) {
     // Legend
     const legend = chartWrapper.append("div")
         .attr("class", "legend")
-        .style("margin-left", "20px"); // Added margin from Causes chart
+        .style("margin-left", "20px");
 
     function updateLegend(chartData) {
         legend.html("");
@@ -135,15 +151,11 @@ function createDonutChart(sharedState, containerId, config) {
     // Update chart
     // ========================
     function updateChart(state = sharedState) {
-        const year = years[state.getStartYearIndex()];
-        
-        // Use config for data function
         const chartData = config.dataFunction(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
         const total = d3.sum(chartData, d => d.numero);
 
-        // Use config for title prefix
         titleText.text(config.titlePrefix + state.region);
-        
+
         svg.selectAll(".no-data-text").remove();
 
         if (total === 0) {
@@ -169,7 +181,7 @@ function createDonutChart(sharedState, containerId, config) {
             .append("path")
             .attr("fill", d => colorScale(d.data.label))
             .attr("d", arc)
-            .each(function(d) { this._current = d; }) // Store current angles
+            .each(function(d) { this._current = d; })
             .merge(paths)
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("stroke", "#000").attr("stroke-width", 1.5);
@@ -208,7 +220,6 @@ function createDonutChart(sharedState, containerId, config) {
     // ========================
     // Initialize
     // ========================
-    // Use containerId and config for selectors
     d3.select(containerId).classed("active", true);
     d3.select(config.inactiveSelector).classed("active", false);
 

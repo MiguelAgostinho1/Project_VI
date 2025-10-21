@@ -20,8 +20,6 @@ function getTotals(region, data) {
 // ============================================
 // Donut chart helper functions and variables
 // ============================================
-// Title
-const title = d3.select("#donutChartTitle");
 const dimensionColors = [
     "#ffdc32",
     "#ffcd5a",
@@ -56,21 +54,6 @@ const dimensionsConfig = {
     colors: dimensionColors,
     inactiveSelector: ".CausesDonutChart"
 };
-
-// Title with arrows
-let charts = ["dimensions", "causes"];
-let currentChartIndex = 0;
-function switchChart(direction) {
-    currentChartIndex = (currentChartIndex + direction + charts.length) % charts.length;
-    const currentChart = charts[currentChartIndex];
-
-    d3.select(".CausesDonutChart").classed("active", currentChart === "causes");
-    d3.select(".DimensionsDonutChart").classed("active", currentChart === "dimensions");
-
-    titleText.text(
-        currentChart === "causes" ? "Causes of Fires" : "Dimensions of Fires"
-    );
-}
 
 // Helper function to extract years from indices
 function getYearsInRange(startYearIndex, endYearIndex, data) {
