@@ -127,7 +127,7 @@ body {
 
 /* When checked, make it green and move the knob */
 .toggle-switch input:checked + .slider {
-  background-color: #7393b3;
+  background-color: #ccc;
 }
 
 .toggle-switch input:checked + .slider:before {
