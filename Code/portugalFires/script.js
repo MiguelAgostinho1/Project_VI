@@ -20,7 +20,7 @@ function init() {
     createTitle(sharedState, ".Title");
     createChoroplethMap(sharedState, ".ChoroplethMap");
     createRadialBarchart(sharedState, ".RadialBarChart");
-    createCausesDonutChart(sharedState, ".CausesDonutChart");
-    createDimensionsDonutChart(sharedState, ".DimensionsDonutChart");
+    createDonutChart(sharedState, ".CausesDonutChart", causesConfig);
+    createDonutChart(sharedState, ".DimensionsDonutChart", dimensionsConfig);
   });
 }

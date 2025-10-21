@@ -1,8 +1,18 @@
-function createDimensionsDonutChart(sharedState, containerId) {
+/**
+ * Creates a configurable donut chart.
+ * @param {object} sharedState - The shared state object.
+ * @param {string} containerId - The selector for the chart's container (e.g., ".CausesDonutChart").
+ * @param {object} config - Configuration object for the chart.
+ * @param {string} config.titlePrefix - The text to show before the region name (e.g., "Causes of Fires in ").
+ * @param {function} config.dataFunction - The function to call to get the data (e.g., getCausesForRange).
+ * @param {string[]} config.colors - The array of colors for the color scale (e.g., causeColors).
+ * @param {string} config.inactiveSelector - The selector for the *other* chart to deactivate (e.g., ".DimensionsDonutChart").
+ */
+function createDonutChart(sharedState, containerId, config) {
     // ========================
     // Setup
     // ========================
-    const data = sharedState.data; // Optional if you store data there
+    const data = sharedState.data;
     const regions = Array.from(new Set(data.flatMap(d => d.regions.map(r => r.region))));
     regions.unshift("Portugal");
 
@@ -20,7 +30,8 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .sort(null)
         .value(d => d.numero);
 
-    const colorScale = d3.scaleOrdinal(dimensionColors);
+    // Use config for colors
+    const colorScale = d3.scaleOrdinal(config.colors);
 
     // ========================
     // Wrapper for controls + chart
@@ -28,10 +39,10 @@ function createDimensionsDonutChart(sharedState, containerId) {
     const wrapper = d3.select(containerId)
         .append("div")
         .style("display", "flex")
-        .style("flex-direction", "column") // stack vertically
+        .style("flex-direction", "column")
         .style("align-items", "center")
         .style("justify-content", "center")
-        .style("padding-top", "1vh"); // relative to viewport height
+        .style("padding-top", "1vh");
 
     // ========================
     // Controls wrapper
@@ -40,7 +51,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .attr("class", "controls")
         .style("display", "flex")
         .style("flex-direction", "column")
-        .style("align-items", "center")
+        .style("align-items", "center");
 
     // Title with arrows
     const titleWrapper = controls.append("div")
@@ -51,15 +62,16 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .style("gap", "4px")
         .style("padding-bottom", "16px")
         .style("font-size", "18px")
-        .style("font-weight", "bold")
+        .style("font-weight", "bold");
 
     titleWrapper.append("span")
         .style("cursor", "pointer")
         .text("⟨")
-        .on("click", () => switchChart(-1));
+        .on("click", () => switchChart(-1)); // Assumes switchChart is globally available
 
+    // Use config for title
     const titleText = titleWrapper.append("span")
-        .text("Dimensions of Fires in " + sharedState.region);
+        .text(config.titlePrefix + sharedState.region);
 
     titleWrapper.append("span")
         .style("cursor", "pointer")
@@ -73,7 +85,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
         .append("div")
         .style("display", "flex")
         .style("align-items", "center")
-        .style("justify-content", "center")
+        .style("justify-content", "center");
 
     const svgBase = chartWrapper.append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
@@ -99,10 +111,11 @@ function createDimensionsDonutChart(sharedState, containerId) {
     // Legend
     const legend = chartWrapper.append("div")
         .attr("class", "legend")
+        .style("margin-left", "20px"); // Added margin from Causes chart
 
-    function updateLegend(dimensions) {
+    function updateLegend(chartData) {
         legend.html("");
-        dimensions.forEach(d => {
+        chartData.forEach(c => {
             const row = legend.append("div")
                 .style("display", "flex")
                 .style("align-items", "center")
@@ -112,21 +125,24 @@ function createDimensionsDonutChart(sharedState, containerId) {
                 .style("width", "14px")
                 .style("height", "14px")
                 .style("margin-right", "6px")
-                .style("background-color", colorScale(d.label));
+                .style("background-color", colorScale(c.label));
 
-            row.append("span").text(d.label);
+            row.append("span").text(c.label);
         });
     }
 
     // ========================
     // Update chart
     // ========================
-    function updateDimensionsChart(state = sharedState) {
+    function updateChart(state = sharedState) {
         const year = years[state.getStartYearIndex()];
-        const dimensions = getDimensionsForRange(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
-        const total = d3.sum(dimensions, d => d.numero);
+        
+        // Use config for data function
+        const chartData = config.dataFunction(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
+        const total = d3.sum(chartData, d => d.numero);
 
-        titleText.text("Dimensions of Fires in " + state.region);
+        // Use config for title prefix
+        titleText.text(config.titlePrefix + state.region);
         
         svg.selectAll(".no-data-text").remove();
 
@@ -142,7 +158,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
             return;
         }
 
-        const arcs = pie(dimensions);
+        const arcs = pie(chartData);
 
         const paths = svg.selectAll("path")
             .data(arcs, d => d.data.label);
@@ -153,7 +169,7 @@ function createDimensionsDonutChart(sharedState, containerId) {
             .append("path")
             .attr("fill", d => colorScale(d.data.label))
             .attr("d", arc)
-            .each(function(d) { this._current = d; })
+            .each(function(d) { this._current = d; }) // Store current angles
             .merge(paths)
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("stroke", "#000").attr("stroke-width", 1.5);
@@ -179,21 +195,22 @@ function createDimensionsDonutChart(sharedState, containerId) {
                 return t => arc(interpolate(t));
             });
 
-        updateLegend(dimensions);
+        updateLegend(chartData);
     }
 
     // ========================
     // Listen to sharedState updates
     // ========================
     sharedState.onChange(state => {
-        updateDimensionsChart(state);
+        updateChart(state);
     });
 
     // ========================
     // Initialize
     // ========================
-    d3.select(".DimensionsDonutChart").classed("active", true);
-    d3.select(".CausesDonutChart").classed("active", false);
+    // Use containerId and config for selectors
+    d3.select(containerId).classed("active", true);
+    d3.select(config.inactiveSelector).classed("active", false);
 
-    updateDimensionsChart(sharedState);
+    updateChart(sharedState);
 }

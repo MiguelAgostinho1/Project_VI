@@ -42,6 +42,21 @@ const causeColors = [
     "#999999"
 ];
 
+// Define configurations
+const causesConfig = {
+    titlePrefix: "Causes of Fires in ",
+    dataFunction: getCausesForRange,  // Pass the function itself
+    colors: causeColors,
+    inactiveSelector: ".DimensionsDonutChart"
+};
+
+const dimensionsConfig = {
+    titlePrefix: "Dimensions of Fires in ",
+    dataFunction: getDimensionsForRange, // Pass the function itself
+    colors: dimensionColors,
+    inactiveSelector: ".CausesDonutChart"
+};
+
 // Title with arrows
 let charts = ["dimensions", "causes"];
 let currentChartIndex = 0;
@@ -79,8 +94,8 @@ function getCausesForRange(region, startYearIndex, endYearIndex, data) {
             // Aggregation across regions AND years
             yearData.regions.forEach(r => {
                 (r.causas || []).forEach(c => {
-                    const prev = causeMap.get(c.causa) || 0;
-                    causeMap.set(c.causa, prev + (c.numero || 0));
+                    const prev = causeMap.get(c.label) || 0;
+                    causeMap.set(c.label, prev + (c.numero || 0));
                 });
             });
         } else {
@@ -88,15 +103,15 @@ function getCausesForRange(region, startYearIndex, endYearIndex, data) {
             const regionData = yearData.regions.find(r => r.region === region);
             if (regionData) {
                 (regionData.causas || []).forEach(c => {
-                    const prev = causeMap.get(c.causa) || 0;
-                    causeMap.set(c.causa, prev + (c.numero || 0));
+                    const prev = causeMap.get(c.label) || 0;
+                    causeMap.set(c.label, prev + (c.numero || 0));
                 });
             }
         }
     });
 
     // 3. Convert the map back to the desired array format
-    return Array.from(causeMap, ([causa, numero]) => ({ causa, numero }));
+    return Array.from(causeMap, ([label, numero]) => ({ label, numero }));
 }
 
 function getDimensionsForRange(region, startYearIndex, endYearIndex, data) {

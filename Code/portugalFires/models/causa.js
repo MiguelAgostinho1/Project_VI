@@ -1,7 +1,7 @@
 // One cause entry
 class Causa {
   constructor(causa, numero) {
-    this.causa = causa;
+    this.label = causa;
     this.numero = numero;
   }
 }
