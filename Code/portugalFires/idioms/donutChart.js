@@ -175,6 +175,7 @@ function createDonutChart(sharedState, containerId, config) {
                 .style("display", "flex")
                 .style("align-items", "center")
                 .style("margin-bottom", "4px")
+                .style("width", "200px")
                 .style("cursor", "pointer")
                 .on("mouseover", function () {
                     // Destaca a fatia correspondente
