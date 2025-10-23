@@ -131,43 +131,43 @@ function createRadialBarchart(sharedState, containerId) {
 
         let totalFires = 0;
         let totalArea = 0;
-        let totalSapadores = 0;
-        let totalPercentagem = 0;
-        let totalEficaciaIndex = 0;
-        let totalPrevencaoIndex = 0;
+        let totalFirefighters = 0;
+        let totalPercentage = 0;
+        let totalEfficiencyIndex = 0;
+        let totalPreventionIndex = 0;
         let totalBurnedAreaKm2 = 0;
 
-        yearsData.forEach(yr => {
+        yearsData.forEach(year => {
             if (region === "Portugal") {
-                yr.regions.forEach(r => {
+                year.regions.forEach(r => {
                     const area = r.area || 0;
-                    const percentagem = r.percentagem || 0;
+                    const percentage = r.percentagem || 0;
 
                     totalFires += r.total || 0;
                     totalArea += area || 0;
-                    totalSapadores += r.sapadores || 0;
-                    totalPercentagem += r.percentagem || 0;
-                    totalEficaciaIndex += r.eficaciaIndex || 0;
-                    totalPrevencaoIndex += r.prevencaoIndex || 0;
-                    totalBurnedAreaKm2 += area * (percentagem / 100);
+                    totalFirefighters += r.sapadores || 0;
+                    totalPercentage += r.percentagem || 0;
+                    totalEfficiencyIndex += r.eficaciaIndex || 0;
+                    totalPreventionIndex += r.prevencaoIndex || 0;
+                    totalBurnedAreaKm2 += area * (percentage / 100);
                 });
             } else {
-                const r = yr.regions.find(r => r.region === region);
-                if (r) {
-                    totalFires += r.total || 0;
-                    totalArea += r.area || 0;
-                    totalSapadores += r.sapadores || 0;
-                    totalPercentagem += r.percentagem || 0;
-                    totalEficaciaIndex += r.eficaciaIndex || 0;
-                    totalPrevencaoIndex += r.prevencaoIndex || 0;
+                const reg = year.regions.find(r => r.region === region);
+                if (reg) {
+                    totalFires += reg.total || 0;
+                    totalArea += reg.area || 0;
+                    totalFirefighters += reg.sapadores || 0;
+                    totalPercentage += reg.percentagem || 0;
+                    totalEfficiencyIndex += reg.eficaciaIndex || 0;
+                    totalPreventionIndex += reg.prevencaoIndex || 0;
                 }
             }
         });
 
         const yearsCount = endIndex - startIndex + 1;
-        const avgEficacia = yearsCount ? totalEficaciaIndex / yearsCount : 0;
-        const avgPrevencao = yearsCount ? totalPrevencaoIndex / yearsCount : 0;
-        const avgPercentagem = yearsCount ? totalPercentagem / yearsCount : 0;
+        const avgEfficiency = yearsCount ? totalEfficiencyIndex / yearsCount : 0;
+        const avgPrevention = yearsCount ? totalPreventionIndex / yearsCount : 0;
+        const avgPercentage = yearsCount ? totalPercentage / yearsCount : 0;
 
         let html = `<div style="font-weight:bold; margin-bottom:6px;">Details</div>`;
         html += `<div><strong>Region:</strong> ${region}</div>`;
@@ -179,45 +179,45 @@ function createRadialBarchart(sharedState, containerId) {
                 break;
 
             case "Prevention Index":
-                const preventionIndex = totalArea && totalSapadores ? (totalSapadores / totalArea).toFixed(3) : "N/A";
+                const preventionIndex = totalArea && totalFirefighters ? (totalFirefighters / totalArea).toFixed(3) : "N/A";
                 html += `
                     <div><strong>Total Area:</strong> ${totalArea} km²</div>
-                    <div><strong>Number of Firefighters:</strong> ${totalSapadores}</div>
+                    <div><strong>Number of Firefighters:</strong> ${totalFirefighters}</div>
                     <div><strong>Firefighters per km²:</strong> ${preventionIndex}</div>
                 `;
                 break;
 
             case "Efficiency Index":
-                const efficiencyIndex = totalFires && totalSapadores ? (totalSapadores / totalFires).toFixed(3) : "N/A";
+                const efficiencyIndex = totalFires && totalFirefighters ? (totalFirefighters / totalFires).toFixed(3) : "N/A";
                 html += `
                     <div><strong>Total Fires:</strong> ${totalFires}</div>
-                    <div><strong>Number of Firefighters:</strong> ${totalSapadores}</div>
+                    <div><strong>Number of Firefighters:</strong> ${totalFirefighters}</div>
                     <div><strong>Firefighters per Fire:</strong> ${efficiencyIndex}</div>
                 `;
                 break;
 
-                case "Percentage Burned":
-                let areaArdidaKm2;
-                let percentagemMedia;
+            case "Percentage Burned":
+                let burnedAreaKm2;
+                let avgBurnedPercentage;
 
                 if (region === "Portugal") {
-                    areaArdidaKm2 = totalBurnedAreaKm2.toFixed(2);
-                    percentagemMedia = totalArea > 0 ? (totalBurnedAreaKm2 / totalArea) * 100 : 0;
- 
-                    const areaTotalPais = totalArea / yearsCount;
-                    percentagemMedia = areaTotalPais > 0 ? (totalBurnedAreaKm2 / areaTotalPais) * 100 : 0;
+                    burnedAreaKm2 = totalBurnedAreaKm2.toFixed(2);
+                    avgBurnedPercentage = totalArea > 0 ? (totalBurnedAreaKm2 / totalArea) * 100 : 0;
+
+                    const totalCountryArea = totalArea / yearsCount;
+                    avgBurnedPercentage = totalCountryArea > 0 ? (totalBurnedAreaKm2 / totalCountryArea) * 100 : 0;
 
                     html += `
-                        <div><strong>Total Area:</strong> ${areaTotalPais.toFixed(2)} km²</div>
-                        <div><strong>Average Burned Area:</strong> ${percentagemMedia.toFixed(2)}%</div>
-                        <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2} km²</div>
+                        <div><strong>Total Area:</strong> ${totalCountryArea.toFixed(2)} km²</div>
+                        <div><strong>Average Burned Area:</strong> ${avgBurnedPercentage.toFixed(2)}%</div>
+                        <div><strong>Equivalent in km²:</strong> ${burnedAreaKm2} km²</div>
                     `;
                 } else {
-                    areaArdidaKm2 = (totalArea * (avgPercentagem / 100)).toFixed(2);
+                    burnedAreaKm2 = (totalArea * (avgPercentage / 100)).toFixed(2);
                     html += `
                         <div><strong>Total Area:</strong> ${totalArea} km²</div>
-                        <div><strong>Average Burned Area:</strong> ${avgPercentagem.toFixed(2)}%</div>
-                        <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2}</div>
+                        <div><strong>Average Burned Area:</strong> ${avgPercentage.toFixed(2)}%</div>
+                        <div><strong>Equivalent in km²:</strong> ${burnedAreaKm2}</div>
                     `;
                 }
                 break;
@@ -332,7 +332,7 @@ function createRadialBarchart(sharedState, containerId) {
                 sharedState.setEndYearIndex(newIndex);
             });
 
-        // Labels dos anos
+        // Year labels
         svg.selectAll(".year-label")
             .data(totalsByYear)
             .enter()
@@ -346,16 +346,15 @@ function createRadialBarchart(sharedState, containerId) {
             .text(d => d.year);
     }
 
-
     // ========================
-    // Escuta mudanças no estado
+    // Listen to state changes
     // ========================
     sharedState.onChange(state => {
         updateRadialBarChart(state);
     });
 
     // ========================
-    // Desenho inicial
+    // Initial render
     // ========================
     updateRadialBarChart(sharedState);
 }
