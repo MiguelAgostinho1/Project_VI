@@ -205,6 +205,23 @@ function createDonutChart(sharedState, containerId, config) {
     // ========================
     function updateChart(state = sharedState) {
         const chartData = config.dataFunction(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
+        // Dicionário de tradução PT → EN
+        const causeTranslations = {
+            "Negligência": "Negligence",
+            "Intencional": "Intentional",
+            "Naturais": "Natural causes",
+            "Reacendimentos": "Reignitions",
+            "Indeterminadas": "Undetermined",
+            "Não investigados": "Not investigated"
+        };
+
+        // Traduz rótulos antes de renderizar
+        chartData.forEach(d => {
+        if (causeTranslations[d.label]) {
+            d.label = causeTranslations[d.label];
+        }
+        });
+
         const total = d3.sum(chartData, d => d.numero);
 
         // Visually update toggle
