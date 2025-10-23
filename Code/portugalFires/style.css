@@ -12,7 +12,7 @@ body {
     "Title Title"
     "ChoroplethMap RadialBarChart"
     "ChoroplethMap DonutCharts";
-  height: 100vh; /* fill entire viewport */
+  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -43,9 +43,9 @@ body {
 .RadialBarChart {
   grid-area: RadialBarChart;
   display: flex;
-  flex-direction: column; /* Keep it column to stack title and chart */
-  flex-grow: 1; /* Allow it to grow and fill available space */
-  padding-top: 6px; /* Reduced from 12px, or set to 0 */
+  flex-direction: column;
+  flex-grow: 1;
+  padding-top: 6px;
   border-top: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   border-left: 2px solid #ccc;
@@ -79,7 +79,6 @@ body {
   align-items: center;
 }
 
-/* Modify the general rule */
 .ChoroplethMap,
 .RadialBarChart {
   display: flex;

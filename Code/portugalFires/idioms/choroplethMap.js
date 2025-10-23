@@ -178,7 +178,7 @@ function createChoroplethMap(sharedState, containerId) {
         // inset scale (relative to mainland)
         const insetScale = 4;
 
-        // Positioning for insets (more spacing + balanced layout)
+        // positioning for insets (more spacing + balanced layout)
         const insetPadding = 30;
 
         // === MADEIRA INSET ===
@@ -314,8 +314,6 @@ function createChoroplethMap(sharedState, containerId) {
             selection
                 .on("mouseover", function (event, d) {
                     const val = regionMap.get(d.properties.NAME_LATN);
-                    // VAMOS REMOVER A ALTERAÇÃO DO STROKE AQUI
-                    // d3.select(this).attr("stroke-width", 1.2).attr("stroke", "#000"); // <-- REMOVER/COMENTAR
                     d3.select(this)
                         .style("opacity", 0.9) // Adiciona um pequeno efeito de hover no fill
                     
@@ -337,15 +335,8 @@ function createChoroplethMap(sharedState, containerId) {
                         .style("top", (y - 28) + "px");
                 })
                 .on("mouseout", function (event, d) {
-                    // VAMOS REMOVER A ALTERAÇÃO DO STROKE AQUI
-                    // d3.select(this).attr("stroke-width", 0.6).attr("stroke", "#999"); // <-- REMOVER/COMENTAR
                     d3.select(this).style("opacity", 1) // Remove o efeito de hover no fill
                     tooltip.transition().duration(200).style("opacity", 0);
-                    
-                    // ATENÇÃO: Se o elemento não estiver selecionado, pode querer restaurar o stroke-width original.
-                    // No entanto, como `updateMap` é chamado quando `sharedState.region` muda, 
-                    // o destaque será aplicado corretamente na próxima atualização.
-                    // Manter o stroke inalterado aqui é a melhor abordagem para a seleção persistente.
                 })
                 .on("click", function(event, d) {
                     d3.select(this).style("opacity", 1);

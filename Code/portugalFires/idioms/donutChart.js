@@ -178,15 +178,13 @@ function createDonutChart(sharedState, containerId, config) {
                 .style("width", "200px")
                 .style("cursor", "pointer")
                 .on("mouseover", function () {
-                    // Destaca a fatia correspondente
                     svg.selectAll("path")
                         .filter(d => d.data.label === c.label)
                         .attr("stroke", "#000")
                         .attr("stroke-width", 1.5)
-                        .raise(); // traz para a frente
+                        .raise();
                 })
                 .on("mouseout", function () {
-                    // Remove destaque
                     svg.selectAll("path")
                         .filter(d => d.data.label === c.label)
                         .attr("stroke", "none");
