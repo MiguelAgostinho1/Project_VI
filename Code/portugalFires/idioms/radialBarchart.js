@@ -79,7 +79,7 @@ function createRadialBarchart(sharedState, containerId) {
     }
 
     // ========================
-    // Função auxiliar para agregar dados por região e anos
+    // Aggregate Function
     // ========================
     function aggregateRegionData(region, startIndex, endIndex, data) {
         const yearsData = data.slice(startIndex, endIndex + 1);
@@ -125,7 +125,6 @@ function createRadialBarchart(sharedState, containerId) {
         const filter = state.currentFilter || "Total Fires";
         const region = state.region;
 
-        // 🔹 Calcular agregados para o intervalo de anos selecionado
         const startIndex = state.startYearIndex;
         const endIndex = state.endYearIndex;
         const yearsData = state.data.slice(startIndex, endIndex + 1);
@@ -170,7 +169,6 @@ function createRadialBarchart(sharedState, containerId) {
         const avgPrevencao = yearsCount ? totalPrevencaoIndex / yearsCount : 0;
         const avgPercentagem = yearsCount ? totalPercentagem / yearsCount : 0;
 
-        // 🔹 Atualizar a details box
         let html = `<div style="font-weight:bold; margin-bottom:6px;">Details</div>`;
         html += `<div><strong>Region:</strong> ${region}</div>`;
         html += `<div><strong>Period:</strong> ${state.data[startIndex].year} - ${state.data[endIndex].year}</div>`;
@@ -204,14 +202,8 @@ function createRadialBarchart(sharedState, containerId) {
 
                 if (region === "Portugal") {
                     areaArdidaKm2 = totalBurnedAreaKm2.toFixed(2);
-                    // Calcula a percentagem média ardida para Portugal
                     percentagemMedia = totalArea > 0 ? (totalBurnedAreaKm2 / totalArea) * 100 : 0;
  
-                    // Para Portugal, a "Total Area" (totalArea) será a soma das áreas de todas as sub-regiões
-                    // mas a área total do país é fixa, pelo que esta métrica pode ser enganadora se
-                    // totalArea for a soma anualizada (totalArea / yearsCount).
-                    // Vamos assumir que 'totalArea' é a soma das áreas das sub-regiões no período.
-                    // Para Portugal, usaremos 'totalArea / yearsCount' para obter a área de Portugal (assumindo que r.area é a área da sub-região).
                     const areaTotalPais = totalArea / yearsCount;
                     percentagemMedia = areaTotalPais > 0 ? (totalBurnedAreaKm2 / areaTotalPais) * 100 : 0;
 
@@ -221,7 +213,6 @@ function createRadialBarchart(sharedState, containerId) {
                         <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2} km²</div>
                     `;
                 } else {
-                    // Lógica para sub-regiões individuais (usa a média da percentagem e a soma das áreas)
                     areaArdidaKm2 = (totalArea * (avgPercentagem / 100)).toFixed(2);
                     html += `
                         <div><strong>Total Area:</strong> ${totalArea} km²</div>
@@ -238,7 +229,6 @@ function createRadialBarchart(sharedState, containerId) {
 
         detailsBox.html(html);
 
-        // 🔹 Dados para o radial chart
         const totalsByYear = getTotals(state.region, state.data);
         const maxValue = d3.max(totalsByYear, d => d.total ?? 0) || 0;
 
@@ -278,7 +268,7 @@ function createRadialBarchart(sharedState, containerId) {
 
         const getBarColor = (year) => (year >= startYear && year <= endYear) ? selectedBarColor : unselectedBarColor;
 
-        // Desenhar ticks
+        // Draw ticks
         ticks.forEach(t => {
             const angle = angleScale(t);
             const end = polarToCartesian(angle, outerR);
@@ -301,7 +291,7 @@ function createRadialBarchart(sharedState, containerId) {
             }
         });
 
-        // Desenhar barras
+        // Draw bars
         const bars = svg.selectAll("path").data(totalsByYear, d => d.year);
 
         bars.exit().remove();
