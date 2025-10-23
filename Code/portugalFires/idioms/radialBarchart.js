@@ -45,7 +45,7 @@ function createRadialBarchart(sharedState, containerId) {
     const horizontalContainer = wrapper.append("div")
         .style("display", "flex")
         .style("flex-direction", "row")
-        .style("align-items", "flex-start")
+        .style("align-items", "center")
         .style("justify-content", "center")
         .style("gap", "20px");
 
@@ -59,7 +59,7 @@ function createRadialBarchart(sharedState, containerId) {
         .style("border", "1px solid #ccc")
         .style("border-radius", "8px")
         .style("background-color", "#fafafa")
-        .style("min-width", "160px")
+        .style("min-width", "220px")
         .style("font-size", "13px");
 
     const svgBase = horizontalContainer.append("svg")
@@ -120,6 +120,8 @@ function createRadialBarchart(sharedState, containerId) {
     function updateRadialBarChart(state) {
         svg.selectAll("*").remove();
 
+        titleElement.text("Total Fires per Year in " + state.region);
+
         const filter = state.currentFilter || "Total Fires";
         const region = state.region;
 
@@ -134,16 +136,21 @@ function createRadialBarchart(sharedState, containerId) {
         let totalPercentagem = 0;
         let totalEficaciaIndex = 0;
         let totalPrevencaoIndex = 0;
+        let totalBurnedAreaKm2 = 0;
 
         yearsData.forEach(yr => {
             if (region === "Portugal") {
                 yr.regions.forEach(r => {
+                    const area = r.area || 0;
+                    const percentagem = r.percentagem || 0;
+
                     totalFires += r.total || 0;
-                    totalArea += r.area || 0;
+                    totalArea += area || 0;
                     totalSapadores += r.sapadores || 0;
                     totalPercentagem += r.percentagem || 0;
                     totalEficaciaIndex += r.eficaciaIndex || 0;
                     totalPrevencaoIndex += r.prevencaoIndex || 0;
+                    totalBurnedAreaKm2 += area * (percentagem / 100);
                 });
             } else {
                 const r = yr.regions.find(r => r.region === region);
@@ -178,8 +185,7 @@ function createRadialBarchart(sharedState, containerId) {
                 html += `
                     <div><strong>Total Area:</strong> ${totalArea} km²</div>
                     <div><strong>Number of Firefighters:</strong> ${totalSapadores}</div>
-                    <div><strong>Formula:</strong> nFirefighters/TotalArea</div>
-                    <div><strong>Average Result:</strong> ${preventionIndex}</div>
+                    <div><strong>Firefighters per km²:</strong> ${preventionIndex}</div>
                 `;
                 break;
 
@@ -188,18 +194,41 @@ function createRadialBarchart(sharedState, containerId) {
                 html += `
                     <div><strong>Total Fires:</strong> ${totalFires}</div>
                     <div><strong>Number of Firefighters:</strong> ${totalSapadores}</div>
-                    <div><strong>Formula:</strong> nFirefighters/Total Fires</div>
-                    <div><strong>Average Result:</strong> ${efficiencyIndex}</div>
+                    <div><strong>Firefighters per Fire:</strong> ${efficiencyIndex}</div>
                 `;
                 break;
 
-            case "Percentage Burned":
-                const areaArdidaKm2 = (totalArea * (avgPercentagem / 100)).toFixed(2);
-                html += `
-                    <div><strong>Total Area:</strong> ${totalArea} km²</div>
-                    <div><strong>Average Burned Area:</strong> ${avgPercentagem.toFixed(2)}%</div>
-                    <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2}</div>
-                `;
+                case "Percentage Burned":
+                let areaArdidaKm2;
+                let percentagemMedia;
+
+                if (region === "Portugal") {
+                    areaArdidaKm2 = totalBurnedAreaKm2.toFixed(2);
+                    // Calcula a percentagem média ardida para Portugal
+                    percentagemMedia = totalArea > 0 ? (totalBurnedAreaKm2 / totalArea) * 100 : 0;
+ 
+                    // Para Portugal, a "Total Area" (totalArea) será a soma das áreas de todas as sub-regiões
+                    // mas a área total do país é fixa, pelo que esta métrica pode ser enganadora se
+                    // totalArea for a soma anualizada (totalArea / yearsCount).
+                    // Vamos assumir que 'totalArea' é a soma das áreas das sub-regiões no período.
+                    // Para Portugal, usaremos 'totalArea / yearsCount' para obter a área de Portugal (assumindo que r.area é a área da sub-região).
+                    const areaTotalPais = totalArea / yearsCount;
+                    percentagemMedia = areaTotalPais > 0 ? (totalBurnedAreaKm2 / areaTotalPais) * 100 : 0;
+
+                    html += `
+                        <div><strong>Total Area:</strong> ${areaTotalPais.toFixed(2)} km²</div>
+                        <div><strong>Average Burned Area:</strong> ${percentagemMedia.toFixed(2)}%</div>
+                        <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2} km²</div>
+                    `;
+                } else {
+                    // Lógica para sub-regiões individuais (usa a média da percentagem e a soma das áreas)
+                    areaArdidaKm2 = (totalArea * (avgPercentagem / 100)).toFixed(2);
+                    html += `
+                        <div><strong>Total Area:</strong> ${totalArea} km²</div>
+                        <div><strong>Average Burned Area:</strong> ${avgPercentagem.toFixed(2)}%</div>
+                        <div><strong>Equivalent in km²:</strong> ${areaArdidaKm2}</div>
+                    `;
+                }
                 break;
 
             default:
