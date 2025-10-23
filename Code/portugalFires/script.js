@@ -8,7 +8,7 @@ function init() {
             regionData.Percentagem,
             regionData.Sapadores,
             regionData.Eficacia_Index,
-            regionData["Prevenção_Index"],
+            regionData.Prevenção_Index,
             regionData.Total,
             regionData.Causas,
             regionData.Dimensões

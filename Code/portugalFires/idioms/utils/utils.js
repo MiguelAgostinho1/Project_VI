@@ -267,7 +267,7 @@ function getLegendItems(currentFilter, rangeLength) {
                 { label: "No data", color: missingDataColor },
                 { label: "≤ 1.99%", color: lowRiskColor },
                 { label: "1.99% < x < 5%", color: mediumRiskColor },
-                { label: "≥ 5", color: highRiskColor }
+                { label: "≥ 5%", color: highRiskColor }
             ];
         default:
             return [

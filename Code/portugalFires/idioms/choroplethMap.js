@@ -14,6 +14,8 @@ function createChoroplethMap(sharedState, containerId) {
     let legendItems;
     const filters = ["Total Fires", "Prevention Index", "Efficiency Index", "Percentage Burned"];
     let currentFilter = filters[0]; // default filter (Total Fires)
+    sharedState.currentFilter = currentFilter;
+
 
     // ========================
     // Setup
@@ -76,6 +78,8 @@ function createChoroplethMap(sharedState, containerId) {
         .style("cursor", "pointer")
         .on("click", function(event, d) {
             currentFilter = d;
+            sharedState.currentFilter = currentFilter; // 🔹 atualiza o estado global
+            sharedState.notify();
             title.text(`${currentFilter} by Region`);
         
             // Update button styles
