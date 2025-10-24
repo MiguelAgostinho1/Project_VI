@@ -53,7 +53,7 @@ function createTitle(sharedState, containerId) {
         .attr("width", SLIDER_WIDTH)
         .attr("height", SLIDER_HEIGHT);
 
-    // 1. Draw the slider track
+    // Draw the slider track
     svg.append("line")
         .attr("class", "slider-track")
         .attr("x1", xScale(minIndex))
@@ -64,7 +64,7 @@ function createTitle(sharedState, containerId) {
         .style("stroke-width", 6)
         .style("stroke-linecap", "round");
         
-    // 2. Draw the connection between handles (highlighted range)
+    // Draw the connection between handles (highlighted range)
     const rangeLine = svg.append("line")
         .attr("class", "slider-range")
         .attr("y1", TRACK_Y)
@@ -74,7 +74,7 @@ function createTitle(sharedState, containerId) {
         .style("stroke-linecap", "round");
 
 
-    // 3. Create the handles (start and end)
+    // Create the handles (start and end)
     const startHandle = svg.append("circle")
         .attr("class", "handle start")
         .attr("r", HANDLE_RADIUS)
@@ -89,7 +89,7 @@ function createTitle(sharedState, containerId) {
         .style("fill", "#7393b3")
         .style("cursor", "ew-resize");
         
-    // 4. Create the labels (new elements)
+    // Create the labels (new elements)
     const startLabel = svg.append("text")
         .attr("class", "handle-label start-label")
         .attr("text-anchor", "middle")
@@ -127,8 +127,7 @@ function createTitle(sharedState, containerId) {
     updateVisuals(sharedState.getStartYearIndex(), sharedState.getEndYearIndex());
 
 
-    // 5. Implement D3 Drag Behavior
-    
+    // Implement D3 Drag Behavior
     // Function to snap a pixel X position to the nearest year index
     function getIndexFromX(x) {
         const rawIndex = xScale.invert(x);
@@ -150,7 +149,6 @@ function createTitle(sharedState, containerId) {
                 
                 // If dragging right (newX > currentX) AND index is changing, EXPAND RIGHT
                 if (newX > currentX && newIndex > startIndex) {
-                    // ACTION: Update ONLY the END Index
                     if (newIndex <= maxIndex) {
                         sharedState.setEndYearIndex(newIndex);
                         updateVisuals(startIndex, newIndex);
@@ -160,7 +158,6 @@ function createTitle(sharedState, containerId) {
                 
                 // If dragging left (newX < currentX) AND index is changing, EXPAND LEFT
                 if (newX < currentX && newIndex < startIndex) {
-                    // ACTION: Update ONLY the START Index
                     if (newIndex >= minIndex) {
                         sharedState.setStartYearIndex(newIndex);
                         updateVisuals(newIndex, endIndex);
@@ -198,7 +195,6 @@ function createTitle(sharedState, containerId) {
 
                 // If dragging right (newX > currentX) AND index is changing, EXPAND RIGHT
                 if (newX > currentX && newIndex > endIndex) {
-                    // ACTION: Update ONLY the END Index
                     if (newIndex <= maxIndex) {
                         sharedState.setEndYearIndex(newIndex);
                         updateVisuals(startIndex, newIndex);
@@ -208,7 +204,6 @@ function createTitle(sharedState, containerId) {
                 
                 // If dragging left (newX < currentX) AND index is changing, EXPAND LEFT
                 if (newX < currentX && newIndex < endIndex) {
-                    // ACTION: Update ONLY the START Index
                     if (newIndex >= minIndex) {
                         sharedState.setStartYearIndex(newIndex);
                         updateVisuals(newIndex, endIndex);
@@ -235,7 +230,7 @@ function createTitle(sharedState, containerId) {
     startHandle.call(startDrag);
     endHandle.call(endDrag);
 
-    // 6. Shared State Change Handler
+    // Shared State Change Handler
     sharedState.onChange(() => {
         const startIndex = sharedState.getStartYearIndex();
         const endIndex = sharedState.getEndYearIndex();

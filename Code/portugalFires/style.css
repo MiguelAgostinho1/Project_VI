@@ -83,7 +83,6 @@ body {
 .RadialBarChart {
   display: flex;
   flex-direction: column;
-  /* Use flex-start to keep content closer to the top, which will reduce space below */
   justify-content: flex-start; 
   align-items: center;
 }

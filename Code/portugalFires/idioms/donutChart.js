@@ -205,7 +205,7 @@ function createDonutChart(sharedState, containerId, config) {
     // ========================
     function updateChart(state = sharedState) {
         const chartData = config.dataFunction(state.region, state.getStartYearIndex(), state.getEndYearIndex(), data);
-        // Dicionário de tradução PT → EN
+        // Translation dictionary PT → EN
         const causeTranslations = {
             "Negligência": "Negligence",
             "Intencional": "Intentional",
@@ -215,7 +215,7 @@ function createDonutChart(sharedState, containerId, config) {
             "Não investigados": "Not investigated"
         };
 
-        // Traduz rótulos antes de renderizar
+        // Translate labels before rendering
         chartData.forEach(d => {
         if (causeTranslations[d.label]) {
             d.label = causeTranslations[d.label];

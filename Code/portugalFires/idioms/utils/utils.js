@@ -43,14 +43,14 @@ const causeColors = [
 // Define configurations
 const causesConfig = {
     titlePrefix: "Causes of Fires in ",
-    dataFunction: getCausesForRange,  // Pass the function itself
+    dataFunction: getCausesForRange,
     colors: causeColors,
     inactiveSelector: ".DimensionsDonutChart"
 };
 
 const dimensionsConfig = {
     titlePrefix: "Dimensions of Fires in ",
-    dataFunction: getDimensionsForRange, // Pass the function itself
+    dataFunction: getDimensionsForRange,
     colors: dimensionColors,
     inactiveSelector: ".CausesDonutChart"
 };
@@ -65,13 +65,13 @@ function getYearsInRange(startYearIndex, endYearIndex, data) {
 }
 
 function getCausesForRange(region, startYearIndex, endYearIndex, data) {
-    // 1. Get all year objects in the selected range
+    // Get all year objects in the selected range
     const yearsData = getYearsInRange(startYearIndex, endYearIndex, data);
     if (yearsData.length === 0) return [];
 
     const causeMap = new Map();
 
-    // 2. Iterate and aggregate across ALL years in the range
+    // Iterate and aggregate across ALL years in the range
     yearsData.forEach(yearData => {
         if (region === "Portugal") {
             // Aggregation across regions AND years
@@ -93,18 +93,18 @@ function getCausesForRange(region, startYearIndex, endYearIndex, data) {
         }
     });
 
-    // 3. Convert the map back to the desired array format
+    // Convert the map back to the desired array format
     return Array.from(causeMap, ([label, numero]) => ({ label, numero }));
 }
 
 function getDimensionsForRange(region, startYearIndex, endYearIndex, data) {
-    // 1. Get all year objects in the selected range
+    // Get all year objects in the selected range
     const yearsData = getYearsInRange(startYearIndex, endYearIndex, data);
     if (yearsData.length === 0) return [];
 
     const dimensionMap = new Map();
 
-    // 2. Iterate and aggregate across ALL years in the range
+    // Iterate and aggregate across ALL years in the range
     yearsData.forEach(yearData => {
         if (region === "Portugal") {
             // Aggregation across regions AND years
@@ -126,7 +126,7 @@ function getDimensionsForRange(region, startYearIndex, endYearIndex, data) {
         }
     });
 
-    // 3. Convert the map back to the desired array format
+    // Convert the map back to the desired array format
     return Array.from(dimensionMap, ([label, numero]) => ({ label, numero }));
 }
 
@@ -294,12 +294,12 @@ function getData(startYearIndex, endYearIndex, data, currentFilter) {
     const endYear = years[endYearIndex];
     const rangeLength = endYear - startYear + 1;
 
-    // 1. Filter data for the selected range
+    // Filter data for the selected range
     const relevantData = data.filter(d => d.year >= startYear && d.year <= endYear);
 
     if (relevantData.length === 0) return [];
 
-    // 2. Determine the key to extract from the region objects
+    // Determine the key to extract from the region objects
     let dataKey;
     switch (currentFilter) {
         case "Prevention Index":
@@ -316,7 +316,7 @@ function getData(startYearIndex, endYearIndex, data, currentFilter) {
             break;
     }
 
-    // 3. Aggregate the sums across all regions and years
+    // Aggregate the sums across all regions and years
     // Map stores the sum of values for each region
     const aggregatedData = {};
 
@@ -332,7 +332,7 @@ function getData(startYearIndex, endYearIndex, data, currentFilter) {
         });
     });
 
-    // 4. Calculate the final value (sum or average) and format the output
+    // Calculate the final value (sum or average) and format the output
     const finalData = Object.keys(aggregatedData).map(region => {
         let finalValue = aggregatedData[region];
 
